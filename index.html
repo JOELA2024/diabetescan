@@ -23,14 +23,21 @@
         .bg-green-soft { background-color: #a3b18a; }
         .progress-bar { transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
         .btn-yes { background-color: #588157; transition: all 0.2s ease; }
+        h1{}
         * { font-style: normal !important; }
+        .headline {
+            font-size: 3.5rem; /* Taille massive */
+            line-height: 0.9;
+            color: #1a1a1a; /* Noir profond pour l'impact */
+            letter-spacing: -0.05em;
+        }
     </style>
 </head>
 <body class="min-h-screen antialiased">
 
     <div class="max-w-xl mx-auto px-6 py-10 md:py-16">
         <header class="text-center mb-10 md:mb-14">
-            <h1 class="text-3xl md:text-4xl tracking-tighter accent-green mb-2 uppercase font-black">DIABÈTE SCAN</h1>
+            <h1 class="headline">DIABÈTE SCAN</h1>
             <div class="h-0.5 w-12 bg-green-soft mx-auto mb-4"></div>
             <p class="text-gray-500 text-xs md:text-sm font-medium uppercase tracking-widest">Analyse de terrain</p>
         </header>
@@ -59,7 +66,7 @@
                 <p id="result-message" class="text-md text-gray-600 mb-10 leading-relaxed font-medium"></p>
                 
                 <div id="conclusions-box" class="bg-white md:bg-[#f4f7f6] p-8 rounded-3xl text-left mb-10 border border-gray-100 shadow-sm md:shadow-none">
-                    <h3 class="text-[#588157] font-black mb-8 uppercase text-[11px] tracking-[0.1em] border-b border-green-200 pb-2 text-center">Diagnostics prioritaires</h3>
+                    <h3 class="text-[#588157] font-black mb-8 uppercase text-[11px] tracking-[0.1em] border-b border-green-200 pb-2 text-center">Ce qui vous bloque</h3>
                     <div id="grouped-issues" class="space-y-8"></div>
                 </div>
 
@@ -154,3 +161,4 @@
     </script>
 </body>
 </html>
+
