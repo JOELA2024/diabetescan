@@ -9,6 +9,21 @@
     <style>
         body { background-color: #f4f7f6; color: #344e41; font-family: 'Inter', sans-serif; }
         .responsive-card { background: transparent; border: none; padding: 0; box-shadow: none; }
+        
+        /* Style du Titre Headline */
+        .headline-title {
+            font-size: 3.5rem; /* Taille massive */
+            line-height: 0.9;
+            color: #1a1a1a; /* Noir profond pour l'impact */
+            letter-spacing: -0.05em;
+        }
+        
+        @media (max-width: 768px) {
+            .headline-title {
+                font-size: 2.5rem; /* Taille adaptée mobile */
+            }
+        }
+
         @media (min-width: 768px) {
             .responsive-card {
                 background: rgba(255, 255, 255, 0.9); 
@@ -19,27 +34,21 @@
                 box-shadow: 0 15px 35px -5px rgba(0,0,0,0.05);
             }
         }
+        
         .accent-green { color: #588157; }
         .bg-green-soft { background-color: #a3b18a; }
         .progress-bar { transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
         .btn-yes { background-color: #588157; transition: all 0.2s ease; }
-        h1{}
         * { font-style: normal !important; }
-        .headline {
-            font-size: 3.5rem; /* Taille massive */
-            line-height: 0.9;
-            color: #1a1a1a; /* Noir profond pour l'impact */
-            letter-spacing: -0.05em;
-        }
     </style>
 </head>
 <body class="min-h-screen antialiased">
 
     <div class="max-w-xl mx-auto px-6 py-10 md:py-16">
         <header class="text-center mb-10 md:mb-14">
-            <h1 class="headline">DIABÈTE SCAN</h1>
-            <div class="h-0.5 w-12 bg-green-soft mx-auto mb-4"></div>
-            <p class="text-gray-500 text-xs md:text-sm font-medium uppercase tracking-widest">Analyse de terrain</p>
+            <h1 class="headline-title uppercase font-black mb-4">DIABÈTE<br>SCAN</h1>
+            <div class="h-1 w-12 bg-green-soft mx-auto mb-6"></div>
+            <p class="text-gray-500 text-xs md:text-sm font-medium uppercase tracking-[0.2em]">Analyse de terrain</p>
         </header>
 
         <div id="quiz-container" class="responsive-card relative">
@@ -117,7 +126,7 @@
         }
 
         function showResults() {
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Remonte en haut de page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             document.getElementById('quiz-container').classList.add('hidden');
             document.getElementById('results-container').classList.remove('hidden');
 
@@ -139,7 +148,7 @@
             }, {});
 
             if (yesAnswers.length === 0) {
-                container.innerHTML = "<p class='text-center text-gray-500 italic'>Aucun déséquilibre majeur détecté.</p>";
+                container.innerHTML = "<p class='text-center text-gray-500'>Aucun déséquilibre majeur détecté.</p>";
             } else {
                 for (const [category, items] of Object.entries(grouped)) {
                     const section = document.createElement('div');
@@ -161,4 +170,3 @@
     </script>
 </body>
 </html>
-
