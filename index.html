@@ -7,19 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { 
-            background-color: #f4f7f6; 
-            color: #344e41; 
-            font-family: 'Inter', sans-serif; 
-        }
-        
-        .responsive-card { 
-            background: transparent;
-            border: none;
-            padding: 0;
-            box-shadow: none;
-        }
-
+        body { background-color: #f4f7f6; color: #344e41; font-family: 'Inter', sans-serif; }
+        .responsive-card { background: transparent; border: none; padding: 0; box-shadow: none; }
         @media (min-width: 768px) {
             .responsive-card {
                 background: rgba(255, 255, 255, 0.9); 
@@ -30,17 +19,14 @@
                 box-shadow: 0 15px 35px -5px rgba(0,0,0,0.05);
             }
         }
-
         .accent-green { color: #588157; }
         .bg-green-soft { background-color: #a3b18a; }
         .progress-bar { transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
         .btn-yes { background-color: #588157; transition: all 0.2s ease; }
-        
         * { font-style: normal !important; }
     </style>
 </head>
 <body class="min-h-screen antialiased">
-
     <div class="max-w-xl mx-auto px-6 py-10 md:py-16">
         <header class="text-center mb-10 md:mb-14">
             <h1 class="text-3xl md:text-4xl tracking-tighter accent-green mb-2 uppercase font-black">DIABÈTE SCAN</h1>
@@ -52,18 +38,12 @@
             <div class="w-full bg-gray-200 h-1.5 rounded-full mb-10">
                 <div id="progress" class="bg-green-soft h-1.5 rounded-full progress-bar" style="width: 0%"></div>
             </div>
-
             <div id="question-box">
                 <span id="pill-label" class="text-[#588157] text-[10px] font-black uppercase tracking-widest bg-[#a3b18a]/10 px-4 py-1 rounded-full border border-[#a3b18a]/20">Initialisation</span>
                 <h2 id="question-text" class="text-2xl font-bold leading-tight text-[#344e41] mt-8 mb-12 min-h-[100px]">Chargement...</h2>
-                
                 <div class="flex flex-col gap-4">
-                    <button onclick="nextQuestion(true)" class="btn-yes w-full py-6 text-white rounded-2xl font-bold text-lg shadow-lg uppercase tracking-wide">
-                        Oui, je le sens
-                    </button>
-                    <button onclick="nextQuestion(false)" class="w-full py-4 bg-gray-200/50 text-gray-500 rounded-2xl font-bold text-sm uppercase tracking-widest">
-                        Non
-                    </button>
+                    <button onclick="nextQuestion(true)" class="btn-yes w-full py-6 text-white rounded-2xl font-bold text-lg shadow-lg uppercase tracking-wide">Oui, je le sens</button>
+                    <button onclick="nextQuestion(false)" class="w-full py-4 bg-gray-200/50 text-gray-500 rounded-2xl font-bold text-sm uppercase tracking-widest">Non</button>
                 </div>
             </div>
         </div>
@@ -72,24 +52,12 @@
             <div class="responsive-card text-center">
                 <p class="text-gray-400 uppercase text-[10px] font-black tracking-[0.2em] mb-2">Saturation métabolique</p>
                 <div id="score-percent" class="text-7xl font-black text-[#588157] mb-6 tracking-tighter">0%</div>
-                
                 <p id="result-message" class="text-md text-gray-600 mb-10 leading-relaxed font-medium"></p>
-                
                 <div id="conclusions-box" class="bg-white md:bg-[#f4f7f6] p-8 rounded-3xl text-left mb-10 border border-gray-100 shadow-sm md:shadow-none">
                     <h3 class="text-[#588157] font-black mb-8 uppercase text-[11px] tracking-[0.1em] border-b border-green-200 pb-2 text-center">Diagnostics prioritaires</h3>
                     <div id="grouped-issues" class="space-y-8"></div>
                 </div>
-
-                <div class="text-left md:text-center space-y-4 mb-12 px-2 text-gray-600 leading-relaxed text-sm md:text-base">
-                    <p>Certains choisissent d'apprendre à provoquer ce déclic — passer de la contrainte subie à une gestion fluide — avec un cadre structuré.</p>
-                    <p>D'autres préfèrent avancer pas à pas, en ajustant leur quotidien vers plus de légèreté.</p>
-                    <p class="font-bold text-[#344e41]">Diabète Soft, c'est le pont entre les deux.</p>
-                    <p>Une méthode concrète pour transformer votre relation au diabète, sans culpabilisation ni brutalité.</p>
-                </div>
-
-                <a href="https://diabete-soft.com" class="block w-full py-7 bg-[#588157] text-white rounded-2xl md:rounded-3xl font-black text-xl uppercase tracking-tighter shadow-xl text-center">
-                    Accéder à Diabète Soft
-                </a>
+                <a href="https://diabete-soft.com" class="block w-full py-7 bg-[#588157] text-white rounded-2xl md:rounded-3xl font-black text-xl uppercase tracking-tighter shadow-xl text-center">Accéder à Diabète Soft</a>
             </div>
         </div>
     </div>
@@ -130,24 +98,19 @@
             window.scrollTo(0,0);
             document.getElementById('quiz-container').classList.add('hidden');
             document.getElementById('results-container').classList.remove('hidden');
-
             const score = Math.round((yesAnswers.length / questions.length) * 100);
             document.getElementById('score-percent').innerText = score + "%";
-            
             const msgEl = document.getElementById('result-message');
             if (score <= 30) msgEl.innerText = "Votre corps résiste encore, mais les premiers verrous s'installent.";
             else if (score <= 70) msgEl.innerText = "Votre système est saturé. Faire régime ne suffit plus, il faut relancer vos fonctions vitales.";
             else msgEl.innerText = "Alerte : Votre terrain est totalement bloqué. Votre corps ne gère plus l'énergie correctement.";
-
             const container = document.getElementById('grouped-issues');
             container.innerHTML = ""; 
-
             const grouped = yesAnswers.reduce((acc, item) => {
                 if (!acc[item.p]) acc[item.p] = [];
                 acc[item.p].push(item.r);
                 return acc;
             }, {});
-
             for (const [category, items] of Object.entries(grouped)) {
                 const section = document.createElement('div');
                 const title = document.createElement('h4');
