@@ -87,7 +87,7 @@
                     <p>Une méthode concrète pour transformer votre relation au diabète, sans culpabilisation ni brutalité.</p>
                 </div>
 
-                <a id="btn-access-sales" href="salespages.html" class="block w-full py-7 bg-[#588157] text-white rounded-2xl md:rounded-3xl font-black text-xl uppercase tracking-tighter shadow-xl text-center">
+                <a id="btn-vers-sales-page" href="salespages.html" class="block w-full py-7 bg-[#588157] text-white rounded-2xl md:rounded-3xl font-black text-xl uppercase tracking-tighter shadow-xl text-center">
                 Accéder à Diabète Soft
                 </a>
             </div>
@@ -176,8 +176,18 @@
 
   gtag('config', 'G-1Y164DR62T');
     </script>
+    <script>
+  // Tracking du bouton Accéder à Diabète Soft
+  document.getElementById('btn-vers-sales-page').addEventListener('click', function() {
+    gtag('event', 'click_access_sales', {
+      'event_category': 'Navigation',
+      'event_label': 'Passage vers Page de Vente'
+    });
+  });
+</script>
 </body>
 </html>
+
 
 
 
