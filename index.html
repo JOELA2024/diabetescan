@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIABÈTE SCAN - Bilan Vitalité</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Y164DR62T"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #f4f7f6; color: #344e41; font-family: 'Inter', sans-serif; }
@@ -167,9 +168,15 @@
             }
         }
         document.addEventListener('DOMContentLoaded', updateUI);
+        window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1Y164DR62T');
     </script>
 </body>
 </html>
+
 
 
 
