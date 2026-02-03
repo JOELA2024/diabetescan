@@ -144,7 +144,7 @@
 
             <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
                 <p class="text-xl font-bold mb-8 italic">Prêt(e) à reprendre le contrôle ?</p>
-                <a href="https://wa.me/261347112857?text=DIABÈTE%20SOFT" class="btn-whatsapp inline-flex items-center justify-center w-full md:w-auto px-12 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-gray-200">
+                <a id="whatsapp-diabete-link" href="https://wa.me/261347112857?text=DIABÈTE%20SOFT" class="btn-whatsapp inline-flex items-center justify-center w-full md:w-auto px-12 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-gray-200">
                     Envoyer "DIABÈTE SOFT" par WhatsApp
                 </a>
                 <p class="mt-6 text-gray-400 text-xs">Numéro : 034 71 128 57</p>
@@ -160,6 +160,14 @@
         </footer>
 
     </main>
-
+    <script>
+      document.getElementById('whatsapp-diabete-link').addEventListener('click', function() {
+        gtag('event', 'contact_whatsapp', {
+          'event_category': 'Engagement',
+          'event_label': 'Bouton Diabete Soft',
+          'value': 1
+        });
+      });
+    </script>
 </body>
 </html>
