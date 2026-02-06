@@ -33,19 +33,18 @@
                         </div>
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-gray-500">Frais de retrait</span>
-                            <span class="font-medium text-gray-500">+ 1 300 Ar</span>
                         </div>
                         <div class="h-px bg-gray-100 my-2"></div>
                         <div class="flex justify-between items-center">
                             <span class="font-bold text-gray-900">Total à payer</span>
-                            <span class="font-bold text-gray-900">36 300 Ar</span>
+                            <span class="font-bold text-gray-900">35 000 Ar</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-green-50 p-4 rounded-xl mb-6 text-left border border-green-100">
                     <p class="text-[11px] text-green-800 leading-relaxed">
-                        1. Transférez <strong>36 300 Ar</strong> au <span class="font-bold">034 71 128 57</span>.<br>
+                        1. Transférez <strong>35 000 Ar</strong> au <span class="font-bold">034 71 128 57</span>.<br>
                         2. Copiez la <strong>Référence</strong> reçue par SMS.<br>
                         3. Cliquez ci-dessous pour recevoir votre guide.
                     </p>
@@ -197,7 +196,7 @@
         }
 
         function launchDialer() {
-            window.location.href = "tel:*111*1*2*0347112857*36300%23";
+            window.location.href = "tel:*111*1*2*0347112857*35000%23";
         }
 
         function validateOnWA() {
@@ -210,7 +209,7 @@
             }
 
             // Message formaté pour toi
-            const message = `Bonjour, je viens d'effectuer le paiement de 36 300 Ar pour le guide Diabète Soft.\n\nRéférence MVola : ${ref}\n\nMerci de m'envoyer mon accès.`;
+            const message = `Bonjour, je viens d'effectuer le paiement de 35 000 Ar pour le guide Diabète Soft.\n\nRéférence MVola : ${ref}\n\nMerci de m'envoyer mon accès.`;
             
             // Redirection WhatsApp
             const waUrl = `https://wa.me/${monNumero}?text=${encodeURIComponent(message)}`;
