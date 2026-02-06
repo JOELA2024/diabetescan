@@ -8,50 +8,91 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Y164DR62T"></script>
     <style>
-        body { 
-            background-color: #ffffff; 
-            color: #1a1a1a; 
-            font-family: 'Inter', sans-serif; 
-            scroll-behavior: smooth;
-        }
-        .notion-card {
-            border: 1px solid #efefef;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-        }
-        .notion-card:hover {
-            background-color: #fbfbfb;
-        }
-        .btn-whatsapp {
-            background-color: #1a1a1a;
-            color: white;
-            transition: all 0.2s ease;
-        }
-        .btn-whatsapp:hover {
-            background-color: #333333;
-            transform: translateY(-1px);
-        }
-        .highlight {
-            background-color: #f1f5f2;
-            color: #2d4a3e;
-            padding: 0.2em 0.4em;
-            border-radius: 4px;
-            font-weight: 500;
-        }
+        body { background-color: #ffffff; color: #1a1a1a; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .notion-card { border: 1px solid #efefef; border-radius: 12px; transition: all 0.2s ease; }
+        .notion-card:hover { background-color: #fbfbfb; }
+        .btn-whatsapp { background-color: #1a1a1a; color: white; transition: all 0.2s ease; cursor: pointer; }
+        .btn-whatsapp:hover { background-color: #333333; transform: translateY(-1px); }
+        .highlight { background-color: #f1f5f2; color: #2d4a3e; padding: 0.2em 0.4em; border-radius: 4px; font-weight: 500; }
+        #payment-modal { display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: white; width: 100%; max-width: 420px; padding: 32px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid #efefef; }
         * { font-style: normal !important; }
+        /* Animation de barre de progression pour le succès */
+        @keyframes progress { from { width: 0%; } to { width: 100%; } }
+        .animate-progress { animation: progress 3s ease-in-out; }
     </style>
 </head>
 <body class="antialiased">
 
+    <div id="payment-modal">
+        <div class="modal-content">
+            <div id="step-1">
+                <h3 class="text-2xl font-bold mb-2">Votre guide</h3>
+                <p class="text-gray-500 text-sm mb-6">Entrez votre WhatsApp pour recevoir une copie de secours.</p>
+                <input type="tel" id="client-wa" placeholder="034 00 000 00" class="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl mb-4 focus:outline-none focus:ring-2 focus:ring-green-500 transition">
+                <button onclick="goToStep2()" class="w-full bg-green-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-green-100 hover:bg-green-700 transition mb-4">
+                    Continuer vers le paiement
+                </button>
+                <button onclick="closeModal()" class="w-full text-gray-400 text-sm font-medium">Annuler</button>
+            </div>
+
+            <div id="step-2" class="hidden">
+                <div id="payment-container">
+                    <div class="mb-8">
+                        <h3 class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4 text-left">Récapitulatif</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Guide Diabète Soft</span>
+                                <span class="font-medium">35 000 Ar</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-500">Frais de retrait</span>
+                                <span class="font-medium text-gray-500">+ 1 300 Ar</span>
+                            </div>
+                            <div class="h-px bg-gray-100 my-2"></div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-gray-900">Total à payer</span>
+                                <span class="font-bold text-gray-900">36 300 Ar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-xl mb-6 text-left border border-gray-100">
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            Transférez le total au <span class="font-bold text-black">034 71 128 57</span> ou cliquez sur le bouton ci-dessous pour lancer l'appel automatique.
+                        </p>
+                    </div>
+
+                    <button onclick="launchDialer()" class="w-full bg-black text-white font-semibold py-4 rounded-xl mb-8 flex items-center justify-center gap-2 hover:bg-gray-800 transition">
+                        Payer 36 300 Ar via MVola
+                    </button>
+
+                    <div class="pt-6 border-t border-gray-100">
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-3 text-left">Référence de transaction (ID)</label>
+                        <input type="text" id="ref-payment" placeholder="Ex: 129384755" 
+                            class="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl mb-4 font-mono text-center focus:ring-1 focus:ring-black outline-none transition">
+                        
+                        <button id="btn-valider" onclick="verifyRef()" class="w-full bg-green-600 text-white font-bold py-4 rounded-xl hover:bg-green-700 transition shadow-lg shadow-green-100">
+                            Valider mon accès
+                        </button>
+                        
+                        <p class="mt-4 text-[10px] text-gray-400 text-center uppercase tracking-tight">
+                            Vérification instantanée après confirmation SMS
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <nav class="sticky top-0 bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
         <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
             <span class="font-bold tracking-tight text-sm uppercase">Diabète Soft</span>
-            <a href="#commander" class="text-xs font-bold bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200 transition">Commander</a>
+            <button onclick="openModal()" class="text-xs font-bold bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200 transition">Commander</button>
         </div>
     </nav>
 
     <main class="max-w-2xl mx-auto px-6 py-20">
-        
         <section class="mb-24 text-center md:text-left">
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
                 La méthode qui <span class="text-green-600">change tout.</span>
@@ -145,11 +186,11 @@
 
             <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
                 <p class="text-xl font-bold mb-8 italic">Prêt(e) à reprendre le contrôle ?</p>
-                <a id="whatsapp-diabete-link" href="https://wa.me/261347112857?text=DIABÈTE%20SOFT" class="btn-whatsapp inline-flex items-center justify-center w-full md:w-auto px-12 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-gray-200">
-                    Envoyer "DIABÈTE SOFT" par WhatsApp
-                </a>
-                <p class="mt-6 text-gray-400 text-xs">Numéro : 034 71 128 57</p>
-            </div>
+                <button onclick="openModal()" class="btn-whatsapp inline-flex items-center justify-center w-full md:w-auto px-12 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-gray-200">
+                    Commander le guide complet
+                </button>
+                <p class="mt-6 text-gray-400 text-xs">Numéro MVola : 034 71 128 57</p>
+            </div>  
         </section>
 
         <footer class="text-center pb-20">
@@ -159,23 +200,67 @@
             <div class="h-px w-12 bg-gray-200 mx-auto mb-8"></div>
             <p class="text-xs font-bold uppercase tracking-widest text-gray-300">Diabète Scan • Bilan Vitalité</p>
         </footer>
-
     </main>
-    <script>
-      document.getElementById('whatsapp-diabete-link').addEventListener('click', function() {
-        gtag('event', 'contact_whatsapp', {
-          'event_category': 'Engagement',
-          'event_label': 'Bouton Diabete Soft',
-          'value': 1
-        });
-      });
-    </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-1Y164DR62T');
+    <script>
+        function openModal() { document.getElementById('payment-modal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('payment-modal').style.display = 'none'; }
+        
+        function goToStep2() {
+            const wa = document.getElementById('client-wa').value;
+            if(wa.length < 10) { alert("Numéro WhatsApp invalide"); return; }
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.remove('hidden');
+        }
+
+        function launchDialer() {
+            window.location.href = "tel:*111*1*2*0347112857*36300%23";
+        }
+
+        async function verifyRef() {
+            const ref = document.getElementById('ref-payment').value.trim();
+            const wa = document.getElementById('client-wa').value.trim();
+            const btn = document.getElementById('btn-valider');
+            
+            if(ref.length < 5) { alert("Référence trop courte."); return; }
+            
+            btn.innerText = "Vérification en cours...";
+            btn.disabled = true;
+
+            try {
+                const urlScript = "https://script.google.com/macros/s/AKfycbzafhlZoYwo0zL4_v2SERMOZaA5P68gBGUFciJ2oQjE0KC6gAzFPhRjYl_4v4e5Pm9VBQ/exec"; 
+                
+                // 1. Vérifier si la référence existe
+                const response = await fetch(urlScript + "?ref=" + ref);
+                const result = await response.text();
+
+                if (result === "OK") {
+                    // 2. Envoyer l'ordre de livraison (WhatsApp + Ref) au Sheet
+                    fetch(`${urlScript}?action=livrer&wa=${wa}&ref=${ref}`);
+
+                    // 3. Afficher le message de succès directement dans le modal
+                    document.getElementById('step-2').innerHTML = `
+                        <div class="text-center py-8">
+                            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">✓</div>
+                            <h3 class="text-xl font-bold mb-2">Paiement Validé !</h3>
+                            <p class="text-gray-500 text-sm mb-6">Félicitations. Votre guide est en cours d'envoi sur WhatsApp au <strong>${wa}</strong>.</p>
+                            <div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-green-500 h-full animate-progress"></div>
+                            </div>
+                            <p class="text-[10px] text-gray-400 mt-4 uppercase tracking-widest">Vérifiez vos messages dans quelques instants</p>
+                        </div>
+                    `;
+                } else {
+                    alert("Référence non trouvée. Si vous venez de payer, attendez 1 minute que le SMS arrive.");
+                    btn.innerText = "Réessayer";
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                alert("Erreur de connexion. Vérifiez votre internet.");
+                btn.innerText = "Valider mon accès";
+                btn.disabled = false;
+            }
+        }
     </script>
 </body>
 </html>
