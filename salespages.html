@@ -217,8 +217,6 @@
             window.location.href = "tel:*111*1*2*0347112857*36300%23";
         }
         // Cette ligne réveille ton téléphone immédiatement
-        UrlFetchApp.fetch("https://trigger.macrodroid.com/TON_ID_WEBHOOK/livraison_diabete?wa=" + wa);
-        async function verifyRef() {
             const ref = document.getElementById('ref-payment').value.trim();
             const wa = document.getElementById('client-wa').value.trim();
             const btn = document.getElementById('btn-valider');
