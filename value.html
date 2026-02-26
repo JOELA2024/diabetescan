@@ -7,133 +7,169 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { 
-            font-family: 'DM Sans', sans-serif; 
-            background-color: #0D0D0D; 
-            height: 100vh; 
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden; 
-        }
-        h1 { font-family: 'Playfair Display', serif; }
+        body { font-family: 'DM Sans', sans-serif; background-color: #0D0D0D; }
+        h1 { font-family: 'inter'; }
         
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            aspect-ratio: 16 / 9;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
-
-        /* Bouton Minimaliste Verrouillé */
         .btn-locked {
-            background-color: transparent !important;
+            background-color: #1a1a1a !important;
             color: #4b5563 !important;
             border: 1px solid #374151;
             cursor: not-allowed;
             pointer-events: none;
         }
-
-        /* Animation quand activé */
+        
         .btn-active {
-            animation: pulse-simple 2s infinite;
+            animation: pulse-border 2s infinite;
+            background-color: #1E8449 !important;
+            color: white !important;
+            border: none !important;
+            pointer-events: auto !important;
         }
-        @keyframes pulse-simple {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(30, 132, 73, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(30, 132, 73, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(30, 132, 73, 0); }
+        }
+
+        /* Transition fluide pour l'apparition */
+        .reveal-section {
+            transition: all 1s ease-in-out;
+            opacity: 0;
+            display: none;
+        }
+        .reveal-section.show {
+            display: block;
+            opacity: 1;
         }
     </style>
 </head>
-<body class="text-white py-6 px-4 items-center justify-between">
+<body class="text-white">
 
-    <div class="max-w-4xl text-center">
-        <h1 class="text-2xl md:text-5xl font-black leading-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
-            Ahoana no fampidinana ny HbA1c anao ho 5,7 tao anatin'ny 23 andro... <br class="hidden md:block">
-            <span class="text-[#27AE60]">nefa tsy manova fanafody.</span>
-        </h1>
-    </div>
-
-    <div class="video-container rounded-3xl shadow-2xl border border-white/5 overflow-hidden">
-        <div id="player"></div>
-    </div>
-
-    <div id="cta-container" class="w-full max-w-lg text-center">
-        <a href="page-de-vente.html" id="cta-button" class="btn-locked flex items-center justify-center gap-4 w-full py-5 rounded-full text-lg font-bold uppercase transition-all duration-700">
-            <span id="cta-text">Hovahana afaka</span>
-            <span id="timer" class="font-mono text-[#27AE60]">17:54</span>
-        </a>
+    <section class="min-h-[100dvh] flex flex-col items-center justify-center gap-6 md:gap-10 p-4 md:p-8 text-center border-b border-gray-900">
         
-        <p id="timer-hint" class="mt-4 text-gray-400 text-[10px] uppercase tracking-[0.2em] font-bold">
-            Henoy ny fanazavana vao afaka mandray ny tolotra
-        </p>
-    </div>
+        <div class="max-w-5xl">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-black leading-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+                Secrets 3 Nahavitako Nanasitrana Ilay Diabète Tao Anatin'ny<br class="hidden md:block">
+                <span class="text-[#27AE60]"> 4 Semaines.</span>
+            </h1>
+        </div>
+
+        <div class="w-full max-w-[900px] aspect-video rounded-2xl shadow-[0_0_60px_rgba(30,132,73,0.1)] border border-white/5 overflow-hidden bg-black">
+            <div id="player"></div>
+        </div>
+
+        <div class="w-full max-w-xl mb-4">
+            <div id="cta-1" class="btn-locked flex items-center justify-center gap-4 w-full py-5 rounded-2xl text-lg font-black uppercase transition-all duration-500">
+                <span class="cta-text">Hovahana afaka</span>
+                <span id="timer-1" class="timer font-mono bg-black px-3 py-1 rounded-lg text-[#27AE60]">17:54</span>
+            </div>
+            <p class="mt-4 text-gray-500 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">Jereo hatramin'ny farany ny Video</p>
+        </div>
+    </section>
+
+
+    <section id="section-preuves" class="reveal-section py-24 px-4 max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-4xl font-bold mb-16 text-center text-gray-200">Ireo no lazain'ireo olona efa nampiatra io méthode io:</h2>
+        
+        <div class="flex flex-col gap-12">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-2xl">
+                <img src="images/Screenshot_2026-02-09-20-35-54-97.jpg" class="w-full h-auto">
+                <div class="p-8">
+                    <span class="text-[10px] font-black text-green-600 uppercase tracking-widest bg-green-50 px-3 py-1 rounded-full">Diabète-soft</span>
+                    <p class="mt-5 text-lg text-gray-800 leading-relaxed font-medium">"Tauv HB1AC 5,7 rehefa nanaraka ilay rythme fotsiny."</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl overflow-hidden shadow-2xl">
+                <img src="images/Screenshot_2026-02-09-20-51-56-66.jpg" class="w-full h-auto">
+                <div class="p-8">
+                    <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">Diabète-soft</span>
+                    <p class="mt-5 text-lg text-gray-800 leading-relaxed font-medium">"Stable ny taux HB1AC apres 23 jours nanarahana ilay rythme ny vatana."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24 w-full max-w-xl mx-auto text-center">
+            <div id="cta-2" class="btn-locked flex items-center justify-center gap-4 w-full py-6 rounded-2xl text-xl font-black uppercase transition-all duration-500 shadow-2xl">
+                <span class="cta-text">Hovahana afaka</span>
+                <span id="timer-2" class="timer font-mono bg-black px-4 py-2 rounded-xl text-[#27AE60]">17:54</span>
+            </div>
+        </div>
+    </section>
 
     <script>
+        // 1. Chargement de l'API YouTube
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         var player;
-        var isUnlocked = false;
+        var preuvesAffichees = false;
+        var boutonDebloque = false;
 
         // --- CONFIGURATION ---
         const VIDEO_ID = 'QxHHjW58T2w'; 
-        const TEMPS_ACTIVATION = 1020; // 17 minutes x 60 secondes
+        const TEMPS_REVELATION_PREUVES = 300; // 5 minutes (300 secondes)
+        const TEMPS_DEBLOCAGE_BOUTON = 1000; // 17:54 (1000 secondes)
         // ---------------------
 
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 videoId: VIDEO_ID,
-                playerVars: { 
-                    'rel': 0, 
-                    'modestbranding': 1, 
-                    'controls': 1,
-                    'origin': window.location.origin 
-                },
+                playerVars: { 'rel': 0, 'modestbranding': 1, 'controls': 1 },
                 events: { 'onStateChange': onPlayerStateChange }
             });
         }
 
         function onPlayerStateChange(event) {
             if (event.data == YT.PlayerState.PLAYING) {
-                setInterval(updateCtaProgress, 1000);
+                setInterval(checkProgress, 1000);
             }
         }
 
-        function updateCtaProgress() {
-            if (isUnlocked) return;
-            var currentTime = player.getCurrentTime();
-            var timeLeft = Math.max(0, TEMPS_ACTIVATION - Math.floor(currentTime));
+        function checkProgress() {
+            var currentTime = Math.floor(player.getCurrentTime());
 
-            if (timeLeft > 0) {
-                var mins = Math.floor(timeLeft / 60);
-                var secs = timeLeft % 60;
-                document.getElementById('timer').innerHTML = (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
-            } else {
-                unlockCTA();
+            // AFFICHER LES PREUVES APRÈS 5 MIN
+            if (currentTime >= TEMPS_REVELATION_PREUVES && !preuvesAffichees) {
+                document.getElementById('section-preuves').classList.add('show');
+                preuvesAffichees = true;
+            }
+
+            // DÉBLOQUER LES BOUTONS APRÈS 17:54
+            var timeLeft = Math.max(0, TEMPS_DEBLOCAGE_BOUTON - currentTime);
+            updateTimers(timeLeft);
+
+            if (timeLeft <= 0 && !boutonDebloque) {
+                unlockButtons();
             }
         }
 
-        function unlockCTA() {
-            isUnlocked = true;
-            const btn = document.getElementById('cta-button');
-            const hint = document.getElementById('timer-hint');
+        function updateTimers(timeLeft) {
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            const timeString = (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
             
-            btn.classList.remove('btn-locked');
-            btn.classList.add('bg-[#1E8449]', 'text-white', 'btn-active', 'border-none', 'shadow-[0_0_40px_rgba(39,174,96,0.4)]');
-            btn.style.pointerEvents = "auto";
+            document.getElementById('timer-1').innerText = timeString;
+            document.getElementById('timer-2').innerText = timeString;
+        }
+
+        function unlockButtons() {
+            boutonDebloque = true;
+            const ids = ['cta-1', 'cta-2'];
             
-            document.getElementById('cta-text').innerText = "📲 Raiso ny Guide Diabète Soft";
-            document.getElementById('timer').style.display = "none";
-            
-            hint.innerText = "✅ Efa vonona ny tolotra ho anao";
-            hint.classList.replace('text-gray-500', 'text-green-500');
+            ids.forEach(id => {
+                const oldBtn = document.getElementById(id);
+                if(oldBtn) {
+                    const link = document.createElement('a');
+                    link.href = "soft sales page.html"; 
+                    link.className = "btn-active flex items-center justify-center gap-4 w-full py-6 rounded-2xl text-xl font-black uppercase transition-all duration-500 shadow-2xl text-white";
+                    link.innerHTML = "📲 Raiso ny Guide Diabète Soft";
+                    oldBtn.parentNode.replaceChild(link, oldBtn);
+                }
+            });
         }
     </script>
 </body>
