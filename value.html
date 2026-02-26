@@ -184,32 +184,30 @@
         });
 
         // Validation Formulaire + Envoi Sheets + Lancement Vidéo
+        // Validation Formulaire + Envoi Sheets + Lancement Vidéo
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const name = document.getElementById('user-name').value;
             const whatsapp = document.getElementById('user-phone').value;
-            
-            // REMPLACE PAR TON URL GOOGLE SCRIPT CI-DESSOUS
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxc9p58bZWSiqoPUHv-3PYKOsC96jlHxHK7Xq3uYM-TbPStp6bs1Vge_0BJN-7FpkVT/exec'; 
 
+            // 1. On ferme le modal et on lance la vidéo IMMÉDIATEMENT
+            modal.classList.add('pointer-events-none', 'opacity-0');
+            modal.classList.remove('opacity-100');
+            overlay.style.display = 'none';
+            player.playVideo();
+            
+            // On lance le timer de progression
+            setInterval(checkProgress, 1000);
+
+            // 2. On envoie les données en arrière-plan (sans bloquer l'utilisateur)
             fetch(scriptURL, {
                 method: 'POST',
                 mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: name, whatsapp: whatsapp })
-            }).then(() => {
-                modal.classList.add('pointer-events-none', 'opacity-0');
-                overlay.style.display = 'none';
-                player.playVideo();
-                // Démarrer la surveillance du temps de lecture
-                setInterval(checkProgress, 1000);
-            }).catch(err => {
-                // En cas d'erreur réseau, on lance quand même la vidéo pour ne pas bloquer l'utilisateur
-                modal.classList.add('pointer-events-none', 'opacity-0');
-                overlay.style.display = 'none';
-                player.playVideo();
-                setInterval(checkProgress, 1000);
-            });
+            }).catch(err => console.log("Erreur d'envoi (ignorez si no-cors)"));
         });
 
         function checkProgress() {
@@ -260,3 +258,4 @@
     </script>
 </body>
 </html>
+
