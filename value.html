@@ -4,188 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diabète Soft - Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* RESET & BASE */
-        * {
+        body { 
+            font-family: 'DM Sans', sans-serif; 
+            background-color: #0D0D0D; 
+            height: 100vh; 
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #0D0D0D;
-            color: white;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            padding: 20px;
-            overflow: hidden; /* Empêche le scroll */
+            overflow: hidden; 
         }
-
-        /* HEADLINE */
-        .headline {
-            text-align: center;
-            max-width: 900px;
-        }
-
-        .headline h1 {
-            font-size: 28px;
-            line-height: 1.2;
-            margin-bottom: 10px;
-            background: linear-gradient(to bottom, #ffffff, #888888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .headline span {
-            color: #27AE60;
-            -webkit-text-fill-color: #27AE60;
-        }
-
-        /* VIDEO CONTAINER */
+        h1 { font-family: 'Playfair Display', serif; }
+        
         .video-container {
+            position: relative;
             width: 100%;
             max-width: 800px;
             aspect-ratio: 16 / 9;
-            background: #000;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 50px rgba(39, 174, 96, 0.1);
         }
-
         .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
         }
 
-        /* CTA AREA */
-        .cta-area {
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            width: 100%;
-            padding: 18px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.5s ease;
-        }
-
-        /* Bouton bloqué */
+        /* Bouton Minimaliste Verrouillé */
         .btn-locked {
-            background-color: transparent;
-            color: #555;
-            border: 1px solid #333;
+            background-color: transparent !important;
+            color: #4b5563 !important;
+            border: 1px solid #374151;
             cursor: not-allowed;
             pointer-events: none;
         }
 
-        /* Bouton activé */
+        /* Animation quand activé */
         .btn-active {
-            background-color: #1E8449;
-            color: white;
-            border: none;
-            pointer-events: auto;
-            cursor: pointer;
-            box-shadow: 0 0 30px rgba(30, 132, 73, 0.4);
-            animation: pulse 2s infinite;
+            animation: pulse-simple 2s infinite;
         }
-
-        .timer-text {
-            font-family: monospace;
-            color: #27AE60;
-            font-size: 20px;
-        }
-
-        .hint {
-            margin-top: 15px;
-            font-size: 11px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        @keyframes pulse {
+        @keyframes pulse-simple {
             0% { transform: scale(1); }
             50% { transform: scale(1.03); }
             100% { transform: scale(1); }
         }
-
-        /* RESPONSIVE */
-        @media (max-width: 600px) {
-            .headline h1 { font-size: 20px; }
-            .btn { font-size: 15px; padding: 15px; }
-        }
     </style>
 </head>
-<body>
+<body class="text-white py-6 px-4 items-center justify-between">
 
-    <div class="headline">
-        <h1>Ahoana no fampidinana ny HbA1c anao ho 5,7 tao anatin'ny 23 andro...<br>
-        <span>nefa tsy manova fanafody.</span></h1>
+    <div class="max-w-4xl text-center">
+        <h1 class="text-2xl md:text-5xl font-black leading-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+            Ahoana no fampidinana ny HbA1c anao ho 5,7 tao anatin'ny 23 andro... <br class="hidden md:block">
+            <span class="text-[#27AE60]">nefa tsy manova fanafody.</span>
+        </h1>
     </div>
 
-    <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/QxHHjW58T2w?si=uo6gDsYZwa9-sQb_&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="video-container rounded-3xl shadow-2xl border border-white/5 overflow-hidden">
+        <div id="player"></div>
     </div>
 
-    <div class="cta-area">
-        <div id="cta-box" class="btn btn-locked">
-            <span id="btn-label">Hovahana afaka</span>
-            <span id="timer" class="timer-text">17:54</span>
-        </div>
-        <p id="hint" class="hint">Tohizo ny fijerena ny horonantsary hahazoana ny tolotra</p>
+    <div id="cta-container" class="w-full max-w-lg text-center">
+        <a href="page-de-vente.html" id="cta-button" class="btn-locked flex items-center justify-center gap-4 w-full py-5 rounded-full text-lg font-bold uppercase transition-all duration-700">
+            <span id="cta-text">Hovahana afaka</span>
+            <span id="timer" class="font-mono text-[#27AE60]">17:54</span>
+        </a>
+        
+        <p id="timer-hint" class="mt-4 text-gray-400 text-[10px] uppercase tracking-[0.2em] font-bold">
+            Henoy ny fanazavana vao afaka mandray ny tolotra
+        </p>
     </div>
 
     <script>
-        // Configuration : 17 minutes et 54 secondes = 1074 secondes
-        let timeLeft = 1074; 
-        const timerDisplay = document.getElementById('timer');
-        const ctaBox = document.getElementById('cta-box');
-        const btnLabel = document.getElementById('btn-label');
-        const hint = document.getElementById('hint');
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        const countdown = setInterval(() => {
-            timeLeft--;
+        var player;
+        var isUnlocked = false;
 
-            if (timeLeft <= 0) {
-                clearInterval(countdown);
-                unlockButton();
-            } else {
-                let mins = Math.floor(timeLeft / 60);
-                let secs = timeLeft % 60;
-                timerDisplay.innerText = 
-                    (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+        // --- CONFIGURATION ---
+        const VIDEO_ID = 'QxHHjW58T2w'; 
+        const TEMPS_ACTIVATION = 1020; // 17 minutes x 60 secondes
+        // ---------------------
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                videoId: VIDEO_ID,
+                playerVars: { 
+                    'rel': 0, 
+                    'modestbranding': 1, 
+                    'controls': 1,
+                    'origin': window.location.origin 
+                },
+                events: { 'onStateChange': onPlayerStateChange }
+            });
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                setInterval(updateCtaProgress, 1000);
             }
-        }, 1000);
+        }
 
-        function unlockButton() {
-            // Transforme le div en lien cliquable
-            const link = document.createElement('a');
-            link.href = "page-de-vente.html"; // Mets ton lien ici
-            link.className = "btn btn-active";
-            link.innerHTML = "📲 Raiso ny Guide Diabète Soft";
+        function updateCtaProgress() {
+            if (isUnlocked) return;
+            var currentTime = player.getCurrentTime();
+            var timeLeft = Math.max(0, TEMPS_ACTIVATION - Math.floor(currentTime));
+
+            if (timeLeft > 0) {
+                var mins = Math.floor(timeLeft / 60);
+                var secs = timeLeft % 60;
+                document.getElementById('timer').innerHTML = (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+            } else {
+                unlockCTA();
+            }
+        }
+
+        function unlockCTA() {
+            isUnlocked = true;
+            const btn = document.getElementById('cta-button');
+            const hint = document.getElementById('timer-hint');
             
-            ctaBox.parentNode.replaceChild(link, ctaBox);
+            btn.classList.remove('btn-locked');
+            btn.classList.add('bg-[#1E8449]', 'text-white', 'btn-active', 'border-none', 'shadow-[0_0_40px_rgba(39,174,96,0.4)]');
+            btn.style.pointerEvents = "auto";
+            
+            document.getElementById('cta-text').innerText = "📲 Raiso ny Guide Diabète Soft";
+            document.getElementById('timer').style.display = "none";
             
             hint.innerText = "✅ Efa vonona ny tolotra ho anao";
-            hint.style.color = "#27AE60";
+            hint.classList.replace('text-gray-500', 'text-green-500');
         }
     </script>
-
 </body>
 </html>
