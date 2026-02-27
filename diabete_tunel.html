@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diabète Soft</title>
+
+<!-- ============================================================ -->
+<!-- GOOGLE TAG MANAGER — remplacez GTM-XXXXXXX par votre ID     -->
+<!-- ============================================================ -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- FIN GOOGLE TAG MANAGER -->
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          accent: '#1a7a4a',
+          'accent-dark': '#145e38',
+        },
+        maxWidth: {
+          'content': '680px',
+          'wide': '860px',
+        }
+      }
+    }
+  }
+
+  function buildWhatsAppMessage() {
+    const prenom = document.getElementById('prenom').value.trim();
+    const nom = document.getElementById('nom').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    const reference = document.getElementById('reference').value.trim();
+
+    if (!prenom || !nom || !whatsapp) {
+      alert('Azafady fenoy ny anarana sy ny nomerao WhatsApp.');
+      return null;
+    }
+
+    const msg = `Bonjour, je souhaite commander Diabète Soft 🌿\n\n` +
+      `👤 Nom : ${prenom} ${nom}\n` +
+      `📱 WhatsApp : ${whatsapp}\n` +
+      (reference ? `🔖 Référence : ${reference}\n` : '') +
+      `\n💳 Montant : 35 000 Ar\n` +
+      `✅ Je confirme ma commande.`;
+
+    return encodeURIComponent(msg);
+  }
+
+  function openWhatsApp() {
+    const msg = buildWhatsAppMessage();
+    if (!msg) return;
+    window.open(`https://wa.me/261347112857?text=${msg}`, '_blank');
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+</style>
+</head>
+<body class="bg-white text-gray-900">
+
+<!-- GOOGLE TAG MANAGER (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- FIN GOOGLE TAG MANAGER (noscript) -->
+
+  <!-- ============================================================ -->
+  <!-- HERO — wider, more breathing room                            -->
+  <!-- ============================================================ -->
+  <section class="max-w-3xl mx-auto px-8 sm:px-12 pt-24 pb-20 text-center">
+    <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-6">🌿 Diabète Soft</p>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-7">
+      Ilay Méthode Nahavitako Nandridra Ilay Glycemie Tao Anatin'ny <br><span class="text-accent">7 Andro Tsy Nampiasa Fanafody</span>
+    </h1>
+    <p class="text-gray-500 text-lg sm:text-xl leading-relaxed mb-10 max-w-xl mx-auto">
+      Ianao koa hahavita an'izany Raha mailo mailo ka mampiasa an'io méthode nampiasaiko io —
+      Izay Ilay <strong class="text-accent">Diabète soft</strong>
+    </p>
+    <a href="#checkout" class="inline-block bg-accent hover:bg-accent-dark text-white font-semibold text-base px-10 py-4 rounded-md transition-all duration-150 hover:-translate-y-0.5">
+      Mahazo ny méthode →
+    </a>
+    <p class="text-xs text-gray-400 mt-4">Accès immédiat · Paiement sécurisé via WhatsApp</p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PROBLEM                                                       -->
+  <!-- ============================================================ -->
+  <section class="max-w-3xl mx-auto px-8 sm:px-12 py-10 border-t border-gray-100">
+    <p class="text-xs font-medium tracking-widest uppercase text-gray-400 mb-7">⚠️ Ny problème</p>
+    <div class="space-y-4">
+      <div class="border-t border-gray-100 pt-4">
+        <p class="text-gray-500 text-sm leading-relaxed">Nasaina tsy nihinana siramamy intsony ianao mba hahafahanao mifehy Ilay DIABÈTE</p>
+        <p class="text-red-500 font-bold text-xs uppercase tracking-widest mt-2 mb-0.5">⚡ Kanefa</p>
+        <p class="text-red-600 font-semibold text-base leading-snug">Mbola miaka-midina foana ihany Ilay taux de glycémie anao</p>
+      </div>
+      <div class="border-t border-gray-100 pt-4">
+        <p class="text-gray-500 text-sm leading-relaxed">Nasaina nifady sy nanaraka amin'ny antsipirihany ny sakafo hohanina ianao</p>
+        <p class="text-red-500 font-bold text-xs uppercase tracking-widest mt-2 mb-0.5">⚡ Kanefa</p>
+        <p class="text-red-600 font-semibold text-base leading-snug">Mbola reradreraka foana ihany tsy misy fiovana akory</p>
+      </div>
+      <div class="border-t border-gray-100 pt-4">
+        <p class="text-gray-500 text-sm leading-relaxed">Nihinana fanafody isan'andro ianao</p>
+        <p class="text-red-500 font-bold text-xs uppercase tracking-widest mt-2 mb-0.5">⚡ Kanefa</p>
+        <p class="text-red-600 font-semibold text-base leading-snug">Toa vomaika ary miha grave ihany Ilay situation mahazo anao</p>
+      </div>
+      <div class="border-t border-gray-100 pt-4">
+        <p class="text-gray-500 text-sm leading-relaxed">Nohamasahina tao andoha ihany koa fa manaranaka Ary tezaina sisa io</p>
+        <p class="text-red-500 font-bold text-xs uppercase tracking-widest mt-2 mb-0.5">⚡ Kanefa</p>
+        <p class="text-red-600 font-semibold text-base leading-snug">Ny tsapanao dia toa vomaika ary miombo tsikelikely Ilay Diabète</p>
+      </div>
+    </div>
+    <div class="mt-10 border-l-2 border-accent bg-green-50 px-5 py-5 rounded-r text-gray-700 text-sm leading-loose">
+      💡 Tsy ianao intsony no lasa mifehy sy michauffeur Ilay fahasalamanao sy ny vatanao — fa lasa fehezin'ilay fanafody no Sady zatra Ary miteraka fiankonan-doha.
+      <br><br>
+      Rehefa ianao no mifehy (chauffeur) Ilay vatanao dia <strong>stable naturellement</strong> Ilay vatanao.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOR WHO                                                       -->
+  <!-- ============================================================ -->
+  <section class="max-w-3xl mx-auto px-8 sm:px-12 py-12 border-t border-gray-100">
+    <p class="text-xs font-medium tracking-widest uppercase text-gray-400 mb-6">👤 Ho an'iza ity?</p>
+    <ul class="space-y-3 text-gray-700 text-base">
+      <li class="pl-7 relative before:content-['☑️'] before:absolute before:left-0">Diabètique type 2</li>
+      <li class="pl-7 relative before:content-['☑️'] before:absolute before:left-0">Pre-diabète</li>
+      <li class="pl-7 relative before:content-['☑️'] before:absolute before:left-0">Diabètique type 2 sous traitement nandritra ny taona maro</li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- IF YOU                                                        -->
+  <!-- ============================================================ -->
+  <section class="max-w-3xl mx-auto px-8 sm:px-12 py-12 border-t border-gray-100">
+    <p class="text-xs font-medium tracking-widest uppercase text-gray-400 mb-6">✅ Raha toa ianao ka</p>
+    <ul class="space-y-3 text-gray-700 text-base">
+      <li class="pl-7 relative before:content-['➡️'] before:absolute before:left-0">Efa mitandrina sy mifady karazana sakafo</li>
+      <li class="pl-7 relative before:content-['➡️'] before:absolute before:left-0">Efa mihinana fanafody isan'andro</li>
+      <li class="pl-7 relative before:content-['➡️'] before:absolute before:left-0">Efa manao izay azo hatao rehetra hahafahana mandrindra Ilay glycemie</li>
+      <li class="pl-7 relative before:content-['➡️'] before:absolute before:left-0">Nefa toa Mbola tsy miotsona ihany Ilay taux de glycémie anao</li>
+    </ul>
+    <p class="mt-8 text-lg font-bold text-accent">👉 Ho anao ity.</p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- WHAT YOU GET                                                  -->
+  <!-- ============================================================ -->
+  <section class="bg-gray-50 border-y border-gray-100 py-16">
+    <div class="max-w-3xl mx-auto px-8 sm:px-12">
+      <p class="text-xs font-medium tracking-widest uppercase text-accent mb-3">📦 Inona avy ny Zavatra ho azonao ao?</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 leading-snug">Ilay méthode complet <strong class="text-accent uppercase">Diabète Soft</strong></h2>
+      <p class="text-gray-500 text-sm mb-10">Afaka ampiarinao manomboka androany ny Diabète Soft — hahafahanao mifehy (chauffeur) fa tsy fehezina intsony.</p>
+      <div class="divide-y divide-gray-200">
+        <div class="py-6">
+          <h3 class="font-bold text-gray-900 text-base mb-2">🔁 Système complet de stabilisation</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Ireo dingana rehetra izay tsy mijanona fotsiny eo amin'ny fifadiana siramamy fa manamboatra amin'ilay loharana mahatonga Ilay glycemie tsy mety ho stable.</p>
+        </div>
+        <div class="py-6">
+          <h3 class="font-bold text-gray-900 text-base mb-2">🕐 Alimentation rythmique</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Tsy régime na jeune intermittent fa misakafo manaraka ilay cycle naturel du corps — io Ilay manger des bons aliments au bons moments.</p>
+        </div>
+        <div class="py-6">
+          <h3 class="font-bold text-gray-900 text-base mb-2">🥗 Alimentation thérapeutique</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Ireo karazana sakafo mifanaraka amin'ilay nature ity vatana ity, miampy Ilay formule recette sy ireo liste.</p>
+        </div>
+        <div class="py-6">
+          <h3 class="font-bold text-gray-900 text-base mb-2">🎥 Vidéo fanazavana ny méthode complet</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Expliqué étape par étape — afaka jerena eo no eo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PROOF — 1 col mobile, 3 col desktop                          -->
+  <!-- ============================================================ -->
+  <section class="max-w-3xl mx-auto px-8 sm:px-12 py-14 border-t border-gray-100">
+    <p class="text-xs font-medium tracking-widest uppercase text-gray-400 mb-6">📸 Ny lazain'ny olona</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform duration-300">
+        <img src="images/IMG_20260207_095736.jpg" class="w-full h-auto block">
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform duration-300">
+        <img src="images/Screenshot_2026-02-09-20-35-54-97 .jpg" class="w-full h-auto block">
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform duration-300">
+        <img src="images/Screenshot_2026-02-09-20-51-56-66.jpg" class="w-full h-auto block">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- BENEFITS                                                      -->
+  <!-- ============================================================ -->
+  <section class="bg-green-50 border-y border-green-100 py-16">
+    <div class="max-w-3xl mx-auto px-8 sm:px-12">
+      <p class="text-xs font-medium tracking-widest uppercase text-accent mb-3">✨ Fa tsy izany ihany</p>
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-8 leading-snug">ITY Diabète soft ity dia tsy mistabiliser Ilay glycémie ihany fa</h2>
+      <ul class="space-y-4">
+        <li class="flex items-start gap-3 text-gray-700 text-base"><span class="text-accent font-bold mt-0.5">→</span><span>😴 Mandamina Ilay torimaso mikorotana ihany koa</span></li>
+        <li class="flex items-start gap-3 text-gray-700 text-base"><span class="text-accent font-bold mt-0.5">→</span><span>🫁 Manala ireo karazana ballonnements ihany koa</span></li>
+        <li class="flex items-start gap-3 text-gray-700 text-base"><span class="text-accent font-bold mt-0.5">→</span><span>🫃 Manena Ilay kibo ihany koa</span></li>
+        <li class="flex items-start gap-3 text-gray-700 text-base"><span class="text-accent font-bold mt-0.5">→</span><span>⚡ Manala Ilay arerahana indrindra Ilay AVY misakafo iny</span></li>
+        <li class="flex items-start gap-3 text-gray-700 text-base"><span class="text-accent font-bold mt-0.5">→</span><span>🏃 Manala Ilay mavesabesatra Ary lasa manamaivamaivana Ilay vatana</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CHECKOUT                                                      -->
+  <!-- ============================================================ -->
+  <section id="checkout" class="bg-gradient-to-b from-green-50 to-white border-t border-green-100 py-20">
+    <div class="max-w-xl mx-auto px-8 sm:px-12">
+
+      <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-4 text-center">💳 Investissement</p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-2 text-center">
+        Atomboy Androany <span class="text-accent">ny fiovanao</span>
+      </h2>
+      <p class="text-gray-400 text-sm mb-12 text-center">Accès immédiat après confirmation via WhatsApp</p>
+
+      <!-- RECAP CARD -->
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-6">
+        <div class="bg-accent px-6 py-4">
+          <p class="text-white font-bold text-sm tracking-wide">📦 Ireo ho azonao</p>
+        </div>
+        <div class="divide-y divide-gray-100">
+          <div class="flex items-center gap-3 px-6 py-4">
+            <span class="text-accent text-base flex-shrink-0">✓</span>
+            <div>
+              <p class="text-sm font-semibold text-gray-800">🔁 Système complet de stabilisation</p>
+              <p class="text-xs text-gray-400 mt-0.5">Ireo dingana rehetra mampiorina ny glycémie</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 px-6 py-4">
+            <span class="text-accent text-base flex-shrink-0">✓</span>
+            <div>
+              <p class="text-sm font-semibold text-gray-800">🕐 Alimentation rythmique</p>
+              <p class="text-xs text-gray-400 mt-0.5">Manger les bons aliments aux bons moments</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 px-6 py-4">
+            <span class="text-accent text-base flex-shrink-0">✓</span>
+            <div>
+              <p class="text-sm font-semibold text-gray-800">🥗 Alimentation thérapeutique</p>
+              <p class="text-xs text-gray-400 mt-0.5">Formule recette + listes complètes</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 px-6 py-4">
+            <span class="text-accent text-base flex-shrink-0">✓</span>
+            <div>
+              <p class="text-sm font-semibold text-gray-800">🎥 Vidéo fanazavana complète</p>
+              <p class="text-xs text-gray-400 mt-0.5">Expliqué étape par étape, accès immédiat</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 border-t border-gray-100 px-6 py-5">
+          <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Prix unique</p>
+          <div class="flex items-baseline gap-3 flex-wrap">
+            <span class="text-3xl font-bold text-gray-900 tracking-tight">35 000 Ar</span>
+            <span class="text-gray-400 line-through text-base">200 000 Ar</span>
+            <span class="bg-red-100 text-red-500 text-xs font-bold px-2 py-0.5 rounded-full">-83%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="space-y-3 mb-5">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">👤 Prénom</label>
+            <input id="prenom" type="text" placeholder="Votre prénom"
+              class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-300 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">👤 Nom</label>
+            <input id="nom" type="text" placeholder="Votre nom"
+              class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-300 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">📱 Numéro WhatsApp</label>
+          <input id="whatsapp" type="tel" placeholder="034 XX XXX XX"
+            class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-300 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">🔖 Référence</label>
+          <input id="reference" type="text" placeholder="Ex : REF-001 ou nom du parrain"
+            class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-300 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors">
+        </div>
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <button onclick="openWhatsApp()"
+        class="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#1fba58] text-white font-bold text-base py-5 rounded-xl transition-all duration-150 hover:-translate-y-0.5 mb-3 cursor-pointer border-none shadow-sm">
+        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.524 4.003 1.441 5.697L0 24l6.477-1.419A11.931 11.931 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-4.987-1.358l-.358-.213-3.848.843.875-3.741-.233-.38A9.818 9.818 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
+        </svg>
+        ✅ Confirmer sur WhatsApp · paiement ensuite
+      </button>
+
+      <p class="text-center text-xs text-gray-400 mb-6">Vos références seront envoyées au +261 34 71 128 57</p>
+
+      <!-- DIVIDER -->
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex-1 border-t border-gray-200"></div>
+        <span class="text-xs text-gray-400">ou payez directement</span>
+        <div class="flex-1 border-t border-gray-200"></div>
+      </div>
+
+      <!-- MOBILE MONEY -->
+      <a href="tel:*111*1*2*0347112857*35000%23"
+        class="flex items-center justify-center gap-3 w-full bg-gray-900 hover:bg-black text-white font-semibold text-sm py-4 rounded-xl transition-all duration-150 mb-3 shadow-sm">
+        <span class="text-lg">📞</span>
+        Payer via Mobile Money
+      </a>
+      <p class="text-center text-xs text-gray-400 mb-10">Appuyez pour lancer le paiement directement depuis votre téléphone</p>
+
+      <!-- Guarantees -->
+      <div class="grid grid-cols-2 gap-4 pt-8 border-t border-gray-100">
+        <div class="flex items-start gap-3">
+          <span class="text-xl">🔒</span>
+          <div>
+            <p class="text-xs font-semibold text-gray-700">Paiement sécurisé</p>
+            <p class="text-xs text-gray-400 leading-snug mt-0.5">Mobile Money ou virement</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-xl">⚡</span>
+          <div>
+            <p class="text-xs font-semibold text-gray-700">Accès immédiat</p>
+            <p class="text-xs text-gray-400 leading-snug mt-0.5">Dès confirmation WhatsApp</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
