@@ -5,18 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diabète Soft</title>
 
-<!-- ============================================================ -->
-<!-- GOOGLE TAG MANAGER — remplacez GTM-XXXXXXX par votre ID     -->
-<!-- ============================================================ -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-<!-- FIN GOOGLE TAG MANAGER -->
 
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script>
   tailwind.config = {
     theme: {
@@ -45,10 +41,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       return null;
     }
 
+    if (!reference) {
+      alert('⚠️ Fenoy ny Référence Mobile Money (jereo ny SMS nahazo anao).');
+      return null;
+    }
+
     const msg = `Bonjour, je souhaite commander Diabète Soft 🌿\n\n` +
       `👤 Nom : ${prenom} ${nom}\n` +
       `📱 WhatsApp : ${whatsapp}\n` +
-      (reference ? `🔖 Référence : ${reference}\n` : '') +
+      `🔖 Référence : ${reference}\n` +
       `\n💳 Montant : 35 000 Ar\n` +
       `✅ Je confirme ma commande.`;
 
@@ -61,38 +62,170 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     window.open(`https://wa.me/261347112857?text=${msg}`, '_blank');
   }
 </script>
+
 <style>
   body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+  .steps-connector {
+    position: absolute;
+    left: 27px;
+    top: 54px;
+    bottom: 54px;
+    width: 2px;
+    background: linear-gradient(to bottom, #1a7a4a, #86efac);
+    z-index: 0;
+  }
+
+  .step-wrap {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    flex-shrink: 0;
+    background: #1a7a4a;
+    color: white;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px #1a7a4a;
+  }
+
+  .step-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 20px;
+    flex: 1;
+    border: 1.5px solid #e2e8f0;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  }
+
+  .step-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #0f172a;
+  }
+
+  .step-card p {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  .step-card p:last-child { margin-bottom: 0; }
+
+  .number-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-family: 'Sora', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #0f172a;
+    margin: 8px 0;
+    gap: 8px;
+  }
+
+  .btn-pay-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    background: #1a7a4a;
+    color: white;
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(26,122,74,0.40);
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-top: 6px;
+  }
+
+  .btn-pay-mobile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(26,122,74,0.50);
+  }
+
+  .ref-example {
+    background: #fffbeb;
+    border: 1.5px solid #fcd34d;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #92400e;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    line-height: 1.6;
+  }
+
+  .urgency-bar {
+    background: #fef2f2;
+    border: 1.5px solid #fecaca;
+    border-radius: 10px;
+    padding: 11px 16px;
+    text-align: center;
+    font-size: 13px;
+    color: #b91c1c;
+    font-weight: 600;
+    margin-bottom: 20px;
+    animation: pulse-anim 2.5s infinite;
+  }
+
+  @keyframes pulse-anim {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.72; }
+  }
 </style>
 </head>
 <body class="bg-white text-gray-900">
 
-<!-- GOOGLE TAG MANAGER (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- FIN GOOGLE TAG MANAGER (noscript) -->
 
-  <!-- ============================================================ -->
-  <!-- HERO — wider, more breathing room                            -->
-  <!-- ============================================================ -->
+  <!-- HERO -->
   <section class="max-w-3xl mx-auto px-8 sm:px-12 pt-24 pb-20 text-center">
     <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-6">🌿 Diabète Soft</p>
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-7">
-      Ilay Méthode Nahavitako Nandridra Ilay Glycemie Tao Anatin'ny <br><span class="text-accent">7 Andro Tsy Nampiasa Fanafody</span>
+      Ilay Méthode Nahavitako Nandrindra Ilay Glycemie Tao Anatin'ny <br><span class="text-accent">7 Andro Tsy Nampiasa Fanafody</span>
     </h1>
     <p class="text-gray-500 text-lg sm:text-xl leading-relaxed mb-10 max-w-xl mx-auto">
       Ianao koa hahavita an'izany Raha mailo mailo ka mampiasa an'io méthode nampiasaiko io —
       Izay Ilay <strong class="text-accent">Diabète soft</strong>
     </p>
     <a href="#checkout" class="inline-block bg-accent hover:bg-accent-dark text-white font-semibold text-base px-10 py-4 rounded-md transition-all duration-150 hover:-translate-y-0.5">
-      Mahazo ny méthode →
+      Ampiatra ny méthode izao →
     </a>
     <p class="text-xs text-gray-400 mt-4">Accès immédiat · Paiement sécurisé via WhatsApp</p>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- PROBLEM                                                       -->
-  <!-- ============================================================ -->
+  <!-- PROBLEM -->
   <section class="max-w-3xl mx-auto px-8 sm:px-12 py-10 border-t border-gray-100">
     <p class="text-xs font-medium tracking-widest uppercase text-gray-400 mb-7">⚠️ Ny problème</p>
     <div class="space-y-4">
@@ -124,9 +257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- FOR WHO                                                       -->
-  <!-- ============================================================ -->
+  <!-- FOR WHO -->
   <section class="max-w-3xl mx-auto px-8 sm:px-12 py-12 border-t border-gray-100">
     <p class="text-xs font-medium tracking-widest uppercase text-gray-400 mb-6">👤 Ho an'iza ity?</p>
     <ul class="space-y-3 text-gray-700 text-base">
@@ -136,9 +267,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- IF YOU                                                        -->
-  <!-- ============================================================ -->
+  <!-- IF YOU -->
   <section class="max-w-3xl mx-auto px-8 sm:px-12 py-12 border-t border-gray-100">
     <p class="text-xs font-medium tracking-widest uppercase text-gray-400 mb-6">✅ Raha toa ianao ka</p>
     <ul class="space-y-3 text-gray-700 text-base">
@@ -150,9 +279,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="mt-8 text-lg font-bold text-accent">👉 Ho anao ity.</p>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- WHAT YOU GET                                                  -->
-  <!-- ============================================================ -->
+  <!-- WHAT YOU GET -->
   <section class="bg-gray-50 border-y border-gray-100 py-16">
     <div class="max-w-3xl mx-auto px-8 sm:px-12">
       <p class="text-xs font-medium tracking-widest uppercase text-accent mb-3">📦 Inona avy ny Zavatra ho azonao ao?</p>
@@ -179,9 +306,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- PROOF — 1 col mobile, 3 col desktop                          -->
-  <!-- ============================================================ -->
+  <!-- PROOF -->
   <section class="max-w-3xl mx-auto px-8 sm:px-12 py-14 border-t border-gray-100">
     <p class="text-xs font-medium tracking-widest uppercase text-gray-400 mb-6">📸 Ny lazain'ny olona</p>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -197,9 +322,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- BENEFITS                                                      -->
-  <!-- ============================================================ -->
+  <!-- BENEFITS -->
   <section class="bg-green-50 border-y border-green-100 py-16">
     <div class="max-w-3xl mx-auto px-8 sm:px-12">
       <p class="text-xs font-medium tracking-widest uppercase text-accent mb-3">✨ Fa tsy izany ihany</p>
@@ -213,58 +336,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
     </div>
   </section>
-  <!-- ================== REMARQUE =================== -->  
+
+  <!-- REMARQUE -->
   <section class="max-w-xl mx-auto px-8 py-16 border-t border-gray-100">
-      <!-- <p class="text-xs font-medium tracking-widest uppercase text-gray-400 mb-3">💬 Témoignage / Garantie / Bonus</p> -->
-        <h2 class="text-2xl font-bold text-gray-900 leading-snug mb-5 uppercase"> ⭕ Raha ny tokony ho izy</h2>
-        <p class="text-gray-500 text-base leading-relaxed">Izay manao ilay programme DIABETE CODE (valeur = 100 000 Ar) ihany no misitraka ity kanefa ho azonao 35 000 Ariary fotsiny ity Androany</p>
+    <h2 class="text-2xl font-bold text-gray-900 leading-snug mb-5 uppercase">⭕ Raha ny tokony ho izy</h2>
+    <p class="text-gray-500 text-base leading-relaxed">Izay manao ilay programme DIABETE CODE (valeur = 100 000 Ar) ihany no misitraka ity kanefa ho azonao 35 000 Ariary fotsiny ity Androany</p>
   </section>
 
   <!-- ============================================================ -->
-  <!-- CHECKOUT                                                      -->
+  <!-- CHECKOUT — flow 3 étapes                                     -->
   <!-- ============================================================ -->
   <section id="checkout" class="bg-gradient-to-b from-green-50 to-white border-t border-green-100 py-20">
-    <div class="max-w-xl mx-auto px-8 sm:px-12">
+    <div class="max-w-xl mx-auto px-6 sm:px-10">
 
       <p class="text-xs font-semibold tracking-widest uppercase text-accent mb-4 text-center">💳 Investissement</p>
       <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-2 text-center">
         Atomboy Androany <span class="text-accent">ny fiovanao</span>
       </h2>
-      <p class="text-gray-400 text-sm mb-12 text-center">Accès immédiat après confirmation via WhatsApp</p>
+      <p class="text-gray-400 text-sm mb-8 text-center">Accès immédiat après confirmation via WhatsApp</p>
 
-      <!-- RECAP CARD -->
-      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-6">
+      <!-- Urgency -->
+      <div class="urgency-bar">⏳ Prix spécial 35 000 Ar — disponible aujourd'hui seulement</div>
+
+      <!-- Recap card -->
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-10">
         <div class="bg-accent px-6 py-4">
           <p class="text-white font-bold text-sm tracking-wide">📦 Ireo ho azonao</p>
         </div>
         <div class="divide-y divide-gray-100">
           <div class="flex items-center gap-3 px-6 py-4">
             <span class="text-accent text-base flex-shrink-0">✓</span>
-            <div>
-              <p class="text-sm font-semibold text-gray-800">🔁 Système complet de stabilisation</p>
-              <p class="text-xs text-gray-400 mt-0.5">Ireo dingana rehetra mampiorina ny glycémie</p>
-            </div>
+            <div><p class="text-sm font-semibold text-gray-800">🔁 Système complet de stabilisation</p><p class="text-xs text-gray-400 mt-0.5">Ireo dingana rehetra mampiorina ny glycémie</p></div>
           </div>
           <div class="flex items-center gap-3 px-6 py-4">
             <span class="text-accent text-base flex-shrink-0">✓</span>
-            <div>
-              <p class="text-sm font-semibold text-gray-800">🕐 Alimentation rythmique</p>
-              <p class="text-xs text-gray-400 mt-0.5">Manger les bons aliments aux bons moments</p>
-            </div>
+            <div><p class="text-sm font-semibold text-gray-800">🕐 Alimentation rythmique</p><p class="text-xs text-gray-400 mt-0.5">Manger les bons aliments aux bons moments</p></div>
           </div>
           <div class="flex items-center gap-3 px-6 py-4">
             <span class="text-accent text-base flex-shrink-0">✓</span>
-            <div>
-              <p class="text-sm font-semibold text-gray-800">🥗 Alimentation thérapeutique</p>
-              <p class="text-xs text-gray-400 mt-0.5">Formule recette + listes complètes</p>
-            </div>
+            <div><p class="text-sm font-semibold text-gray-800">🥗 Alimentation thérapeutique</p><p class="text-xs text-gray-400 mt-0.5">Formule recette + listes complètes</p></div>
           </div>
           <div class="flex items-center gap-3 px-6 py-4">
             <span class="text-accent text-base flex-shrink-0">✓</span>
-            <div>
-              <p class="text-sm font-semibold text-gray-800">🎥 Vidéo fanazavana complète</p>
-              <p class="text-xs text-gray-400 mt-0.5">Expliqué étape par étape, accès immédiat</p>
-            </div>
+            <div><p class="text-sm font-semibold text-gray-800">🎥 Vidéo fanazavana complète</p><p class="text-xs text-gray-400 mt-0.5">Expliqué étape par étape, accès immédiat</p></div>
           </div>
         </div>
         <div class="bg-gray-50 border-t border-gray-100 px-6 py-5">
@@ -277,61 +391,105 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- FORM -->
-      <div class="space-y-3 mb-5">
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">👤 Prénom</label>
-            <input id="prenom" type="text" placeholder="Votre prénom"
-              class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-300 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors">
+      <!-- Steps title -->
+      <p class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-5 text-center">📋 Dingana 3 fotsiny — tsotra be</p>
+
+      <div style="position:relative;">
+        <div class="steps-connector"></div>
+
+        <!-- STEP 1 -->
+        <div class="step-wrap">
+          <div class="step-num">1</div>
+          <div class="step-card">
+            <h3>📲 Alefa Mobile Money</h3>
+            <p>Tsindrio ilay bouton eto ambany — hivoaka avy hatrany ny appli Mobile Money anao efa misy ny numero sy ny 35 000 Ar.</p>
+            <div class="number-chip">📞 034 71 128 57</div>
+            <p style="font-size:12px; color:#94a3b8; text-align:center; margin:4px 0 10px;">Mvola · Airtel Money · Orange Money</p>
+            <a href="tel:*111*1*2*0347112857*35000%23" class="btn-pay-mobile">
+              💸 Tsindrio eto — Alefa 35 000 Ar
+            </a>
           </div>
-          <div>
-            <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">👤 Nom</label>
-            <input id="nom" type="text" placeholder="Votre nom"
-              class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-300 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors">
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-wrap">
+          <div class="step-num">2</div>
+          <div class="step-card">
+            <h3>🧾 Jereo ny Référence ao amin'ny SMS</h3>
+            <p>Rehefa vita ny paiement dia <strong>hisy SMS</strong> ao amin'ny finday anao. Io SMS io no hisy ny <strong>numéro de référence</strong>.</p>
+            <div class="ref-example">
+              <span style="font-size:16px;flex-shrink:0;margin-top:2px;">👆</span>
+              <div>
+                <strong>Ohatry izao :</strong><br>
+                <em>"Votre transaction MVola ref. <strong>TXN2947831</strong> de 35 000 Ar est confirmée."</em><br><br>
+                <strong>TXN2947831</strong> — izay ilay référence tokony copier.
+              </div>
+            </div>
           </div>
         </div>
-        <div>
-          <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">📱 Numéro WhatsApp</label>
-          <input id="whatsapp" type="tel" placeholder="034 XX XXX XX"
-            class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-300 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors">
+
+        <!-- STEP 3 + FORM -->
+        <div class="step-wrap">
+          <div class="step-num">3</div>
+          <div class="step-card">
+            <h3>📝 Fenoy ny formulaire</h3>
+            <p>Collena eo ambany ilay référence SMS azoanao, ary fenoiny koa ny anaranao sy ny numéro WhatsApp.</p>
+
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div>
+                  <label style="display:block;font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px;">👤 Prénom</label>
+                  <input id="prenom" type="text" placeholder="Ex : Harizo"
+                    style="width:100%;padding:11px 12px;border:1.5px solid #e2e8f0;border-radius:9px;font-size:14px;color:#0f172a;background:#f8fafc;outline:none;font-family:'Inter',sans-serif;box-sizing:border-box;"
+                    onfocus="this.style.borderColor='#1a7a4a';this.style.background='white';"
+                    onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
+                </div>
+                <div>
+                  <label style="display:block;font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px;">👤 Nom</label>
+                  <input id="nom" type="text" placeholder="Ex : Rakoto"
+                    style="width:100%;padding:11px 12px;border:1.5px solid #e2e8f0;border-radius:9px;font-size:14px;color:#0f172a;background:#f8fafc;outline:none;font-family:'Inter',sans-serif;box-sizing:border-box;"
+                    onfocus="this.style.borderColor='#1a7a4a';this.style.background='white';"
+                    onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
+                </div>
+              </div>
+              <div>
+                <label style="display:block;font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px;">📱 Numéro WhatsApp</label>
+                <input id="whatsapp" type="tel" placeholder="034 XX XXX XX"
+                  style="width:100%;padding:11px 12px;border:1.5px solid #e2e8f0;border-radius:9px;font-size:14px;color:#0f172a;background:#f8fafc;outline:none;font-family:'Inter',sans-serif;box-sizing:border-box;"
+                  onfocus="this.style.borderColor='#1a7a4a';this.style.background='white';"
+                  onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
+              </div>
+              <div>
+                <label style="display:block;font-size:11px;font-weight:600;color:#ea580c;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px;">
+                  🔖 Référence Mobile Money
+                  <span style="font-size:10px;background:#fef3c7;color:#92400e;padding:1px 7px;border-radius:999px;font-weight:700;margin-left:4px;">Copié depuis votre SMS</span>
+                </label>
+                <input id="reference" type="text" placeholder="Ex : TXN2947831"
+                  style="width:100%;padding:11px 12px;border:1.5px solid #ea580c;border-radius:9px;font-size:14px;color:#0f172a;background:#fff7ed;outline:none;font-family:'Inter',sans-serif;font-weight:600;box-sizing:border-box;"
+                  onfocus="this.style.borderColor='#c2410c';"
+                  onblur="this.style.borderColor='#ea580c';">
+                <p style="font-size:12px;color:#ea580c;font-weight:600;margin-top:5px;">⚠️ Coller ici le numéro reçu dans le SMS après paiement</p>
+              </div>
+
+              <button onclick="openWhatsApp()"
+                style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;background:linear-gradient(135deg,#1a7a4a,#145e38);color:white;font-family:'Sora',sans-serif;font-size:16px;font-weight:800;border:none;border-radius:12px;cursor:pointer;box-shadow:0 6px 20px rgba(26,122,74,0.45);transition:transform 0.15s;"
+                onmouseover="this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.transform='translateY(0)'">
+                <svg style="width:20px;height:20px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.524 4.003 1.441 5.697L0 24l6.477-1.419A11.931 11.931 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-4.987-1.358l-.358-.213-3.848.843.875-3.741-.233-.38A9.818 9.818 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
+                </svg>
+                 Mahazo accès — Valider sur WhatsApp
+              </button>
+              <p style="text-align:center;font-size:11px;color:#94a3b8;margin-top:-4px;">Vos références seront envoyées au +261 34 71 128 57</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">🔖 Référence</label>
-          <input id="reference" type="text" placeholder="Ex : REF-001 ou nom du parrain"
-            class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-900 placeholder-gray-300 outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors">
-        </div>
-      </div>
 
-      <!-- WhatsApp CTA -->
-      <button onclick="openWhatsApp()"
-        class="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#1fba58] text-white font-bold text-base py-5 rounded-xl transition-all duration-150 hover:-translate-y-0.5 mb-3 cursor-pointer border-none shadow-sm">
-        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.524 4.003 1.441 5.697L0 24l6.477-1.419A11.931 11.931 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-4.987-1.358l-.358-.213-3.848.843.875-3.741-.233-.38A9.818 9.818 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
-        </svg>
-        ✅ Confirmer sur WhatsApp · paiement ensuite
-      </button>
-
-      <p class="text-center text-xs text-gray-400 mb-6">Vos références seront envoyées au +261 34 71 128 57</p>
-
-      <!-- DIVIDER -->
-      <div class="flex items-center gap-3 mb-4">
-        <div class="flex-1 border-t border-gray-200"></div>
-        <span class="text-xs text-gray-400">ou payez directement</span>
-        <div class="flex-1 border-t border-gray-200"></div>
-      </div>
-
-      <!-- MOBILE MONEY -->
-      <a href="tel:*111*1*2*0347112857*35000%23"
-        class="flex items-center justify-center gap-3 w-full bg-gray-900 hover:bg-black text-white font-semibold text-sm py-4 rounded-xl transition-all duration-150 mb-3 shadow-sm">
-        <span class="text-lg">📞</span>
-        Payer via Mobile Money
-      </a>
-      <p class="text-center text-xs text-gray-400 mb-10">Appuyez pour lancer le paiement directement depuis votre téléphone</p>
+      </div><!-- end steps -->
 
       <!-- Guarantees -->
-      <div class="grid grid-cols-2 gap-4 pt-8 border-t border-gray-100">
+      <div class="grid grid-cols-2 gap-4 pt-10 mt-6 border-t border-gray-100">
         <div class="flex items-start gap-3">
           <span class="text-xl">🔒</span>
           <div>
