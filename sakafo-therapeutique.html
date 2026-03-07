@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabète Soft - Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;700;900&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'DM Sans', sans-serif; background-color: #0D0D0D; scroll-behavior: smooth; }
+        h1 { font-family: 'Inter', sans-serif; }
+        
+        /* Style des boutons verrouillés */
+        .btn-locked {
+            background-color: #1a1a1a !important;
+            color: #4b5563 !important;
+            border: 1px solid #374151;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        /* Style des boutons actifs avec animation */
+        .btn-active {
+            animation: pulse-border 2s infinite;
+            background-color: #1E8449 !important;
+            color: white !important;
+            border: none !important;
+            pointer-events: auto !important;
+            text-decoration: none;
+        }
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(30, 132, 73, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(30, 132, 73, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(30, 132, 73, 0); }
+        }
+
+        /* Système de révélation progressive */
+        .reveal-section {
+            transition: all 1s ease-in-out;
+            opacity: 0;
+            display: none;
+        }
+        .reveal-section.show {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <div id="lead-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="bg-[#1A1A1A] border border-gray-800 p-8 rounded-[2.5rem] w-full max-w-md mx-4 shadow-2xl">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-white mb-2">Dingana farany...</h3>
+                <p class="text-gray-400 text-sm">Fenoy ireto ho fandraisana ny Guide-nao avy hatrany.</p>
+            </div>
+            
+            <form id="lead-form" class="space-y-5 text-left">
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2 font-bold">Nom et Prénom</label>
+                    <input type="text" id="user-name" required placeholder="Ohatra: Jean Rakoto" 
+                        class="w-full bg-black border border-gray-800 rounded-xl py-4 px-5 text-white focus:border-[#27AE60] outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 mb-2 font-bold">Numero WhatsApp</label>
+                    <input type="tel" id="user-phone" required placeholder="034 00 000 00" 
+                        class="w-full bg-black border border-gray-800 rounded-xl py-4 px-5 text-white focus:border-[#27AE60] outline-none transition-all">
+                </div>
+                
+                <button type="submit" class="w-full bg-[#1E8449] hover:bg-[#27AE60] text-white font-black py-5 rounded-xl uppercase tracking-wider transition-all mt-2 shadow-lg shadow-green-900/20">
+                    Hijery ny Videos
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <section class="min-h-[100dvh] flex flex-col items-center justify-center gap-6 md:gap-10 p-4 md:p-8 text-center border-b border-gray-900">
+        
+        <h1 class="max-w-5xl text-3xl md:text-5xl lg:text-6xl font-black leading-[1.15] md:leading-[1.1] bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+            Secrets 3 Nahavitako Nanasitrana Ilay Diabète Tao Anatin'ny <span class="text-[#27AE60]"> 4 Semaines.</span>
+        </h1>
+
+        <div class="w-full max-w-[950px] mx-auto">
+            <div class="relative w-full aspect-video rounded-3xl shadow-[0_0_60px_rgba(30,132,73,0.15)] border border-white/10 overflow-hidden bg-black group">
+                <div id="player" class="absolute top-0 left-0 w-full h-full"></div>
+                
+                <div id="video-overlay" class="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer group-hover:bg-black/20 transition-all duration-500 z-10">
+                    <div class="w-20 h-20 md:w-28 md:h-28 bg-[#1E8449] rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 md:w-12 md:h-12 text-white fill-current ml-2" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full max-w-xl">
+            <div id="cta-1" class="btn-locked flex items-center justify-center gap-4 w-full py-5 rounded-2xl text-lg font-black uppercase transition-all duration-500">
+                <span class="cta-text">Hisokatra afaka</span>
+                <span id="timer-1" class="timer font-mono bg-black px-3 py-1 rounded-lg text-[#27AE60]">17:54</span>
+            </div>
+            <p class="mt-4 text-gray-500 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">Jereo hatramin'ny farany ny Video</p>
+        </div>
+    </section>
+
+    <section id="section-preuves" class="reveal-section py-20 px-4 max-w-6xl mx-auto text-center">
+        <h2 class="text-2xl md:text-4xl font-bold mb-12 text-gray-200">Ireo no lazain'ireo olona efa nampiatra io méthode io:</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start text-left">
+            
+            <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:scale-[1.02] transition-transform duration-300">
+                <img src="images/Screenshot_2026-02-09-20-35-54-97 .jpg" class="w-full h-auto block">
+                <div class="p-6">
+                    <span class="text-[9px] font-black text-green-600 uppercase tracking-widest bg-green-50 px-2 py-1 rounded-full">Diabète-soft</span>
+                    <p class="mt-4 text-sm text-gray-700 leading-snug font-medium italic">"Tauv HB1AC 5,7 rehefa nanaraka ilay rythme fotsiny."</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:scale-[1.02] transition-transform duration-300">
+                <img src="images/Screenshot_2026-02-09-20-51-56-66.jpg" class="w-full h-auto block">
+                <div class="p-6">
+                    <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-1 rounded-full">Diabète-soft</span>
+                    <p class="mt-4 text-sm text-gray-700 leading-snug font-medium italic">"Stable ny taux HB1AC apres 23 jours nanarahana ilay rythme ny vatana."</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:scale-[1.02] transition-transform duration-300">
+                <img src="images/IMG_20260210_064908.jpg" class="w-full h-auto block">
+                <div class="p-6">
+                    <span class="text-[9px] font-black text-purple-600 uppercase tracking-widest bg-purple-50 px-2 py-1 rounded-full">Diabète-soft</span>
+                    <p class="mt-4 text-sm text-gray-700 leading-snug font-medium italic">"Najanona ilay METFORMIN satria efa stable na dia mbola misy PIC de glycemie ihany."</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:scale-[1.02] transition-transform duration-300">
+                <img src="images/IMG_20260207_095736.jpg" class="w-full h-auto block">
+                <div class="p-6">
+                    <span class="text-[9px] font-black text-purple-600 uppercase tracking-widest bg-purple-50 px-2 py-1 rounded-full">Diabète-soft</span>
+                    <p class="mt-4 text-sm text-gray-700 leading-snug font-medium italic">"Diabetique nandritran'ny 11 taona"</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-20 w-full max-w-xl mx-auto">
+            <div id="cta-2" class="btn-locked flex items-center justify-center gap-4 w-full py-6 rounded-2xl text-xl font-black uppercase transition-all duration-500 shadow-2xl">
+                <span class="cta-text">Hisokatra afaka</span>
+                <span id="timer-2" class="timer font-mono bg-black px-4 py-2 rounded-xl text-[#27AE60]">17:54</span>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="py-12 text-center text-gray-600 text-xs bg-black border-t border-gray-900">
+        &copy; 2026 Diabète Soft - Zo rehetra voatokana.
+    </footer>
+
+    <script>
+        // --- CHARGEMENT API YOUTUBE ---
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        var preuvesAffichees = false;
+        var boutonDebloque = false;
+
+        const VIDEO_ID = 'pd7YWsvQYAg'; 
+        const TEMPS_REVELATION_PREUVES = 100; // 5 min
+        const TEMPS_DEBLOCAGE_BOUTON = 180; // 16 min
+
+        const modal = document.getElementById('lead-modal');
+        const overlay = document.getElementById('video-overlay');
+        const form = document.getElementById('lead-form');
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                videoId: VIDEO_ID,
+                playerVars: { 'rel': 0, 'modestbranding': 1, 'controls': 1 }
+            });
+        }
+
+        // Déclenchement du Modal au clic sur Play
+        overlay.addEventListener('click', () => {
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            modal.classList.add('opacity-100');
+        });
+
+        // Validation Formulaire + Envoi Sheets + Lancement Vidéo
+        // Validation Formulaire + Envoi Sheets + Lancement Vidéo
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('user-name').value;
+            const whatsapp = document.getElementById('user-phone').value;
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxc9p58bZWSiqoPUHv-3PYKOsC96jlHxHK7Xq3uYM-TbPStp6bs1Vge_0BJN-7FpkVT/exec'; 
+
+            // 1. On ferme le modal et on lance la vidéo IMMÉDIATEMENT
+            modal.classList.add('pointer-events-none', 'opacity-0');
+            modal.classList.remove('opacity-100');
+            overlay.style.display = 'none';
+            player.playVideo();
+            
+            // On lance le timer de progression
+            setInterval(checkProgress, 1000);
+
+            // 2. On envoie les données en arrière-plan (sans bloquer l'utilisateur)
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, whatsapp: whatsapp })
+            }).catch(err => console.log("Erreur d'envoi (ignorez si no-cors)"));
+        });
+
+        function checkProgress() {
+            if (!player || typeof player.getCurrentTime !== 'function') return;
+            var currentTime = Math.floor(player.getCurrentTime());
+
+            // Révélation de la section preuves
+            if (currentTime >= TEMPS_REVELATION_PREUVES && !preuvesAffichees) {
+                const section = document.getElementById('section-preuves');
+                section.classList.add('show');
+                preuvesAffichees = true;
+            }
+
+            // Mise à jour du compte à rebours
+            var timeLeft = Math.max(0, TEMPS_DEBLOCAGE_BOUTON - currentTime);
+            updateTimers(timeLeft);
+
+            // Déblocage des CTA
+            if (timeLeft <= 0 && !boutonDebloque) {
+                unlockButtons();
+            }
+        }
+
+        function updateTimers(timeLeft) {
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            const timeString = (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+            
+            document.getElementById('timer-1').innerText = timeString;
+            document.getElementById('timer-2').innerText = timeString;
+        }
+
+        function unlockButtons() {
+            boutonDebloque = true;
+            const ids = ['cta-1', 'cta-2'];
+            
+            ids.forEach(id => {
+                const oldBtn = document.getElementById(id);
+                if(oldBtn) {
+                    const link = document.createElement('a');
+                    link.href = "https://diabetecode.vercel.app/kit.html"; 
+                    link.className = "btn-active flex items-center justify-center gap-4 w-full py-6 rounded-2xl text-xl font-black uppercase transition-all duration-500 shadow-2xl text-white";
+                    link.innerHTML = "Haka ny Guide Diabète Soft";
+                    oldBtn.parentNode.replaceChild(link, oldBtn);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
