@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="mg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIC - Réalignement Intégrale du Corps</title>
+
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        meadow: '#C3EB3B',
+                        'meadow-dark': '#A1CC00',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: 'Inter', sans-serif;
+                -webkit-font-smoothing: antialiased;
+                background-color: #FFFFFF;
+                color: #0F172A;
+                line-height: 1.6;
+                letter-spacing: -0.015em;
+            }
+
+            p {
+                font-size: 1.125rem;
+                line-height: 1.7;
+            }
+        }
+
+        .hero-clear {
+            background: #FFFFFF;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 130px;
+            /* Balanced for fixed nav */
+            padding-bottom: 60px;
+        }
+
+        /* Bloom effects */
+        .bloom-soft {
+            position: absolute;
+            width: 100vw;
+            height: 100vw;
+            background: radial-gradient(circle at center, rgba(195, 235, 59, 0.08), transparent 70%);
+            top: -30vw;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .section-padding {
+            padding-top: 160px;
+            padding-bottom: 160px;
+        }
+
+        /* EXPERT CARD REFINEMENT */
+        .pilier-card {
+            background: #FFFFFF;
+            border: 0.5px solid rgba(15, 23, 42, 0.08);
+            border-radius: 44px;
+            padding: 64px 52px;
+            box-shadow: 0 4px 60px -15px rgba(0, 0, 0, 0.04);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pilier-card:hover {
+            border-color: rgba(195, 235, 59, 0.4);
+            transform: translateY(-12px);
+            box-shadow: 0 40px 90px -20px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-accent {
+            width: 80px;
+            height: 80px;
+            background: rgba(15, 23, 42, 0.02);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 48px;
+            font-size: 2.2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pilier-card:hover .icon-accent {
+            background: #C3EB3B;
+            transform: scale(1.1) rotate(6deg);
+        }
+
+        .input-expert {
+            width: 100%;
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            font-size: 1rem;
+            color: #FFFFFF;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input-expert:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #C3EB3B;
+            outline: none;
+            box-shadow: 0 0 50px -10px rgba(195, 235, 59, 0.2);
+        }
+
+        .cta-expert {
+            background: #C3EB3B;
+            color: #0F172A;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 50px -10px rgba(195, 235, 59, 0.35);
+        }
+
+        .cta-expert:hover {
+            background: #D4F45F;
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 40px 80px -15px rgba(195, 235, 59, 0.55);
+        }
+
+        .dark-aura {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(195, 235, 59, 0.05), transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+            filter: blur(120px);
+        }
+
+        .text-break {
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-number {
+            font-size: 10rem;
+            position: absolute;
+            right: -2rem;
+            top: -2rem;
+            font-weight: 800;
+            color: rgba(15, 23, 42, 0.03);
+            user-select: none;
+            z-index: 0;
+            line-height: 1;
+        }
+    </style>
+</head>
+
+<body class="selection:bg-meadow/30 antialiased">
+
+    <nav
+        class="fixed top-0 left-0 w-full z-[1000] glass-nav px-12 py-6 flex items-center justify-between transition-all">
+        <a href="#"
+            class="font-heading font-semibold text-[28px] tracking-tighter hover:opacity-80 transition-opacity">RIC.</a>
+        <div class="hidden md:flex gap-14 text-[15px] font-medium text-slate-500 tracking-tight">
+            <a href="#tantara" class="hover:text-black transition-colors">Tantara</a>
+            <a href="#piliers" class="hover:text-black transition-colors">Ny ho hainao</a>
+            <a href="#checkout" class="hover:text-black transition-colors">Inscrire</a>
+        </div>
+        <a href="#checkout"
+            class="bg-slate-900 text-white text-[15px] font-medium px-10 py-3.5 rounded-2xl hover:bg-black transition-all shadow-xl shadow-black/5">Inscrire
+            izao</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero-clear text-center overflow-hidden">
+        <div class="bloom-soft"></div>
+        <div class="max-w-5xl px-8 w-full relative z-10" data-aos="fade-up">
+            <h1
+                class="font-heading text-[clamp(2.75rem,8.5vw,5rem)] leading-[1.02] mb-8 font-semibold tracking-tighter text-slate-950">
+                La méthode de réalignement <br> intégrale du corps
+            </h1>
+            <p
+                class="text-slate-500 max-w-2xl mx-auto mb-12 font-normal tracking-tight leading-relaxed text-xl opacity-90">
+                Mandrindra glycemie ary miala amin'ny fanafody isan'andro <br>
+                amin'ny alalan'ny rythme naturels an'ny vatana.
+            </p>
+            <a href="#checkout"
+                class="inline-block cta-expert font-medium text-[18px] px-14 py-6 rounded-3xl active:scale-95">
+                Rejoindre la méthode
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Story Section -->
+        <section id="tantara" class="section-padding bg-slate-50/20 relative">
+            <div class="max-w-3xl mx-auto px-8 relative z-10" data-aos="fade-up">
+                <div class="space-y-12 text-slate-900 tracking-tight">
+                    <p class="text-slate-400 font-medium font-heading tracking-widest text-sm uppercase">Niova tanteraka
+                        ilay vatako rehefa…</p>
+                    <h2 class="text-4xl md:text-5xl font-semibold font-heading leading-[1.1] tracking-tighter">Raha misy
+                        zavatra anakiray <br> tena nampiova ilay fahasalamako dia ity:</h2>
+
+                    <div class="text-slate-400 font-medium space-y-3 text-2xl tracking-tighter">
+                        <p>Tsy regime sans sucre,</p>
+                        <p>tsy liste sakafo,</p>
+                        <p>tsy resaka fifadiana na fanafody ihany koa.</p>
+                    </div>
+
+                    <p class="leading-relaxed text-xl opacity-90">
+                        Niova tanteraka rehefa fantatro sy haiko tsara ny nanaja ilay rythme sy cycle naturels an’ity
+                        vatako ity.
+                    </p>
+
+                    <p class="leading-relaxed text-xl opacity-90">
+                        Ary io ilay vatana ihany no mistabriler ilay glycemie tsy mila zavatra hohanina.
+                    </p>
+
+                    <p class="text-xl">
+                        Dia io no nahafahako nanampy ireo vehivavy sy renim-pianakaviana niala tamin’ilay fanafody a vie
+                        na dia efa 11 taona teo aza no diabetique.
+                    </p>
+
+                    <p class="text-slate-400 font-medium text-xl leading-relaxed">
+                        Fantatro fa efa miezaka tsara ianao ary efa hainao tsara ny mistabiliser ilay glycemie anao
+                        amin’ny alalan’ny sport, sy ireo fifadiana mamy sy siramamy ary ny fanafody isan'andro.
+                    </p>
+
+                    <p class="text-xl opacity-90">
+                        Voafehinao daholo ireo rehetra ireo fa hainao tsara anefa fa tsy ilay glycemie stable ihany no
+                        tena tadiavinao...
+                    </p>
+
+                    <p class="text-xl opacity-90">
+                        Fa ilay fiainana tsy misy fangejana sy miaina am-pilaminana mihitsy na io ny ara-tsaina, ao koa
+                        ny ara-batana.
+                    </p>
+
+                    <div class="pt-12">
+                        <span
+                            class="inline-block px-6 py-2 rounded-full bg-meadow/20 text-meadow-dark font-semibold text-[15px] tracking-tight">
+                            Dia ity RIC ity no tsy ampy hananao ireo.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ny zavatra ho hainao -->
+        <section id="piliers" class="section-padding bg-white relative">
+            <div class="max-w-7xl mx-auto px-10 relative z-10">
+                <div class="text-center mb-32" data-aos="fade-up">
+                    <span class="text-slate-400 text-[15px] font-medium tracking-tight mb-6 block">Fampianarana</span>
+                    <h2
+                        class="font-heading text-5xl md:text-6xl font-semibold text-slate-950 tracking-tighter leading-tight">
+                        Ny zavatra ho hainao ato</h2>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <div class="pilier-card" data-aos="fade-up">
+                        <div class="icon-accent shadow-inner">🥗</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-6 tracking-tight">Principes de
+                            <br>chrono-nutrition
+                        </h4>
+                        <p class="text-slate-500 text-[18px] leading-relaxed">Ho voafehinao ny misakafo manaraka ilay
+                            cycles naturels du corps a vie. Tsy resaka fifadiana fa fanajana ilay rythme voajanahary.
+                        </p>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-accent shadow-inner">🩺</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-6 tracking-tight">Alimentation
+                            <br>thérapeutique
+                        </h4>
+                        <p class="text-slate-500 text-[18px] leading-relaxed">Ho hainao ny manamboatra ilay recette
+                            therapeutique isaky ny mihinana hahafanao mampitony sy mandamina ilay glycemie.</p>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon-accent shadow-inner">🌅</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-6 tracking-tight">Protocole <br>matinale</h4>
+                        <p class="text-slate-500 text-[18px] leading-relaxed">Ireo fahazarana hatao isa-maraina
+                            hahafan’ilay vatana hanana energie stable mandritra ny andro tsy mila siramamy.</p>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon-accent shadow-inner">🌙</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-6 tracking-tight">Protocole <br>nocturne</h4>
+                        <p class="text-slate-500 text-[18px] leading-relaxed">Routine hatao isak’iny alina hahafan’ilay
+                            vatana mahita tory tsara ary hifohana maivamaivana rahampitso.</p>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="icon-accent shadow-inner">🧘</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-6 tracking-tight">Réalignement <br>émotionnel
+                        </h4>
+                        <p class="text-slate-500 text-[18px] leading-relaxed">Fomba fiaina vaovao hahafahanao miatrika
+                            sy mifehy ilay stress izay antony voalohany mampiakatra glycemie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ahoana... -->
+        <section class="section-padding bg-slate-50 relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-10">
+                <h2 class="font-heading text-4xl md:text-5xl font-semibold mb-24 tracking-tighter text-slate-950 leading-tight"
+                    data-aos="fade-up">Ahoana no hahafanao manao ilay <br>realignement integrale du corps</h2>
+
+                <div class="grid md:grid-cols-2 gap-16 md:gap-y-32">
+                    <div class="relative group" data-aos="fade-up">
+                        <div class="step-number group-hover:text-meadow/10 transition-colors">01</div>
+                        <div class="relative z-10">
+                            <h4 class="text-[15px] font-medium text-meadow-dark mb-4 tracking-widest uppercase">Dingana
+                                01</h4>
+                            <h3 class="text-2xl font-semibold mb-6 tracking-tight leading-snug">Formule recette
+                                <br>thérapeutique
+                            </h3>
+                            <p class="text-slate-500 text-lg leading-relaxed max-w-sm">Ho azonao ilay recettes
+                                therapeutique complet nahavitako hahafahanao manana vatana maivamaivana isan’andro ary
+                                miala amin'ilay fanafody a vie.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-number group-hover:text-meadow/10 transition-colors">02</div>
+                        <div class="relative z-10">
+                            <h4 class="text-[15px] font-medium text-meadow-dark mb-4 tracking-widest uppercase">Dingana
+                                02</h4>
+                            <h3 class="text-2xl font-semibold mb-6 tracking-tight leading-snug">Plan 9 semaines
+                                <br>chrono-nutrition
+                            </h3>
+                            <p class="text-slate-500 text-lg leading-relaxed max-w-sm">Hisy plan ho arahinao
+                                ara-bakiteny ireo fomba rehetra hatao sy ireo fotoana tokony hohanina mba tsy
+                                hiaka-midina intsony ny glycemie.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative group" data-aos="fade-up">
+                        <div class="step-number group-hover:text-meadow/10 transition-colors">03</div>
+                        <div class="relative z-10">
+                            <h4 class="text-[15px] font-medium text-meadow-dark mb-4 tracking-widest uppercase">Dingana
+                                03</h4>
+                            <h3 class="text-2xl font-semibold mb-6 tracking-tight leading-snug">Routine matinale <br>et
+                                du soir</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed max-w-sm">Omenao anao ireo fahazarana
+                                vaovao tokony hatao isa-maraina sy isaky ny alina mba hitazomana ilay vokatra ho
+                                mandrakizay.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Difference Section -->
+        <section class="section-padding bg-white relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-10 relative z-10">
+                <div class="mb-32" data-aos="fade-up">
+                    <h2
+                        class="font-heading text-4xl md:text-6xl font-semibold mb-12 tracking-tighter text-slate-950 leading-[0.95]">
+                        Inona no mahasamy <br>hafa azy?</h2>
+                    <p class="text-2xl text-slate-600 leading-relaxed max-w-3xl font-light">
+                        Tsotra fotsiny: ny RIC dia tsy hifantoka amin’ny fikolokoloina fotsiny ihany fa fampirindrana
+                        ilay fonction naturelle ny vatanao. Tsy resaka fifadiana sakafo fa fanomezana lanja ny
+                        fandrindrana ny vatana hatrany amin'ny fakany.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-20">
+                    <div data-aos="fade-up" class="border-t border-slate-100 pt-8">
+                        <p class="font-semibold mb-6 text-xl tracking-tight">Réalignement <br>nutritionnel</p>
+                        <p class="text-slate-500 text-[17px] leading-relaxed">Fampirindrana ny fomba fisakafo amin’ny
+                            lois naturelles an'ilay vatana mba ho maivana isan'andro.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="100" class="border-t border-slate-100 pt-8">
+                        <p class="font-semibold mb-6 text-xl tracking-tight">Réalignement <br>émotionnel</p>
+                        <p class="text-slate-500 text-[17px] leading-relaxed">Tsy mijanona amin’ny sakafo ihany fa ny
+                            etat emotionnel koa mila realigne mba handrindra ny hormone.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200" class="border-t border-slate-100 pt-8">
+                        <p class="font-semibold mb-6 text-xl tracking-tight">Répétition <br>Ary fampiharana</p>
+                        <p class="text-slate-500 text-[17px] leading-relaxed">Rehefa voafehinao ireo dia mampiatra sisa
+                            hahafahan’ilay vatanao miova mandrakizay.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discipline Section -->
+        <section class="section-padding bg-slate-50/20">
+            <div class="max-w-4xl mx-auto px-10 space-y-32 text-left">
+                <div class="space-y-16 text-slate-900 tracking-tight" data-aos="fade-up">
+                    <h2
+                        class="font-heading text-4xl md:text-5xl font-semibold text-slate-950 tracking-tighter leading-tight">
+                        Tsy probleme discipline <br>koa ilay izy satria...</h2>
+
+                    <p class="leading-relaxed text-xl opacity-90">
+                        Efa nandramanao ireo karazana regime rehetra, nanao jeunes intermittent koa ianao, nifady
+                        siramamy ary namoy fo tamin'ny vokatra tsy maharitra.
+                    </p>
+
+                    <p
+                        class="text-slate-400 font-medium leading-relaxed text-xl italic border-l-4 border-slate-200 pl-8">
+                        Mety tsara ireo raha hitaiza ilay diabete fa tsy manaisotra azy tanteraka ilay diabete.
+                    </p>
+
+                    <p class="text-slate-900 font-semibold text-2xl leading-snug tracking-tighter max-w-2xl">
+                        Ny olana aneva dia tsy nisy nampianatra anao an’io fanesorana hatrany amin’ny fakany io izay
+                        mety hampiova tanteraka ilay vatanao ary hanafaka anao amin'ilay fanafody isan'andro.
+                    </p>
+                </div>
+
+                <!-- Proof Section -->
+                <div class="py-32 border-y border-slate-100 relative" data-aos="fade-up">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                        <div
+                            class="group relative overflow-hidden rounded-[50px] bg-slate-50 aspect-[4/5] shadow-2xl hover:shadow-meadow/20 transition-all duration-700 border-8 border-white">
+                            <img src="images/IMG_20260207_095736.jpg"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000"
+                                alt="Preuve RIC">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-12 text-slate-300 font-medium text-center tracking-widest text-xs uppercase">Ireo
+                        vehivahy efa nanao azy</p>
+                </div>
+
+                <div class="space-y-12" data-aos="fade-up">
+                    <p class="leading-relaxed text-xl opacity-80">
+                        Rehefa azonao ireo methode de realignement ireo dia ho azonao ampiasaina mandrakizay hahafahanao
+                        miaina am-pahalalahana.
+                    </p>
+
+                    <p class="leading-relaxed text-xl">
+                        Mbola tsy mahapo anao ilay fahasalamanao na dia efa hainao aza ilay mistabiliser ilay glycemie.
+                    </p>
+
+                    <p class="text-slate-400 font-medium leading-relaxed text-lg opacity-80">
+                        Tsy mahatsiaro filaminana tanteraka aneva ianao fa mbola mahatsapa ho voageja ihany.
+                    </p>
+
+                    <h3 class="text-4xl md:text-5xl font-semibold pt-16 text-slate-950 tracking-tighter">Andao ho
+                        alamina <br>tanteraka izany.</h3>
+                    <p class="text-slate-900 font-medium text-2xl">Ity RIC ity no tsy ampy taminao.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dark Checkout Section -->
+        <section id="checkout" class="section-padding bg-slate-950 text-white relative overflow-hidden">
+            <div class="dark-aura top-[-400px] left-[-400px]"></div>
+            <div class="dark-aura bottom-[-400px] right-[-400px] opacity-20"></div>
+
+            <div class="max-w-6xl mx-auto px-12 relative z-10">
+                <div class="text-center mb-44" data-aos="fade-up">
+                    <span class="text-meadow text-[17px] font-medium tracking-widest mb-10 block uppercase">Fisondrotana
+                        farany</span>
+                    <h2 class="font-heading text-7xl md:text-9xl font-semibold mb-12 text-white tracking-tighter">
+                        150.000 ar</h2>
+                    <p class="text-white/30 font-medium text-2xl mb-16 tracking-tighter">raha tokony ho <span
+                            class="line-through">250.000 ar</span></p>
+                    <div class="inline-block px-10 py-5 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
+                        <p class="text-meadow font-semibold text-xl tracking-tight">Manana 100.000ar ianao hividianana
+                            zavatra hafa.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-12 gap-24">
+                    <div class="md:col-span-12 lg:col-span-7 space-y-24" data-aos="fade-up">
+                        <div class="md:col-span-12 lg:col-span-7 space-y-20" data-aos="fade-up">
+                            <div class="flex gap-10 group">
+                                <div class="text-5xl font-bold text-meadow flex-shrink-0 pt-1 leading-none">
+                                    1
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-2xl mb-4 font-heading tracking-tight">Alefa mobile
+                                        money
+                                    </h4>
+                                    <p class="text-white/40 mb-10 max-w-sm text-xl leading-relaxed">Tsindrio ilay bouton
+                                        hivoaka avy hatrany <br>avy amin'ny findainao.</p>
+                                    <a href="tel:*111*1*2*0347112857*150000%23"
+                                        class="inline-flex bg-gradient-to-b from-[#D4F45F] to-[#C3EB3B] text-[#0F172A] px-12 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-meadow/20 transition-all hover:translate-y-[-5px] hover:shadow-meadow/40 active:scale-95">💸
+                                        Alefa 150.000 ar</a>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-10 group transition-opacity">
+                                <div class="text-5xl font-bold text-meadow flex-shrink-0 pt-1 leading-none">
+                                    2
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-2xl mb-4 font-heading tracking-tight text-white/90">
+                                        Référence SMS</h4>
+                                    <p class="text-white/40 max-w-sm text-xl leading-relaxed">Jereo ny référence azonao
+                                        <br>rehefa vita ny fandoavana.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-12 lg:col-span-5 relative" data-aos="fade-up" data-aos-delay="150">
+                        <div class="absolute inset-0 bg-meadow/10 blur-[150px] rounded-full z-0"></div>
+                        <div
+                            class="relative z-10 space-y-14 bg-white/5 p-12 rounded-[50px] border border-white/10 backdrop-blur-xl">
+                            <div class="flex flex-col gap-10">
+                                <h4 class="font-heading font-medium text-2xl tracking-tight text-white/80">Fenoy ny
+                                    taratasy</h4>
+                                <form id="orderForm" class="space-y-6">
+                                    <input type="text" id="ref" required class="input-expert"
+                                        placeholder="Référence SMS">
+                                    <input type="text" id="nom" required class="input-expert" placeholder="Anaranao">
+                                    <input type="tel" id="tel" required class="input-expert"
+                                        placeholder="Laharana WhatsApp">
+                                    <button type="submit"
+                                        class="w-full bg-white text-black py-7 rounded-2xl font-bold text-xl hover:bg-meadow transition-all shadow-white/10 active:scale-95">
+                                        Inscrire izao
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-24 bg-white text-center border-t border-slate-50">
+        <p class="text-[15px] text-slate-300 font-medium tracking-widest uppercase tracking-tighter">&copy; 2026 RIC ·
+            All rights reserved</p>
+    </footer>
+
+    <script>
+        AOS.init({ duration: 1500, once: true, easing: 'ease-out-cubic' });
+        const orderForm = document.getElementById('orderForm');
+        if (orderForm) {
+            orderForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const ref = document.getElementById('ref').value.trim();
+                const nom = document.getElementById('nom').value.trim();
+                const numTel = document.getElementById('tel').value.trim();
+                const message = encodeURIComponent(`RIC 🌿\nRef: ${ref}\nNom: ${nom}\nWhatsApp: ${numTel}`);
+                window.open(`https://wa.me/261347112857?text=${message}`, '_blank');
+            });
+        }
+    </script>
+</body>
+
+</html>
