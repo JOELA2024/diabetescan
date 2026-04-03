@@ -14,7 +14,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -105,9 +106,9 @@
         }
 
         .glass-nav {
-            background: rgba(255, 255, 255, 0.75);
+            background: transparent;
             backdrop-filter: blur(30px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            border-bottom: none;
         }
 
         .section-padding {
@@ -127,7 +128,7 @@
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             border: 0.5px solid rgba(15, 23, 42, 0.06);
-            border-radius: 44px;
+            border-radius: 20px;
             padding: 36px 28px;
             box-shadow: 0 4px 60px -15px rgba(0, 0, 0, 0.03);
             transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
@@ -146,7 +147,7 @@
             width: 80px;
             height: 80px;
             background: rgba(15, 23, 42, 0.05);
-            border-radius: 28px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -167,7 +168,7 @@
             padding: 22px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
+            border-radius: 16px;
             font-size: 1rem;
             color: #FFFFFF;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -251,18 +252,22 @@
 </head>
 
 <body class="selection:bg-meadow/30 antialiased">
-
     <nav
         class="fixed top-0 left-0 w-full z-[1000] glass-nav px-12 py-6 flex items-center justify-between transition-all">
-        <a href="#"
-            class="font-heading font-semibold text-[28px] tracking-tighter hover:opacity-80 transition-opacity">RIC.</a>
-        <div class="hidden md:flex gap-10 text-[15px] font-medium text-slate-500 tracking-tight">
+        <!-- Logo -->
+        <div class="font-heading text-2xl font-black tracking-tighter text-slate-900">RIC.</div>
+
+        <!-- Centered Menu -->
+        <div
+            class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-10 text-[15px] font-medium text-slate-500 tracking-tight">
             <a href="#tantara" class="hover:text-black transition-colors">Tantara</a>
             <a href="#piliers" class="hover:text-black transition-colors">Ny ho hainao</a>
-            <a href="#checkout" class="hover:text-black transition-colors">Inscrire</a>
+            <a href="#checkout" class="hover:text-black transition-colors">Hiditra aho</a>
         </div>
+
+        <!-- Right Button -->
         <a href="#checkout"
-            class="bg-slate-900 text-white text-[15px] font-medium px-10 py-3.5 rounded-2xl hover:bg-black transition-all shadow-xl shadow-black/5">Inscrire
+            class="bg-slate-900 text-white text-[14px] font-medium px-8 py-3 rounded-xl hover:bg-black transition-all shadow-xl shadow-black/5">Inscrire
             izao</a>
     </nav>
 
@@ -271,16 +276,24 @@
         <div class="bloom-soft"></div>
         <div class="max-w-5xl px-8 w-full relative z-10" data-aos="fade-up">
             <h1
-                class="font-heading text-[clamp(2.25rem,8.5vw,5rem)] leading-[1.03] mb-8 font-semibold tracking-tighter text-slate-950">
-                La méthode de réalignement <br> intégrale du corps
+                class="font-heading text-[clamp(2.25rem,8.5vw,5rem)] leading-[1.03] mb-8 font-black tracking-tighter text-slate-950">
+                La Méthode de Réalignement <br> Intégrale du Corps
             </h1>
             <p class="text-slate-800 max-w-2xl mx-auto mb-6 font-normal tracking-tight leading-relaxed text-xl">
-                Mandrindra glycemie ary miala amin'ny fanafody isan'andro <br>
+                Mandrindra glycemie ary miala amin'ny fanafody isan'andro
                 amin'ny alalan'ny rythme naturels an'ny vatana.
             </p>
             <a href="#checkout"
-                class="inline-block cta-expert font-medium text-[18px] px-14 py-6 rounded-3xl active:scale-95">
-                Rejoindre la méthode
+                class="inline-flex items-center gap-6 cta-expert font-bold text-[17px] pl-10 pr-3 py-3 rounded-full active:scale-95 group">
+                <span>Rejoindre la méthode</span>
+                <div
+                    class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white shadow-lg transition-transform group-hover:translate-x-2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
             </a>
 
             <div class="scroll-indicator pointer-events-none">
@@ -299,21 +312,19 @@
             <div class="bloom-secondary opacity-40"></div>
             <div class="max-w-3xl mx-auto px-8 relative z-10" data-aos="fade-up">
                 <div class="space-y-4 text-slate-800 tracking-tight">
-                    <p class="text-slate-500 font-medium font-heading tracking-widest text-sm uppercase">Niova tanteraka
-                        ilay vatako rehefa…</p>
-                    <h2
-                        class="text-3xl md:text-5xl font-semibold font-heading leading-[1.1] tracking-tighter text-black">
+                    <h2 class="text-3xl md:text-5xl font-bold font-heading leading-[1.1] tracking-tighter text-black">
                         Raha misy
                         zavatra anakiray <br> tena nampiova ilay fahasalamako dia ity:</h2>
 
-                    <div class="text-slate-500 font-medium space-y-3 text-xl tracking-tighter">
+                    <div class="text-slate-800 font-medium space-y-3 text-xl tracking-tighter">
                         <p>Tsy regime sans sucre,</p>
-                        <p>tsy liste sakafo,</p>
-                        <p>tsy resaka fifadiana na fanafody ihany koa.</p>
+                        <p>Tsy liste sakafo,</p>
+                        <p>Tsy resaka fifadiana na fanafody ihany koa.</p>
                     </div>
 
                     <p class="leading-relaxed text-lg text-slate-800">
-                        Niova tanteraka rehefa fantatro sy haiko tsara ny nanaja ilay rythme sy cycle naturels an’ity
+                        Niova tanteraka ilay vatako rehefa fantatro sy haiko tsara ny nanaja ilay rythme sy cycle
+                        naturels an’ity
                         vatako ity.
                     </p>
 
@@ -344,7 +355,7 @@
                     <div class="pt-3">
                         <span
                             class="inline-block px-6 py-2 rounded-full bg-meadow/20 text-meadow-dark font-semibold text-[15px] tracking-tight">
-                            Dia ity RIC ity no tsy ampy hananao ireo.
+                            Dia ity RIC ity no tsy ampy hanananao ireo.
                         </span>
                     </div>
                 </div>
@@ -358,7 +369,7 @@
                 <div class="text-center mb-12" data-aos="fade-up">
                     <span class="text-slate-400 text-[15px] font-medium tracking-tight mb-6 block">Fampianarana</span>
                     <h2
-                        class="font-heading text-4xl md:text-6xl font-semibold text-slate-950 tracking-tighter leading-tight">
+                        class="font-heading text-4xl md:text-6xl font-bold text-slate-950 tracking-tighter leading-tight">
                         Ny zavatra ho hainao ato</h2>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -405,8 +416,9 @@
         <!-- Ahoana... -->
         <section class="section-padding bg-meadow/5 relative overflow-hidden">
             <div class="max-w-5xl mx-auto px-10">
-                <h2 class="font-heading text-4xl md:text-5xl font-semibold mb-10 tracking-tighter text-black leading-tight"
-                    data-aos="fade-up">Ahoana no hahafanao manao ilay <br>realignement integrale du corps</h2>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-10 tracking-tighter text-black leading-tight"
+                    data-aos="fade-up">Ahoana no hahafanao manao ilay <span class="text-meadow-dark">Réalignement
+                        Intégrale du Corps</span> ?</h2>
 
                 <div class="grid md:grid-cols-2 gap-8 md:gap-y-12">
                     <div class="relative group" data-aos="fade-up">
@@ -458,7 +470,7 @@
             <div class="max-w-5xl mx-auto px-10 relative z-10">
                 <div class="mb-12" data-aos="fade-up">
                     <h2
-                        class="font-heading text-4xl md:text-6xl font-semibold mb-12 tracking-tighter text-slate-950 leading-[0.95]">
+                        class="font-heading text-4xl md:text-6xl font-bold mb-12 tracking-tighter text-slate-950 leading-[0.95]">
                         Inona no mahasamy <br>hafa azy?</h2>
                     <p class="text-xl text-slate-600 leading-relaxed max-w-3xl font-light">
                         Tsotra fotsiny: ny RIC dia tsy hifantoka amin’ny fikolokoloina fotsiny ihany fa fampirindrana
@@ -490,8 +502,7 @@
         <section class="section-padding bg-slate-50">
             <div class="max-w-4xl mx-auto px-10 space-y-10 text-left">
                 <div class="space-y-6 text-slate-800 tracking-tight" data-aos="fade-up">
-                    <h2
-                        class="font-heading text-4xl md:text-5xl font-semibold text-black tracking-tighter leading-tight">
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold text-black tracking-tighter leading-tight">
                         Tsy probleme discipline <br>koa ilay izy satria...</h2>
 
                     <p class="leading-relaxed text-lg text-slate-800">
@@ -499,9 +510,8 @@
                         siramamy ary namoy fo tamin'ny vokatra tsy maharitra.
                     </p>
 
-                    <p
-                        class="text-slate-500 font-medium leading-relaxed text-lg italic border-l-4 border-slate-200 pl-8">
-                        Mety tsara ireo raha hitaiza ilay diabete fa tsy manaisotra azy tanteraka ilay diabete.
+                    <p class="text-slate-500 font-medium leading-relaxed text-lg border-l-4 border-slate-200 pl-8">
+                        Mety tsara ireo raha hitaiza ilay diabete fa tsy manaisotra tanteraka ilay diabete.
                     </p>
 
                     <p class="text-slate-900 font-semibold text-xl leading-snug tracking-tighter max-w-2xl">
@@ -514,7 +524,7 @@
                 <div class="py-8 border-y border-slate-100 relative" data-aos="fade-up">
                     <div class="max-w-2xl">
                         <div
-                            class="group relative overflow-hidden rounded-[40px] bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
+                            class="group relative overflow-hidden rounded-2xl bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
                             <img src="images/IMG_20260207_095736.jpg"
                                 class="w-full h-auto block transition-all duration-1000 group-hover:scale-105"
                                 alt="Preuve RIC">
@@ -523,7 +533,7 @@
                             </div>
                         </div>
                         <div
-                            class="group relative overflow-hidden rounded-[40px] bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
+                            class="group relative overflow-hidden rounded-2xl bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
                             <img src="images/IMG_20260202_172440.jpg"
                                 class="w-full h-auto block transition-all duration-1000 group-hover:scale-105"
                                 alt="Preuve RIC">
@@ -532,7 +542,7 @@
                             </div>
                         </div>
                         <div
-                            class="group relative overflow-hidden rounded-[40px] bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
+                            class="group relative overflow-hidden rounded-2xl bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
                             <img src="images/IMG_20260207_095653.jpg"
                                 class="w-full h-auto block transition-all duration-1000 group-hover:scale-105"
                                 alt="Preuve RIC">
@@ -541,7 +551,7 @@
                             </div>
                         </div>
                         <div
-                            class="group relative overflow-hidden rounded-[40px] bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
+                            class="group relative overflow-hidden rounded-2xl bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
                             <img src="images/Screenshot_2026-02-09-20-51-56-66.jpg"
                                 class="w-full h-auto block transition-all duration-1000 group-hover:scale-105"
                                 alt="Preuve RIC">
@@ -550,7 +560,7 @@
                             </div>
                         </div>
                         <div
-                            class="group relative overflow-hidden rounded-[40px] bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
+                            class="group relative overflow-hidden rounded-2xl bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
                             <img src="images/IMG_20260202_172421.jpg"
                                 class="w-full h-auto block transition-all duration-1000 group-hover:scale-105"
                                 alt="Preuve RIC">
@@ -559,7 +569,7 @@
                             </div>
                         </div>
                         <div
-                            class="group relative overflow-hidden rounded-[40px] bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
+                            class="group relative overflow-hidden rounded-2xl bg-slate-50 shadow-2xl hover:shadow-meadow/40 transition-all duration-1000 border-8 border-white transform-gpu hover:scale-[1.02]">
                             <img src="images/FB_IMG_3200450831114648816.jpg"
                                 class="w-full h-auto block transition-all duration-1000 group-hover:scale-105"
                                 alt="Preuve RIC">
@@ -600,74 +610,150 @@
             <div class="dark-aura top-[-400px] left-[-400px]"></div>
             <div class="dark-aura bottom-[-400px] right-[-400px] opacity-20"></div>
 
-            <div class="max-w-6xl mx-auto px-12 relative z-10">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <span class="text-meadow text-[17px] font-medium tracking-widest mb-10 block uppercase">Fisondrotana
-                        farany</span>
-                    <h2 class="font-heading text-7xl md:text-9xl font-semibold mb-12 text-white tracking-tighter">
-                        150.000 ar</h2>
-                    <p class="text-white/30 font-medium text-2xl mb-16 tracking-tighter">raha tokony ho <span
-                            class="line-through">250.000 ar</span></p>
-                    <div class="inline-block px-10 py-5 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
-                        <p class="text-meadow font-semibold text-xl tracking-tight">Manana 100.000ar ianao hividianana
-                            zavatra hafa.
-                        </p>
-                    </div>
-                </div>
+            <div class="max-w-6xl mx-auto px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-16 items-start">
 
-                <div class="grid md:grid-cols-12 gap-10">
-                    <div class="md:col-span-12 lg:col-span-7 space-y-10" data-aos="fade-up">
-                        <div class="md:col-span-12 lg:col-span-7 space-y-8" data-aos="fade-up">
-                            <div class="flex gap-10 group">
-                                <div class="text-5xl font-bold text-meadow flex-shrink-0 pt-1 leading-none">
-                                    1
+                    <!-- LEFT COLUMN: WHAT YOU GET -->
+                    <div class="lg:col-span-7 space-y-12" data-aos="fade-right">
+                        <div>
+                            <h2
+                                class="font-heading text-5xl md:text-6xl font-bold text-white tracking-tighter leading-none mb-6">
+                                Inona no <br>ho azonao ato?
+                            </h2>
+                            <p class="text-white/40 text-xl font-light max-w-md">Ireo rehetra ilainao mba hanovana ny
+                                fahasalamanao mandrakizay.</p>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="flex gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-meadow group-hover:bg-meadow group-hover:text-black transition-all duration-500">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-2xl mb-4 font-heading tracking-tight">Alefa mobile
-                                        money
-                                    </h4>
-                                    <p class="text-white/60 mb-10 max-w-sm text-lg leading-relaxed">Tsindrio ilay bouton
-                                        hivoaka avy hatrany <br>avy amin'ny findainao.</p>
-                                    <a href="tel:*111*1*2*0347112857*150000%23"
-                                        class="inline-flex bg-gradient-to-b from-[#D4F45F] to-[#C3EB3B] text-[#0F172A] px-12 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-meadow/20 transition-all hover:translate-y-[-5px] hover:shadow-meadow/40 active:scale-95">💸
-                                        Alefa 150.000 ar</a>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-10 group transition-opacity">
-                                <div class="text-5xl font-bold text-meadow flex-shrink-0 pt-1 leading-none">
-                                    2
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-2xl mb-4 font-heading tracking-tight text-white/90">
-                                        Référence SMS</h4>
-                                    <p class="text-white/60 max-w-sm text-lg leading-relaxed">Jereo ny référence azonao
-                                        <br>rehefa vita ny fandoavana.
+                                    <h4 class="text-xl font-bold text-white mb-1">Formule Recette Thérapeutique</h4>
+                                    <p class="text-white/50">Hafantaranao ny fitambaran'ny sakafo mampihena glycemie.
                                     </p>
                                 </div>
+                            </div>
+                            <div class="flex gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-meadow group-hover:bg-meadow group-hover:text-black transition-all duration-500">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-1">Plan 9 Semaines Chrono-nutrition</h4>
+                                    <p class="text-white/50">Dingana ara-bakiteny arahinao isan'andro.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-meadow group-hover:bg-meadow group-hover:text-black transition-all duration-500">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-1">Protocole Matinale et Nocturne</h4>
+                                    <p class="text-white/50">Ireo fahazarana mitazona ny vokatra mba haharitra.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-meadow group-hover:bg-meadow group-hover:text-black transition-all duration-500">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-1">Réalignement Émotionnel</h4>
+                                    <p class="text-white/50">Mifehy ny stress mba tsy hidiran'ny glycemie.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-8">
+                            <div
+                                class="inline-flex items-center gap-4 px-6 py-4 rounded-2xl bg-meadow/10 border border-meadow/20">
+                                <span class="text-meadow font-bold text-lg">Manana 100.000ar ianao hividianana zavatra
+                                    hafa.</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="md:col-span-12 lg:col-span-5 relative" data-aos="fade-up" data-aos-delay="150">
-                        <div class="absolute inset-0 bg-meadow/10 blur-[150px] rounded-full z-0"></div>
+                    <!-- RIGHT COLUMN: PRICING & FORM -->
+                    <div class="lg:col-span-5 relative" data-aos="fade-left">
+                        <div class="absolute inset-0 bg-meadow/10 blur-[120px] rounded-full -z-10"></div>
                         <div
-                            class="relative z-10 space-y-8 bg-white/5 p-10 rounded-[50px] border border-white/10 backdrop-blur-xl">
-                            <div class="flex flex-col gap-10">
-                                <h4 class="font-heading font-medium text-2xl tracking-tight text-white/80">Fenoy ny
-                                    taratasy</h4>
-                                <form id="orderForm" class="space-y-6">
-                                    <input type="text" id="ref" required class="input-expert"
-                                        placeholder="Référence SMS">
-                                    <input type="text" id="nom" required class="input-expert" placeholder="Anaranao">
-                                    <input type="tel" id="tel" required class="input-expert"
-                                        placeholder="Laharana WhatsApp">
-                                    <button type="submit"
-                                        class="w-full bg-white text-black py-7 rounded-2xl font-bold text-xl hover:bg-meadow transition-all shadow-white/10 active:scale-95">
-                                        Inscrire izao
-                                    </button>
-                                </form>
+                            class="bg-white/5 border border-white/10 backdrop-blur-3xl rounded-[32px] p-8 md:p-12 shadow-2xl relative">
+
+                            <!-- Price Block -->
+                            <div class="mb-10">
+                                <p class="text-white/30 text-lg mb-2 flex items-center gap-3">
+                                    <span class="line-through">250.000 AR</span>
+                                    <span class="px-3 py-1 bg-white/10 rounded-full text-sm font-bold text-white">-40%
+                                        Androany</span>
+                                </p>
+                                <h3 class="text-5xl md:text-6xl font-bold text-white tracking-tighter mb-4">150.000 AR
+                                </h3>
+                                <p class="text-white/60 text-sm">Fandoavana indray mandeha, accès à vie.</p>
                             </div>
+
+                            <!-- Payment Target -->
+                            <div class="mb-10 p-6 rounded-2xl bg-white/[0.03] border border-white/5">
+                                <h4 class="text-meadow text-xs font-bold uppercase tracking-widest mb-4">Numéro de
+                                    paiement</h4>
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-meadow/20 flex items-center justify-center text-meadow">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-2xl font-bold text-white tracking-tight">034 71 12 857</p>
+                                        <p class="text-white/40 text-xs mt-1">Nombre d'inscription limité ce mois-ci</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form -->
+                            <form id="orderForm" class="space-y-5">
+                                <div>
+                                    <label
+                                        class="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] ml-4 mb-2 block">Détails
+                                        de confirmation</label>
+                                    <input type="text" id="ref" required
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl py-5 px-6 text-white placeholder-white/20 focus:bg-white/10 focus:border-meadow outline-none transition-all"
+                                        placeholder="Référence SMS">
+                                </div>
+                                <input type="text" id="nom" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl py-5 px-6 text-white placeholder-white/20 focus:bg-white/10 focus:border-meadow outline-none transition-all"
+                                    placeholder="Anaranao">
+                                <input type="tel" id="tel" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl py-5 px-6 text-white placeholder-white/20 focus:bg-white/10 focus:border-meadow outline-none transition-all"
+                                    placeholder="Laharana WhatsApp">
+
+                                <button type="submit"
+                                    class="w-full py-6 rounded-3xl bg-white text-black font-black text-xl hover:bg-meadow hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-white/10 mt-4">
+                                    Inscrire izao
+                                </button>
+                            </form>
+
+                            <p class="mt-6 text-center text-white/20 text-xs">
+                                Fiainana milamina, vatana salama.
+                            </p>
                         </div>
                     </div>
                 </div>
