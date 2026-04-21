@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="mg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Système BAG - Sculpture du Corps</title>
+
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        meadow: '#C3EB3B',
+                        'meadow-dark': '#A1CC00',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            @media (max-width: 768px) {
+                html {
+                    font-size: 92%;
+                }
+            }
+
+            body {
+                font-family: 'Inter', sans-serif;
+                -webkit-font-smoothing: antialiased;
+                background-color: #FFFFFF;
+                color: #0F172A;
+                line-height: 1.6;
+                letter-spacing: -0.015em;
+            }
+
+            p {
+                font-size: 1.125rem;
+                line-height: 1.5;
+            }
+
+            @media (max-width: 768px) {
+                p {
+                    font-size: 1rem;
+                    line-height: 1.45;
+                }
+            }
+        }
+
+        .hero-clear {
+            background: #FFFFFF;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 130px;
+            padding-bottom: 20px;
+        }
+
+        .bloom-soft {
+            position: absolute;
+            width: 100vw;
+            height: 100vw;
+            background: radial-gradient(circle at center, rgba(195, 235, 59, 0.12), transparent 70%);
+            top: -30vw;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bloom-secondary {
+            position: absolute;
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle at center, rgba(195, 235, 59, 0.06), transparent 70%);
+            bottom: -20vw;
+            right: -20vw;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glass-nav {
+            background: transparent;
+            backdrop-filter: blur(30px);
+            border-bottom: none;
+        }
+
+        .section-padding {
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+        }
+
+        .pilier-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(15, 23, 42, 0.06);
+            border-radius: 20px;
+            padding: 36px 28px;
+            box-shadow: 0 4px 60px -15px rgba(0, 0, 0, 0.03);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .pilier-card:hover {
+            background: #FFFFFF;
+            border-color: rgba(195, 235, 59, 0.4);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 40px 90px -20px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon-accent {
+            width: 80px;
+            height: 80px;
+            background: rgba(15, 23, 42, 0.05);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pilier-card:hover .icon-accent {
+            background: #C3EB3B;
+            transform: scale(1.1) rotate(6deg);
+        }
+
+        .input-expert {
+            width: 100%;
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            font-size: 1rem;
+            color: #FFFFFF;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input-expert:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #C3EB3B;
+            outline: none;
+            box-shadow: 0 0 50px -10px rgba(195, 235, 59, 0.2);
+        }
+
+        .cta-expert {
+            background: #C3EB3B;
+            color: #0F172A;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 50px -10px rgba(195, 235, 59, 0.35);
+        }
+
+        .cta-expert:hover {
+            background: #D4F45F;
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 40px 80px -15px rgba(195, 235, 59, 0.55);
+        }
+
+        .dark-aura {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(195, 235, 59, 0.05), transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+            filter: blur(120px);
+        }
+
+        .text-break {
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .step-number {
+            font-size: 10rem;
+            position: absolute;
+            right: -2rem;
+            top: -2rem;
+            font-weight: 800;
+            color: rgba(15, 23, 42, 0.03);
+            user-select: none;
+            z-index: 0;
+            line-height: 1;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="selection:bg-meadow/30 antialiased">
+    <nav
+        class="fixed top-0 left-0 w-full z-[1000] glass-nav px-12 py-6 flex items-center justify-between transition-all">
+        <!-- Logo -->
+        <div class="font-heading text-2xl font-black tracking-tighter text-slate-900">Système BAG.</div>
+
+        <!-- Centered Menu -->
+        <div
+            class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-10 text-[15px] font-medium text-slate-500 tracking-tight">
+            <a href="#tantara" class="hover:text-black transition-colors">Tantara</a>
+            <a href="#piliers" class="hover:text-black transition-colors">Ny ho hainao</a>
+            <a href="#faq" class="hover:text-black transition-colors">FAQ</a>
+        </div>
+
+        <!-- Right Button -->
+        <a href="#checkout"
+            class="bg-slate-900 text-white text-[14px] font-medium px-8 py-3 rounded-xl hover:bg-black transition-all shadow-xl shadow-black/5">Inscrire
+            izao</a>
+    </nav>
+
+    <!-- HERO SECTION (Mapped from realignement hero) -->
+    <header class="hero-clear text-center overflow-hidden">
+        <div class="bloom-soft"></div>
+        <div class="max-w-5xl px-8 w-full relative z-10" data-aos="fade-up">
+            <h1
+                class="font-heading text-[clamp(2.25rem,8.5vw,5rem)] leading-[1.03] mb-8 font-extrabold tracking-tighter text-slate-950">
+                Ity système BAG ity no nahavitako nanana <br> poids stable
+            </h1>
+            <p class="text-slate-800 max-w-2xl mx-auto mb-6 font-normal tracking-tight leading-relaxed text-xl">
+                Kanefa tsy mila nanao régime, tsy mila sport, ary tsy mila jeûne intermittent.
+            </p>
+            <a href="#checkout"
+                class="inline-flex items-center gap-6 cta-expert font-bold text-[17px] pl-10 pr-3 py-3 rounded-full active:scale-95 group">
+                <span>Mila an'io système io aho</span>
+                <div
+                    class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white shadow-lg transition-transform group-hover:translate-x-2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+            </a>
+
+            <div class="scroll-indicator pointer-events-none">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="text-slate-400">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Story Section (Mapped from "#tantara" in realignement) -->
+        <section id="tantara" class="section-padding bg-slate-50 relative overflow-hidden">
+            <div class="bloom-secondary opacity-40"></div>
+            <div class="max-w-3xl mx-auto px-8 relative z-10" data-aos="fade-up">
+                <div class="space-y-4 text-slate-800 tracking-tight">
+                    <h2 class="text-3xl md:text-5xl font-bold font-heading leading-[1.1] tracking-tighter text-black">
+                        Efa nataonao daholo.
+                    </h2>
+
+                    <div class="text-slate-800 font-medium space-y-3 text-xl tracking-tighter">
+                        <p class="line-through text-slate-500">Na dia efa nanao ity karazana régime ity aza ianao,</p>
+                        <p class="line-through text-slate-500">Na dia efa niezaka nifehy tena,</p>
+                        <p class="line-through text-slate-500">Na dia efa nanao cardio foana aza ianao.</p>
+                    </div>
+
+                    <p class="leading-relaxed text-xl font-semibold text-meadow-dark pt-4">
+                        Kanefa Mbola tsy nahatazona lanja ihany, kanefa Mbola nitombo foana ihany...
+                    </p>
+
+                    <p class="leading-relaxed text-lg text-slate-800">
+                        Mieritreritra ianao fa tsy mahafehy tena sy tsy mañana discipline. Noho ny fahatsapako an'io dia
+                        nikaroka aho ka nahita an'ity zavatra tsy mahazatra ary tsy misy mpiresaka etsy sy eroa ity fa
+                        ny vatana dia manaraka horloge interne.
+                    </p>
+
+                    <p class="leading-relaxed text-lg text-slate-800">
+                        Rehefa tsy manaraka an'io ny fomba fiainanao na dia efa mihinana ity karazana sakafo mahasalama
+                        ity aza ianao dia hanao stockage foana ny vatanao fa tsy hanao brûlage mihitsy.
+                    </p>
+
+                    <p class="text-slate-500 font-medium text-lg leading-relaxed pt-2">
+                        Rehefa miara miasa amin'ilay vatana ianao ka manaraka ity horloge interne ity dia miova avokoa
+                        ny zavatra rehetra eo amin'ny vatanao.
+                    </p>
+
+                    <div class="pt-6">
+                        <a href="#checkout"
+                            class="inline-flex items-center gap-6 cta-expert font-bold text-[17px] pl-10 pr-3 py-3 rounded-full active:scale-95 group">
+                            <span>Mila an'io système io aho</span>
+                            <div
+                                class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white shadow-lg transition-transform group-hover:translate-x-2">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Target Audience (Mapped from "Ny zavatra ho hainao" in realignement) -->
+        <section class="section-padding bg-white relative overflow-hidden">
+            <div class="bloom-soft opacity-30 top-[-20vw]"></div>
+            <div class="max-w-7xl mx-auto px-10 relative z-10">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <span class="text-slate-400 text-[15px] font-medium tracking-tight mb-6 block">Ity Brûlage
+                        Automatique de graisse ity dia mifototra amin'ny chronobiologie - Mety Hoan'ireo</span>
+                    <h2
+                        class="font-heading text-4xl md:text-6xl font-bold text-slate-950 tracking-tighter leading-tight">
+                        Mety amiko ve ity système BAG ity?</h2>
+                    <p class="text-slate-600 font-medium text-xl max-w-2xl mx-auto mt-6">Ity système ity dia mety
+                        Hoan'ireo vehivavy te hiara-hiasa amin'ny vatana na dia efa tsy nahavita nitazona lanja mihitsy
+                        aza.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="pilier-card" data-aos="fade-up">
+                        <div class="icon-accent shadow-inner">👩</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-2 tracking-tight">Vehivavy 25 t hatramin'ny 55
+                            ans</h4>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-accent shadow-inner">💼</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-2 tracking-tight">Vehivavy bé asa bé</h4>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon-accent shadow-inner">👩‍👧‍👦</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-2 tracking-tight">Maman efa niteraka 2</h4>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon-accent shadow-inner">🤱</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-2 tracking-tight">Maman AVY nanao OC</h4>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="icon-accent shadow-inner">🏠</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-2 tracking-tight">Mère au foyer</h4>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="icon-accent shadow-inner">🌿</div>
+                        <h4 class="font-heading text-2xl font-semibold mb-2 tracking-tight">Vehivavy bé kibo</h4>
+                    </div>
+                </div>
+                <div class="text-center mt-12" data-aos="fade-up">
+                    <a href="#checkout"
+                        class="inline-flex items-center gap-6 cta-expert font-bold text-[17px] pl-10 pr-3 py-3 rounded-full active:scale-95 group">
+                        <span>Mety amiko ity système ity</span>
+                        <div
+                            class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white shadow-lg transition-transform group-hover:translate-x-2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Piliers (Mapped from "Ahoana..." in realignement) -->
+        <section id="piliers" class="section-padding bg-meadow/5 relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-10">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-10 tracking-tighter text-black leading-tight"
+                    data-aos="fade-up">
+                    Le brûlage Automatique de Graisse <br>
+                    <span class="text-meadow-dark">Système mifototra amin'ireto piliers 03 ireto</span>
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 md:gap-y-12">
+                    <div class="relative group" data-aos="fade-up">
+                        <div class="step-number group-hover:text-meadow/10 transition-colors">01</div>
+                        <div class="relative z-10">
+                            <h4 class="text-[15px] font-medium text-meadow-dark mb-4 tracking-widest uppercase">Pilier
+                                01</h4>
+                            <h3 class="text-2xl font-semibold mb-6 tracking-tight leading-snug">ALIMENTATION SOURCE</h3>
+                            <p class="text-slate-800 text-lg leading-relaxed max-w-sm">Ireo sakafo rehetra mamelona ny
+                                vatana fa tsy ireo mahatonga azy hanao stockage. Tapitra atreo Ilay fanjavozavoana
+                                amin'ny hoe "Inona no hohaniko". Ho azonao ireo lisitrin'ny sakafo rehetra mety hoan'ny
+                                vatana hahafahanao manana énergie ary manala Ilay envie de sucre.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-number group-hover:text-meadow/10 transition-colors">02</div>
+                        <div class="relative z-10">
+                            <h4 class="text-[15px] font-medium text-meadow-dark mb-4 tracking-widest uppercase">Pilier
+                                02</h4>
+                            <h3 class="text-2xl font-semibold mb-6 tracking-tight leading-snug">LE MOMENTS CLÉS</h3>
+                            <p class="text-slate-800 text-lg leading-relaxed max-w-sm">Ny fotoana tokony hinana no
+                                mikaonty noho Ilay sakafo tokony ho hoanina. Ny chronobiologie dia manamarina fa mandoro
+                                tavy automatique Ilay vatana amin'ny fotoana précise ka io fotoana io no hampiasaintsika
+                                handroso sy hitazomana Ilay lanja ho fixe.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative group" data-aos="fade-up">
+                        <div class="step-number group-hover:text-meadow/10 transition-colors">03</div>
+                        <div class="relative z-10">
+                            <h4 class="text-[15px] font-medium text-meadow-dark mb-4 tracking-widest uppercase">Pilier
+                                03</h4>
+                            <h3 class="text-2xl font-semibold mb-6 tracking-tight leading-snug">PSYCHO-EMOTIONNEL</h3>
+                            <p class="text-slate-800 text-lg leading-relaxed max-w-sm">Akotran'ilay sakafo dia ny Stress
+                                sy ny émotion koa mahatonga Ilay vatanao hanao stockage ka mibloquer Ilay brûlage
+                                Automatique de graisse ka io no débloquena amin'alalana fanaovana technique de
+                                respiration.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 text-center" data-aos="fade-up">
+                    <a href="#checkout"
+                        class="inline-flex items-center gap-6 cta-expert font-bold text-[17px] pl-10 pr-3 py-3 rounded-full active:scale-95 group">
+                        <span>Mila an'ireo 3 piliers ireo aho</span>
+                        <div
+                            class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white shadow-lg transition-transform group-hover:translate-x-2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Myth Busters (Mapped from "Difference Section" in realignement) -->
+        <section class="section-padding bg-white relative overflow-hidden">
+            <div class="max-w-5xl mx-auto px-10 relative z-10">
+                <div class="mb-12" data-aos="fade-up">
+                    <h2
+                        class="font-heading text-4xl md:text-5xl font-bold mb-6 tracking-tighter text-slate-950 leading-tight">
+                        Tsy mila mifady sy manena ny sakafo hohaninao ianao vao afaka manova n'y vatanao
+                    </h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-12 text-slate-800">
+                    <div data-aos="fade-up" class="border-t border-slate-200 pt-8">
+                        <p class="font-semibold mb-4 text-xl tracking-tight line-through text-slate-400">Ahenao ny
+                            sakafo dia mandehana manao sport matetika</p>
+                        <p class="text-slate-800 text-lg leading-relaxed">Raha tena nety io efa tsy Tonga teto ianao</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="100" class="border-t border-slate-100 pt-8">
+                        <p class="font-semibold mb-4 text-xl tracking-tight line-through text-slate-400">Misotroa ity
+                            thé minceur ity</p>
+                        <p class="text-slate-800 text-lg leading-relaxed">Raha nandraitra tokoa iny efa tsy nanana Ilay
+                            vatana niriana avokoa ireo vehivavy ireo anisan'izany ianao</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200" class="border-t border-slate-100 pt-8">
+                        <p class="font-semibold mb-4 text-xl tracking-tight line-through text-slate-400">Mahareta fa
+                            hiova io</p>
+                        <p class="text-slate-800 text-lg leading-relaxed">Manao ny fanaon'ny olon-drehetra dia vokatra
+                            mitovy amin'ny olon-drehetra no azo. Miala amin'ny mahazatra dia hahazo vokatra hafa</p>
+                    </div>
+                </div>
+                <div class="mt-16 text-center" data-aos="fade-up">
+                    <p class="text-xl font-medium text-slate-900 mb-8 max-w-3xl mx-auto">Tsy mandoa vola ianao mba
+                        hanenana vatana fa mandoa vola ianao mba hanana liberté sy filaminantsaina.</p>
+                    <a href="#checkout"
+                        class="inline-flex items-center gap-6 cta-expert font-bold text-[17px] pl-10 pr-3 py-3 rounded-full active:scale-95 group">
+                        <span>Resy lahatra aho</span>
+                        <div
+                            class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white shadow-lg transition-transform group-hover:translate-x-2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Benefits & Discipline & Proofs (Mapped from "Discipline Section" in realignement) -->
+        <section class="section-padding bg-slate-50">
+            <div class="max-w-4xl mx-auto px-10 space-y-10 text-left">
+                <div class="space-y-6 text-slate-800 tracking-tight" data-aos="fade-up">
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold text-black tracking-tighter leading-tight">
+                        Ity système ity no hahafahanao...
+                    </h2>
+
+                    <p class="text-slate-500 font-medium leading-relaxed text-lg border-l-4 border-slate-200 pl-8">
+                        Mahafantatra ny tena sakafo mi-activer Ilay métabolisme sy ireo sakafo misabote io métabolisme
+                        io ka mibloquer Ilay perte de poids anao.
+                    </p>
+                    <p class="text-slate-500 font-medium leading-relaxed text-lg border-l-4 border-slate-200 pl-8">
+                        Manao activation ilay Brûlage Automatique de Graisse amin'ny alalan'ny fihinana ireo sakafo ireo
+                        au bon moment tsy mila discipline sy effort bé.
+                    </p>
+                    <p class="text-slate-500 font-medium leading-relaxed text-lg border-l-4 border-slate-200 pl-8">
+                        Mahita tory tsy tapatapaka intsony Ary mampitony ireo karazana hormone mibloquer Ilay perte de
+                        poids.
+                    </p>
+                    <p class="text-slate-500 font-medium leading-relaxed text-lg border-l-4 border-slate-200 pl-8">
+                        Mistabiliser Ilay lanjanao tsy mila cardio, na manena ny sakafo hohanina.
+                    </p>
+                </div>
+
+                <div class="pt-2 text-left" data-aos="fade-up">
+                    <a href="#checkout"
+                        class="inline-flex items-center gap-6 cta-expert font-bold text-[17px] pl-10 pr-3 py-3 rounded-full active:scale-95 group">
+                        <span>Mila an'io système io aho</span>
+                        <div
+                            class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white shadow-lg transition-transform group-hover:translate-x-2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Proof Section matches realignement slider stacking visually exactly -->
+
+                <div class="py-8 border-y border-slate-100 relative" data-aos="fade-up">
+                    <p class="mt-10 text-slate-500 font-medium tracking-tight text-lg text-center">
+                        Tsy miteny anao aho hoe hinoy ny Zavatra teneniko fa ireto efa nampiasa ireto no hinoy.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Transf 01 -->
+                        <div
+                            class="group relative overflow-hidden rounded-3xl bg-slate-50 shadow-xl hover:shadow-meadow/40 transition-all duration-700 border-[6px] border-white transform-gpu hover:-translate-y-2 flex items-center justify-center">
+                            <img src="proof/proof_1.jpg" alt="Transformation 1" class="w-full h-auto object-cover"
+                                loading="lazy">
+                        </div>
+                        <!-- Transf 02 -->
+                        <div
+                            class="group relative overflow-hidden rounded-3xl bg-slate-50 shadow-xl hover:shadow-meadow/40 transition-all duration-700 border-[6px] border-white transform-gpu hover:-translate-y-2 flex items-center justify-center">
+                            <img src="proof/proof_2.jpg" alt="Transformation 2" class="w-full h-auto object-cover"
+                                loading="lazy">
+                        </div>
+                        <!-- Transf 03 -->
+                        <div
+                            class="group relative overflow-hidden rounded-3xl bg-slate-50 shadow-xl hover:shadow-meadow/40 transition-all duration-700 border-[6px] border-white transform-gpu hover:-translate-y-2 flex items-center justify-center">
+                            <img src="proof/proof_3.jpg" alt="Transformation 3" class="w-full h-auto object-cover"
+                                loading="lazy">
+                        </div>
+                        <!-- Transf 04 -->
+                        <div
+                            class="group relative overflow-hidden rounded-3xl bg-slate-50 shadow-xl hover:shadow-meadow/40 transition-all duration-700 border-[6px] border-white transform-gpu hover:-translate-y-2 flex items-center justify-center">
+                            <img src="proof/proof_4.jpg" alt="Transformation 4" class="w-full h-auto object-cover"
+                                loading="lazy">
+                        </div>
+                        <!-- Transf 05 -->
+                        <div
+                            class="group relative overflow-hidden rounded-3xl bg-slate-50 shadow-xl hover:shadow-meadow/40 transition-all duration-700 border-[6px] border-white transform-gpu hover:-translate-y-2 flex items-center justify-center">
+                            <img src="proof/proof_5.jpg" alt="Transformation 5" class="w-full h-auto object-cover"
+                                loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center" data-aos="fade-up">
+                    <a href="#checkout"
+                        class="inline-flex items-center gap-6 cta-expert font-bold text-[17px] pl-10 pr-3 py-3 rounded-full active:scale-95 group">
+                        <span>Resy lahatra aho fa hampiatra</span>
+                        <div
+                            class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white shadow-lg transition-transform group-hover:translate-x-2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dark Checkout Section (Exactly like realignement) -->
+        <section id="checkout" class="section-padding bg-slate-950 text-white relative overflow-hidden">
+            <div class="dark-aura top-[-400px] left-[-400px]"></div>
+            <div class="dark-aura bottom-[-400px] right-[-400px] opacity-20"></div>
+
+            <div class="max-w-6xl mx-auto px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-16 items-start">
+
+                    <!-- LEFT COLUMN: WHAT YOU GET -->
+                    <div class="lg:col-span-7 space-y-12" data-aos="fade-right">
+                        <div>
+                            <h2
+                                class="font-heading text-5xl md:text-6xl font-bold text-white tracking-tighter leading-none mb-6">
+                                Ireo zavatra <br>rehetra ho azonao ato
+                            </h2>
+                            <p class="text-white/40 text-xl font-light max-w-md">Ireo rehetra ilainao mba hanovana ny
+                                fahasalamanao mandrakizay.</p>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="flex gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-meadow group-hover:bg-meadow group-hover:text-black transition-all duration-500">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-1">Guide complet ireo alimentation source
+                                    </h4>
+                                    <p class="text-white/50">Lisitra feno ireo sakafo rehetra azo hohanina ka tapitra
+                                        atreo Ilay fanontaniana hoe '' Azoko hohanina ve ity ''</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-meadow group-hover:bg-meadow group-hover:text-black transition-all duration-500">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-1">Protocole du moments clés</h4>
+                                    <p class="text-white/50">Ireo planning semaine par semaine ny fotoana tokony hinanao
+                                        sakafo mifanaraka amin'ilay Rythme biologique Ilay vatana</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-meadow group-hover:bg-meadow group-hover:text-black transition-all duration-500">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-1">Recette source formule</h4>
+                                    <p class="text-white/50">Ilay fomba fanamboarana recette miaraka amin'ilay formule
+                                        exacte nahavitana nitazona Ilay poids fixe</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-meadow group-hover:bg-meadow group-hover:text-black transition-all duration-500">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-1">Module PSYCHO-EMOTIONNEL</h4>
+                                    <p class="text-white/50">Technique de respiration hahafahanao mampitony Ilay stress
+                                        eo no eo Ary routine matinale sy routine du soir hahafahanao manana énergie
+                                        débordante</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-8 mt-8 border-t border-white/10">
+                            <div class="mb-6">
+                                <h3 class="text-2xl font-bold text-white tracking-tight">3 Bonus Inclus Maimaimpoana
+                                </h3>
+                            </div>
+
+                            <div class="space-y-4">
+                                <!-- Bonus 1 -->
+                                <div class="bg-white/[0.03] border border-white/5 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/[0.06] transition-colors"
+                                    data-aos="fade-up">
+                                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-meadow/20 text-meadow flex items-center justify-center text-sm font-black tracking-widest">
+                                            01</div>
+                                        Module Bonus 1 . Recette 14 jours arahinao ara-bakiteny
+                                    </h4>
+                                    <p class="text-white/50 text-sm leading-relaxed pl-11">Misy ireo recette rehetra
+                                        nahavitana nitazona poids</p>
+                                </div>
+
+                                <!-- Bonus 2 -->
+                                <div class="bg-white/[0.03] border border-white/5 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/[0.06] transition-colors"
+                                    data-aos="fade-up" data-aos-delay="50">
+                                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-meadow/20 text-meadow flex items-center justify-center text-sm font-black tracking-widest">
+                                            02</div>
+                                        Module Bonus 2 . Application de Respiration
+                                    </h4>
+                                    <p class="text-white/50 text-sm leading-relaxed pl-11">Ho azonao koa ny application
+                                        azonao ampiasaina amin'ny téléphone hahatonga ny pratique ho mora Kokoa</p>
+                                </div>
+
+                                <!-- Bonus 3 -->
+                                <div class="bg-white/[0.03] border border-white/5 p-6 rounded-2xl relative overflow-hidden group hover:bg-white/[0.06] transition-colors"
+                                    data-aos="fade-up" data-aos-delay="100">
+                                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-meadow/20 text-meadow flex items-center justify-center text-sm font-black tracking-widest">
+                                            03</div>
+                                        Module Bonus 3 . Groupe privé de soutien accès a vie
+                                    </h4>
+                                    <p class="text-white/50 text-sm leading-relaxed pl-11">Groupe privé hahafanao
+                                        mifampiresaka sy manontany fanontaniana rehetra</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: PRICING & FORM (Matched to realignement form design) -->
+                    <div class="lg:col-span-5 relative" data-aos="fade-left">
+                        <div class="absolute inset-0 bg-meadow/10 blur-[120px] rounded-full -z-10"></div>
+                        <div
+                            class="bg-white/5 border border-white/10 backdrop-blur-3xl rounded-[32px] p-8 md:p-12 shadow-2xl relative">
+
+                            <!-- Price Block -->
+                            <div class="mb-10">
+                                <span
+                                    class="px-4 py-1.5 bg-white/10 rounded-full text-xs tracking-widest uppercase font-bold text-white mb-6 inline-block">Investissement</span>
+                                <h4 class="text-xl font-bold text-white mb-6">Accès immédiat à la système BAG complète
+                                </h4>
+                                <p class="text-white/30 text-lg mb-2 flex items-center gap-3">
+                                    <span>Valeur réelle:</span>
+                                    <span class="line-through font-bold">120.000ar</span>
+                                </p>
+                                <h3
+                                    class="text-6xl md:text-[5rem] font-black text-white tracking-tighter mb-4 mt-2 leading-none">
+                                    77.000ar</h3>
+                            </div>
+
+                            <!-- Payment Target -->
+                            <div class="mb-10 p-6 rounded-2xl bg-white/[0.03] border border-white/5">
+                                <h4 class="text-meadow text-xs font-bold uppercase tracking-widest mb-4">Numéro de
+                                    paiement</h4>
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-meadow/20 flex items-center justify-center text-meadow">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-2xl font-bold text-white tracking-tight">034 71 12 857</p>
+                                        <p class="text-white/40 text-xs mt-1">Payement direct via Mobile Money</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form -->
+                            <form id="orderForm" class="space-y-5">
+                                <div>
+                                    <label
+                                        class="text-[11px] font-bold text-white/30 uppercase tracking-[0.2em] ml-4 mb-2 block">Détails
+                                        de confirmation</label>
+                                    <input type="text" id="ref" required
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl py-5 px-6 text-white placeholder-white/20 focus:bg-white/10 focus:border-meadow outline-none transition-all"
+                                        placeholder="Référence SMS">
+                                </div>
+                                <input type="text" id="nom" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl py-5 px-6 text-white placeholder-white/20 focus:bg-white/10 focus:border-meadow outline-none transition-all"
+                                    placeholder="Anaranao">
+                                <input type="tel" id="tel" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-2xl py-5 px-6 text-white placeholder-white/20 focus:bg-white/10 focus:border-meadow outline-none transition-all"
+                                    placeholder="Laharana WhatsApp">
+
+                                <button type="submit"
+                                    class="w-full py-6 rounded-3xl bg-white text-black font-black text-xl hover:bg-meadow hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-white/10 mt-4">
+                                    Mila an'ity système ity aho
+                                </button>
+                            </form>
+
+                            <p class="mt-6 text-center text-white/20 text-xs">Miandry anao hanapakevitra ny vatana.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section (Adding realignement.html typography style to custom section) -->
+        <section id="faq" class="section-padding bg-slate-50 relative overflow-hidden">
+            <div class="max-w-3xl mx-auto px-8 relative z-10" data-aos="fade-up">
+                <div class="text-center mb-12">
+                    <h2
+                        class="font-heading text-4xl md:text-5xl font-bold tracking-tighter text-slate-950 leading-tight">
+                        Questions matetipitranga</h2>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="pilier-card" data-aos="fade-up">
+                        <h4 class="font-heading text-xl font-semibold mb-2 tracking-tight text-slate-900">Afiriana no
+                            mahita vokatra?</h4>
+                        <p class="text-slate-600 text-lg leading-relaxed">Miankina amin'ny fampiaranao fa ao anatin'ny 1
+                            semaine dia efa mahita Ary afaka mitazona Ilay lanja.</p>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="font-heading text-xl font-semibold mb-2 tracking-tight text-slate-900">Mahazo
+                            mihinana voankazo ve?</h4>
+                        <p class="text-slate-600 text-lg leading-relaxed">Mahazo mihinana ny voankazo rehetra isika.</p>
+                    </div>
+                    <div class="pilier-card" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="font-heading text-xl font-semibold mb-2 tracking-tight text-slate-900">Mety amiko ve
+                            na dia efa nampiatra Zavatra maro aza aho?</h4>
+                        <p class="text-slate-600 text-lg leading-relaxed">Na efa nampiatra ity karazana conseil tetsy sy
+                            teroa ity aza ianao dia mety foana satria standard Ilay méthode BAG.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="section-padding py-32 bg-slate-900 text-center relative overflow-hidden text-white">
+            <div class="bloom-secondary opacity-30"></div>
+            <div class="max-w-4xl mx-auto px-10 relative z-10" data-aos="zoom-in">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold tracking-tighter mb-10 leading-[1.1]">Miandry
+                    anao hanapakevitra ny vatana</h2>
+                <a href="#checkout"
+                    class="inline-flex items-center gap-6 cta-expert font-bold text-[17px] pl-10 pr-3 py-3 rounded-full active:scale-95 group text-black">
+                    <span>Vonona tanteraka aho</span>
+                    <div
+                        class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white shadow-lg transition-transform group-hover:translate-x-2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-8 bg-slate-950 text-center border-t border-white/5">
+        <p class="text-[15px] text-white/30 font-medium tracking-widest uppercase tracking-tighter">&copy; 2026 Système
+            BAG · All rights reserved</p>
+    </footer>
+
+    <script>
+        AOS.init({ duration: 1500, once: true, easing: 'ease-out-cubic' });
+        const orderForm = document.getElementById('orderForm');
+        if (orderForm) {
+            orderForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const ref = document.getElementById('ref').value.trim();
+                const nom = document.getElementById('nom').value.trim();
+                const numTel = document.getElementById('tel').value.trim();
+                const message = encodeURIComponent(`Système BAG 🌿\nRef: ${ref}\nNom: ${nom}\nWhatsApp: ${numTel}`);
+                window.open(`https://wa.me/261347112857?text=${message}`, '_blank');
+            });
+        }
+    </script>
+</body>
+
+</html>
