@@ -316,10 +316,135 @@
       text-transform: uppercase;
       margin-bottom: .4rem;
     }
+
+    /* ── Countdown ── */
+    @keyframes cd-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(200,169,110,.35); }
+      50% { box-shadow: 0 0 0 8px rgba(200,169,110,0); }
+    }
+
+    .cd-box {
+      min-width: 74px;
+      padding: 14px 8px;
+      background: rgba(200, 169, 110, .07);
+      border: 1px solid rgba(200, 169, 110, .30);
+      border-radius: 14px;
+    }
+
+    .cd-num {
+      font-family: 'Sora', sans-serif;
+      color: #C8A96E;
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cd-lbl {
+      color: rgba(255, 255, 255, .45);
+      font-size: 10.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 7px;
+    }
+
+    @media (max-width: 400px) {
+      .cd-box { min-width: 64px; }
+      .cd-num { font-size: 30px; }
+    }
+
+    /* ── Sticky urgency bar ── */
+    #urgency-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: linear-gradient(135deg, #0a1a0b 0%, #122015 100%);
+      border-bottom: 1px solid rgba(200, 169, 110, .40);
+      box-shadow: 0 4px 20px rgba(10, 26, 11, .35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 9px 16px;
+    }
+
+    body { padding-top: 52px; }
+
+    #urgency-bar .ub-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #F5F1E8;
+      letter-spacing: .01em;
+    }
+
+    #urgency-bar .ub-label b { color: #C8A96E; }
+
+    #urgency-bar .ub-timer {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: #C8A96E;
+      font-size: 14px;
+    }
+
+    #urgency-bar .ub-unit {
+      background: rgba(200, 169, 110, .12);
+      border: 1px solid rgba(200, 169, 110, .30);
+      border-radius: 7px;
+      padding: 3px 7px;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    #urgency-bar .ub-sep { color: rgba(200, 169, 110, .45); font-weight: 700; }
+
+    #urgency-bar .ub-cta {
+      font-family: 'Sora', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #2E5E2F, #3D7A3E);
+      padding: 7px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(46, 94, 47, .45);
+      transition: transform .15s;
+    }
+
+    #urgency-bar .ub-cta:hover { transform: translateY(-1px); }
+
+    @media (max-width: 640px) {
+      body { padding-top: 84px; }
+      #urgency-bar { gap: 8px 12px; padding: 8px 12px; }
+      #urgency-bar .ub-label { font-size: 11px; width: 100%; text-align: center; }
+      #urgency-bar .ub-timer { font-size: 13px; }
+      #urgency-bar .ub-cta { font-size: 11px; padding: 6px 13px; }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- ══════════════════════════════ STICKY URGENCY BAR ══════════════════════════════ -->
+  <div id="urgency-bar">
+    <span class="ub-label">⏳ Disponible <b>jusqu'au 26 juillet</b></span>
+    <div class="ub-timer" id="ub-timer">
+      <span class="ub-unit"><span id="ub-days">00</span></span><span class="ub-sep">:</span>
+      <span class="ub-unit"><span id="ub-hours">00</span></span><span class="ub-sep">:</span>
+      <span class="ub-unit"><span id="ub-mins">00</span></span><span class="ub-sep">:</span>
+      <span class="ub-unit"><span id="ub-secs">00</span></span>
+    </div>
+    <a href="#checkout" class="ub-cta"
+      onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'});return false;">HAKA IZAO →</a>
+  </div>
 
   <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
   <section
@@ -569,12 +694,6 @@
         Ilay fomba fiasan'ny vatana no arahina Ary manaraka ilay cycle naturel fotsiny.
       </div>
     </div>
-    <!-- <a href="#checkout"
-      class="inline-flex items-center justify-center gap-3 text-white font-bold rounded-2xl px-10 py-4 transition-all duration-200 hover:-translate-y-1"
-      style="background:linear-gradient(135deg,#2E5E2F,#3D7A3E);box-shadow:0 10px 36px rgba(46,94,47,.55);font-family:'Sora',sans-serif;font-size:15px;letter-spacing:.06em;"
-      onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'});return false;">
-      HAKA NY KIT AHO IZAO &nbsp;→
-    </a> -->
   </section>
 
 
@@ -853,11 +972,52 @@
       </h2>
       <p class="text-center text-gray-400 text-sm mb-9">Accès immédiat après confirmation via WhatsApp</p>
 
-      <!-- Urgency 
-      <div class="rounded-xl px-5 py-3.5 text-center text-sm font-semibold mb-9"
-        style="background:#fef2f2;border:1.5px solid #fecaca;color:#b91c1c;animation:pulse-urgency 2.5s infinite;">
-        ⏳ Prix spécial 55 000 Ar — disponible aujourd'hui seulement
-      </div>-->
+      <!-- ══════════ URGENCE + COMPTE À REBOURS ══════════ -->
+      <div class="rounded-3xl overflow-hidden mb-10"
+        style="background:linear-gradient(160deg,#0a1a0b 0%,#122015 100%);border:1px solid rgba(200,169,110,.35);box-shadow:0 20px 48px rgba(10,26,11,.28);">
+        <div style="height:3px;background:linear-gradient(90deg,#2E5E2F,#C8A96E,#7EC880);"></div>
+        <div class="px-6 sm:px-8 py-8 text-center">
+
+          <div class="inline-flex items-center gap-2 mb-5"
+            style="padding:6px 16px;background:rgba(200,169,110,.14);border:1px solid rgba(200,169,110,.45);border-radius:999px;animation:cd-pulse 2.2s ease-in-out infinite;">
+            <span style="font-size:13px;">⏳</span>
+            <span style="color:#C8A96E;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;font-family:'Sora',sans-serif;">Disponibilité limitée</span>
+          </div>
+
+          <h3 class="font-bold leading-snug mb-2"
+            style="font-family:'Sora',sans-serif;font-size:clamp(1.25rem,3.5vw,1.65rem);color:white;">
+            Disponible <span style="color:#C8A96E;">jusqu'au 26 juillet</span> ihany
+          </h3>
+          <p class="mb-7" style="color:rgba(255,255,255,.50);font-size:.85rem;line-height:1.65;">
+            Rehefa mikatona ny fotoana dia miverina 150 000 Ar indray ny vidiny
+          </p>
+
+          <div id="countdown" class="flex justify-center flex-wrap" style="gap:12px;">
+            <div class="cd-box">
+              <div id="cd-days" class="cd-num">00</div>
+              <div class="cd-lbl">Andro</div>
+            </div>
+            <div class="cd-box">
+              <div id="cd-hours" class="cd-num">00</div>
+              <div class="cd-lbl">Ora</div>
+            </div>
+            <div class="cd-box">
+              <div id="cd-mins" class="cd-num">00</div>
+              <div class="cd-lbl">Minitra</div>
+            </div>
+            <div class="cd-box">
+              <div id="cd-secs" class="cd-num">00</div>
+              <div class="cd-lbl">Segondra</div>
+            </div>
+          </div>
+
+          <div id="cd-expired" style="display:none;margin-top:18px;color:#C8A96E;font-size:.95rem;font-weight:600;font-family:'Sora',sans-serif;">
+            ⛔ Mikatona ny fotoana — mifandraisa aminay raha mbola misy toerana.
+          </div>
+
+        </div>
+      </div>
+      <!-- ══════════ FIN URGENCE + COMPTE À REBOURS ══════════ -->
 
       <!-- Recap card -->
       <div class="rounded-3xl overflow-hidden border border-gray-200 shadow-xl mb-10" style="background:white;">
@@ -1104,6 +1264,53 @@
       }
     );
   });
+
+  // ── Countdown timer : disponible jusqu'au 26 juillet 2026, 23h59 (Madagascar UTC+3) ──
+  (function () {
+    var deadline = new Date("2026-07-26T23:59:59+03:00").getTime();
+    // Bloc checkout
+    var d = document.getElementById("cd-days"),
+        h = document.getElementById("cd-hours"),
+        m = document.getElementById("cd-mins"),
+        s = document.getElementById("cd-secs");
+    // Barre sticky
+    var ubD = document.getElementById("ub-days"),
+        ubH = document.getElementById("ub-hours"),
+        ubM = document.getElementById("ub-mins"),
+        ubS = document.getElementById("ub-secs");
+    function pad(n) { return n < 10 ? "0" + n : "" + n; }
+    var timer;
+    function tick() {
+      var diff = deadline - Date.now();
+      if (diff <= 0) {
+        var cd = document.getElementById("countdown");
+        if (cd) cd.style.display = "none";
+        var exp = document.getElementById("cd-expired");
+        if (exp) exp.style.display = "block";
+        // Barre sticky : passe en mode fermé
+        var bar = document.getElementById("urgency-bar");
+        if (bar) {
+          bar.innerHTML = '<span class="ub-label" style="width:100%;text-align:center;">⛔ <b>Mikatona ny fotoana</b> — mifandraisa aminay raha mbola misy toerana</span>';
+        }
+        clearInterval(timer);
+        return;
+      }
+      var dd = pad(Math.floor(diff / 86400000)),
+          hh = pad(Math.floor(diff % 86400000 / 3600000)),
+          mm = pad(Math.floor(diff % 3600000 / 60000)),
+          ss = pad(Math.floor(diff % 60000 / 1000));
+      if (d) d.textContent = dd;
+      if (h) h.textContent = hh;
+      if (m) m.textContent = mm;
+      if (s) s.textContent = ss;
+      if (ubD) ubD.textContent = dd;
+      if (ubH) ubH.textContent = hh;
+      if (ubM) ubM.textContent = mm;
+      if (ubS) ubS.textContent = ss;
+    }
+    tick();
+    timer = setInterval(tick, 1000);
+  })();
 </script>
 
 
