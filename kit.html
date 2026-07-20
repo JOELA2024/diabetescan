@@ -69,6 +69,23 @@
       document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     }
+    function openProof(fig) {
+      const img = fig.querySelector('img');
+      const box = document.getElementById('proof-lightbox');
+      const target = document.getElementById('proof-lightbox-img');
+      target.src = img.src;
+      target.alt = img.alt || '';
+      box.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeProof(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('proof-lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeProof();
+    });
   </script>
   <style>
     * {
@@ -427,6 +444,38 @@
       #urgency-bar .ub-label { font-size: 11px; width: 100%; text-align: center; }
       #urgency-bar .ub-timer { font-size: 13px; }
       #urgency-bar .ub-cta { font-size: 11px; padding: 6px 13px; }
+    }
+
+    /* ── Proof masonry gallery ── */
+    .proof-masonry {
+      column-count: 3;
+      column-gap: 14px;
+    }
+
+    @media (max-width: 900px) { .proof-masonry { column-count: 2; } }
+    @media (max-width: 480px) { .proof-masonry { column-count: 1; column-gap: 0; } }
+
+    .proof-shot {
+      break-inside: avoid;
+      margin: 0 0 14px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0f1e10;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .proof-shot:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(15, 30, 16, .22);
+    }
+
+    .proof-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
   </style>
 </head>
@@ -797,8 +846,9 @@
   <section class="py-20" style="background:#f8faf8;">
     <div class="max-w-3xl mx-auto px-6 sm:px-12">
       <span class="text-[11px] font-bold tracking-[.2em] uppercase text-gray-400">📸 Ny lazain'ny olona</span>
+
+      <!-- Featured quote -->
       <div class="mt-8 rounded-3xl overflow-hidden relative" style="background:#0f1e10;padding:2.5rem 2.5rem 2rem;">
-        <!-- decorative gold line -->
         <div class="w-8 h-0.5 mb-6" style="background:#C8A96E;"></div>
         <blockquote class="font-bold italic leading-snug text-white mb-4"
           style="font-family:'Sora',sans-serif;font-size:clamp(1.15rem,3vw,1.55rem);">
@@ -808,11 +858,52 @@
         <p class="text-xs uppercase tracking-wider" style="color:rgba(255,255,255,.35);">— Ireo olona efa nampiasa
           an'ity kit ity</p>
       </div>
-      <div class="mt-4 rounded-2xl border border-dashed border-gray-200 px-6 py-5 text-center"
+
+      <!-- Original proof screenshot (kept) -->
+      <div class="mt-4 rounded-2xl border border-dashed border-gray-200 overflow-hidden"
         style="background:white;">
-        <p class="text-xs text-gray-400 italic"> <img src="images
-/IMG_20260207_095736.jpg"></p>
+        <img src="images/IMG_20260207_095736.jpg" alt="Témoignage cliente — diabétique depuis 2015"
+          style="display:block;width:100%;height:auto;">
       </div>
+
+      <!-- Gallery intro -->
+      <p class="text-center mt-12 mb-2 font-bold" style="font-family:'Sora',sans-serif;color:#0f172a;font-size:clamp(1.2rem,3vw,1.6rem);">
+        Ireo hafatra tena voaray avy amin'ny mpampiasa
+      </p>
+      <p class="text-center text-sm text-gray-400 mb-8">Captures d'écran réelles — Messenger &amp; WhatsApp. Tsindrio raha te hanalehibe.</p>
+
+      <!-- Masonry gallery of real screenshots -->
+      <div class="proof-masonry">
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/Screenshot_2026-02-09-20-51-56-66.jpg" alt="Témoignage cliente — HbA1c inférieur à 5,7%"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260528_095929.jpg" alt="Témoignage cliente — glycémie à jeun 5,5 mmol, phase remontée"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260227_085637.jpg" alt="Témoignage cliente — 6 semaines, milamina tsara"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260202_172810.jpg" alt="Témoignages clientes — 2 à 3 semaines de suivi"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/Screenshot_2026-03-03-09-15-32-60.jpg" alt="Témoignage cliente — sommeil et énergie"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/DC.jpg" alt="Commentaire cliente — HbA1c en baisse malgré les fêtes"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260202_172421.jpg" alt="Témoignage cliente — sommeil amélioré, prévention"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/Screenshot_2026-02-09-20-35-54-97.jpg" alt="Témoignage cliente — 1 semaine, légèreté au réveil"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260720_121857.jpg" alt="Témoignage cliente — taux 6,3 puis 5,7 à l'analyse"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260207_095653.jpg" alt="Témoignage cliente — diabète code, bons résultats"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260210_064908.jpg" alt="Témoignage cliente — glycémie descendue à 0,96"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260720_123942.jpg" alt="Témoignage cliente — perte de poids et taille"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260202_172440.jpg" alt="Échange WhatsApp — arrêt du Metformine après stabilisation"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/IMG_20260720_121418.jpg" alt="Témoignage cliente — glycémie stable après 1 mois"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/Screenshot_2026-02-02-17-12-24-77.jpg" alt="Échange Messenger — glycémie descendue le matin"></figure>
+        <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/Screenshot_2026-04-07-17-14-35-98.jpg" alt="Témoignage cliente — glycémie stable après 1 mois"></figure>
+      </div>
+
+      <p class="text-center text-xs text-gray-400 italic mt-8 leading-relaxed">
+        Ireo vokatra ireo dia samy hafa arakaraka ny vatana sy ny fampiharana. Ny méthode sy ny dingana anefa mitovy ho an'ny rehetra.
+      </p>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="proof-lightbox" onclick="closeProof(event)"
+      style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(6,14,7,.92);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;">
+      <button onclick="closeProof(event)" aria-label="Fermer"
+        style="position:absolute;top:18px;right:20px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(200,169,110,.4);background:rgba(0,0,0,.4);color:#C8A96E;font-size:22px;cursor:pointer;line-height:1;">✕</button>
+      <img id="proof-lightbox-img" src="" alt=""
+        style="max-width:100%;max-height:88vh;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);border:1px solid rgba(200,169,110,.25);">
     </div>
   </section>
 
