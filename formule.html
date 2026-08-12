@@ -16,7 +16,7 @@
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'sans-serif'], sora: ['Sora', 'sans-serif'] },
-          colors: { moss: '#2E5E2F', 'moss-d': '#1a3a1b', 'moss-l': '#3D7A3E', gold: '#C8A96E', 'gold-l': '#e6c98a' }
+          colors: { prune: '#6D2C5F', 'prune-d': '#45183B', 'prune-l': '#8B3B78', rose: '#D9A38C', 'rose-l': '#F0CDBA' }
         }
       }
     }
@@ -34,8 +34,8 @@
         input.style.background = '#fef2f2';
       } else {
         warn.style.display = 'none';
-        input.style.borderColor = '#2E5E2F';
-        input.style.background = '#f0fdf4';
+        input.style.borderColor = '#6D2C5F';
+        input.style.background = '#FCF3F8';
       }
     }
 
@@ -104,7 +104,7 @@
       top: 54px;
       bottom: 54px;
       width: 2px;
-      background: linear-gradient(to bottom, #2E5E2F, #7EC880);
+      background: linear-gradient(to bottom, #6D2C5F, #DFA6CE);
       z-index: 0;
     }
 
@@ -128,10 +128,10 @@
       font-size: 20px;
       font-weight: 800;
       flex-shrink: 0;
-      background: #2E5E2F;
+      background: #6D2C5F;
       color: white;
       border: 3px solid white;
-      box-shadow: 0 0 0 3px #2E5E2F;
+      box-shadow: 0 0 0 3px #6D2C5F;
     }
 
     .step-card {
@@ -186,7 +186,7 @@
       gap: 10px;
       width: 100%;
       padding: 16px;
-      background: #2E5E2F;
+      background: #6D2C5F;
       color: white;
       font-family: 'Sora', sans-serif;
       font-size: 15px;
@@ -195,14 +195,14 @@
       border-radius: 14px;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 6px 24px rgba(46, 94, 47, .40);
+      box-shadow: 0 6px 24px rgba(109, 44, 95, .40);
       transition: transform .15s, box-shadow .15s;
       margin-top: 6px;
     }
 
     .btn-pay-main:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 32px rgba(46, 94, 47, .50);
+      box-shadow: 0 10px 32px rgba(109, 44, 95, .50);
     }
 
     .ref-example {
@@ -328,7 +328,7 @@
       font-size: .7rem;
       font-weight: 800;
       letter-spacing: .15em;
-      color: rgba(200, 169, 110, .5);
+      color: rgba(217, 163, 140, .5);
       text-transform: uppercase;
       margin-bottom: .4rem;
     }
@@ -338,8 +338,8 @@
       border-radius: 18px;
       padding: 26px 20px;
       text-align: center;
-      border: 1.5px solid rgba(46, 94, 47, .14);
-      background: #f8faf8;
+      border: 1.5px solid rgba(109, 44, 95, .14);
+      background: #FAF6F9;
     }
 
     .switch-box.off {
@@ -352,7 +352,7 @@
       font-family: 'Sora', sans-serif;
       font-size: 32px;
       font-weight: 800;
-      color: #2E5E2F;
+      color: #6D2C5F;
       display: block;
       margin-bottom: 8px;
       letter-spacing: -.02em;
@@ -365,21 +365,21 @@
 
     /* ── Countdown ── */
     @keyframes cd-pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(200,169,110,.35); }
-      50% { box-shadow: 0 0 0 8px rgba(200,169,110,0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(217,163,140,.35); }
+      50% { box-shadow: 0 0 0 8px rgba(217,163,140,0); }
     }
 
     .cd-box {
       min-width: 74px;
       padding: 14px 8px;
-      background: rgba(200, 169, 110, .07);
-      border: 1px solid rgba(200, 169, 110, .30);
+      background: rgba(217, 163, 140, .07);
+      border: 1px solid rgba(217, 163, 140, .30);
       border-radius: 14px;
     }
 
     .cd-num {
       font-family: 'Sora', sans-serif;
-      color: #C8A96E;
+      color: #D9A38C;
       font-size: 36px;
       font-weight: 800;
       line-height: 1;
@@ -406,9 +406,9 @@
       left: 0;
       right: 0;
       z-index: 9999;
-      background: linear-gradient(135deg, #0a1a0b 0%, #122015 100%);
-      border-bottom: 1px solid rgba(200, 169, 110, .40);
-      box-shadow: 0 4px 20px rgba(10, 26, 11, .35);
+      background: linear-gradient(135deg, #190A17 0%, #2B1128 100%);
+      border-bottom: 1px solid rgba(217, 163, 140, .40);
+      box-shadow: 0 4px 20px rgba(25, 10, 23, .35);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -423,11 +423,11 @@
       font-family: 'Sora', sans-serif;
       font-size: 12.5px;
       font-weight: 700;
-      color: #F5F1E8;
+      color: #F6EEF3;
       letter-spacing: .01em;
     }
 
-    #urgency-bar .ub-label b { color: #C8A96E; }
+    #urgency-bar .ub-label b { color: #D9A38C; }
 
     #urgency-bar .ub-timer {
       display: flex;
@@ -436,32 +436,32 @@
       font-family: 'Sora', sans-serif;
       font-weight: 800;
       font-variant-numeric: tabular-nums;
-      color: #C8A96E;
+      color: #D9A38C;
       font-size: 14px;
     }
 
     #urgency-bar .ub-unit {
-      background: rgba(200, 169, 110, .12);
-      border: 1px solid rgba(200, 169, 110, .30);
+      background: rgba(217, 163, 140, .12);
+      border: 1px solid rgba(217, 163, 140, .30);
       border-radius: 7px;
       padding: 3px 7px;
       min-width: 30px;
       text-align: center;
     }
 
-    #urgency-bar .ub-sep { color: rgba(200, 169, 110, .45); font-weight: 700; }
+    #urgency-bar .ub-sep { color: rgba(217, 163, 140, .45); font-weight: 700; }
 
     #urgency-bar .ub-cta {
       font-family: 'Sora', sans-serif;
       font-size: 12px;
       font-weight: 800;
       color: #fff;
-      background: linear-gradient(135deg, #2E5E2F, #3D7A3E);
+      background: linear-gradient(135deg, #6D2C5F, #8B3B78);
       padding: 7px 16px;
       border-radius: 999px;
       text-decoration: none;
       white-space: nowrap;
-      box-shadow: 0 4px 14px rgba(46, 94, 47, .45);
+      box-shadow: 0 4px 14px rgba(109, 44, 95, .45);
       transition: transform .15s;
     }
 
@@ -489,7 +489,7 @@
       margin: 0 0 14px;
       border-radius: 14px;
       overflow: hidden;
-      background: #0f1e10;
+      background: #1D0B1A;
       border: 1px solid #e2e8f0;
       box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
       cursor: pointer;
@@ -498,7 +498,7 @@
 
     .proof-shot:hover {
       transform: translateY(-3px);
-      box-shadow: 0 14px 34px rgba(15, 30, 16, .22);
+      box-shadow: 0 14px 34px rgba(29, 11, 26, .22);
     }
 
     .proof-shot img {
@@ -527,31 +527,31 @@
   <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
   <section
     class="relative flex flex-col items-center justify-center text-center min-h-screen overflow-hidden hero-grain"
-    style="background:#0a1a0b;">
+    style="background:#190A17;">
     <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=2070&q=80" alt=""
-      class="absolute inset-0 w-full h-full object-cover opacity-[.18] pointer-events-none select-none"
-      aria-hidden="true" />
+      class="absolute inset-0 w-full h-full object-cover opacity-[.14] pointer-events-none select-none"
+      style="filter:saturate(.25) hue-rotate(255deg);" aria-hidden="true" />
     <div class="absolute inset-0 pointer-events-none"
-      style="background:linear-gradient(to bottom,rgba(10,26,11,.5) 0%,rgba(10,26,11,.75) 55%,#0a1a0b 100%);"></div>
+      style="background:linear-gradient(to bottom,rgba(25,10,23,.5) 0%,rgba(25,10,23,.75) 55%,#190A17 100%);"></div>
     <!-- blobs -->
     <div class="b1 absolute rounded-full pointer-events-none blur-3xl opacity-25"
-      style="width:560px;height:560px;top:-120px;right:-140px;background:radial-gradient(circle,#C8A96E,transparent 70%);">
+      style="width:560px;height:560px;top:-120px;right:-140px;background:radial-gradient(circle,#D9A38C,transparent 70%);">
     </div>
     <div class="b2 absolute rounded-full pointer-events-none blur-3xl opacity-[.18]"
-      style="width:450px;height:450px;bottom:-80px;left:-120px;background:radial-gradient(circle,#2E5E2F,transparent 70%);">
+      style="width:450px;height:450px;bottom:-80px;left:-120px;background:radial-gradient(circle,#6D2C5F,transparent 70%);">
     </div>
 
     <div class="relative z-10 px-6 sm:px-10 py-24 max-w-3xl mx-auto w-full">
 
       <!-- Eyebrow -->
-      <p class="text-[11px] font-bold tracking-[.28em] uppercase mb-5" style="color:#7EC880;">✦ Formule Brûle Graisse</p>
+      <p class="text-[11px] font-bold tracking-[.28em] uppercase mb-5" style="color:#DFA6CE;">✦ Formule Brûle Graisse</p>
 
       <!-- Main headline -->
       <h1 class="font-black leading-[1.05] text-white mx-auto mb-4 tracking-tight"
         style="font-family:'Sora',sans-serif;font-size:clamp(2.4rem,6.5vw,4.6rem);max-width:820px;">
         Ilay Formule Exacte Fanalana Tavy <br>
         <span
-          style="background:linear-gradient(130deg,#7EC880 20%,#C8A96E 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+          style="background:linear-gradient(130deg,#DFA6CE 20%,#D9A38C 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
           Ao Anatin'ny 7 Andro</span>
       </h1>
 
@@ -565,7 +565,7 @@
 
       <a href="#checkout"
         class="inline-flex items-center gap-3 text-white font-bold rounded-2xl px-10 py-4 transition-all duration-200 hover:-translate-y-1"
-        style="background:linear-gradient(135deg,#2E5E2F,#3D7A3E);box-shadow:0 10px 36px rgba(46,94,47,.55);font-family:'Sora',sans-serif;font-size:15px;letter-spacing:.06em;"
+        style="background:linear-gradient(135deg,#6D2C5F,#8B3B78);box-shadow:0 10px 36px rgba(109,44,95,.55);font-family:'Sora',sans-serif;font-size:15px;letter-spacing:.06em;"
         onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'});return false;">
         JE VEUX MA FORMULE MAINTENANT &nbsp;→
       </a>
@@ -576,12 +576,12 @@
   </section>
 
   <!-- ══════════════════════════════ PAIN ══════════════════════════════ -->
-  <section class="py-0 overflow-hidden" style="background:#0f1e10;">
+  <section class="py-0 overflow-hidden" style="background:#1D0B1A;">
     <div class="max-w-3xl mx-auto px-6 sm:px-12 py-16 sm:py-20">
-      <div class="w-8 h-0.5 mb-7" style="background:#C8A96E;"></div>
+      <div class="w-8 h-0.5 mb-7" style="background:#D9A38C;"></div>
       <h2 class="font-black leading-[1.15] mb-8"
         style="font-family:'Sora',sans-serif;font-size:clamp(1.7rem,4vw,2.8rem);color:white;">
-        Vao mijanona tsy manao régime ianao dia <em style="color:#C8A96E;font-style:italic;">miverina indray</em> ilay
+        Vao mijanona tsy manao régime ianao dia <em style="color:#D9A38C;font-style:italic;">miverina indray</em> ilay
         tavy
       </h2>
       <div class="space-y-4 mb-8" style="font-size:.92rem;line-height:1.9;color:rgba(255,255,255,.58);">
@@ -590,9 +590,9 @@
         <p>Kanefa vao mijanona tsy manao régime ianao dia miverina indray ilay tavy — ary vao mainka nitombo kokoa noho
           ilay teo aloha.</p>
         <p>Dia eo foana ianao, ilay kivy, manameloka tena hoe tsy mahafehy tena mihitsy <span
-            style="color:#7EC880;">aho ity</span>.</p>
+            style="color:#DFA6CE;">aho ity</span>.</p>
       </div>
-      <div class="border-l-4 pl-5 py-1 space-y-1" style="border-color:rgba(200,169,110,.45);">
+      <div class="border-l-4 pl-5 py-1 space-y-1" style="border-color:rgba(217,163,140,.45);">
         <p style="color:rgba(255,255,255,.5);font-style:italic;font-size:.88rem;line-height:1.9;">
           "Nahoana aho no tsy mahavita mitazona ilay vokatra?"<br>
           "Tsy hiova amin'izao intsony ve izany ity vatako ity?"<br>
@@ -605,7 +605,7 @@
   </section>
 
   <!-- ══════════════════════════════ AGITATE ══════════════════════════════ -->
-  <section id="agitate" class="py-20 overflow-hidden" style="background:#111b12;">
+  <section id="agitate" class="py-20 overflow-hidden" style="background:#200D1D;">
     <div class="absolute inset-0 pointer-events-none opacity-[.04]" aria-hidden="true"
       style="background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.5) 0,rgba(255,255,255,.5) 1px,transparent 1px,transparent 48px),repeating-linear-gradient(90deg,rgba(255,255,255,.5) 0,rgba(255,255,255,.5) 1px,transparent 1px,transparent 48px); background-size:48px 48px;">
     </div>
@@ -614,7 +614,7 @@
 
       <!-- Header -->
       <div class="sr mb-12">
-        <span class="text-[11px] font-bold tracking-[.22em] uppercase" style="color:#C8A96E;">Ny marina tsy nolazaina
+        <span class="text-[11px] font-bold tracking-[.22em] uppercase" style="color:#D9A38C;">Ny marina tsy nolazaina
           taminao</span>
         <h2 class="font-bold leading-[1.2] mt-3 text-white"
           style="font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3.5vw,2.2rem);">
@@ -648,8 +648,8 @@
 
       <!-- Conclusion callout -->
       <div class="sr-scale rounded-2xl px-6 py-5"
-        style="background:rgba(200,169,110,.08);border:1.5px solid rgba(200,169,110,.2);">
-        <p class="font-semibold leading-relaxed" style="color:#C8A96E;font-size:.92rem;">
+        style="background:rgba(217,163,140,.08);border:1.5px solid rgba(217,163,140,.2);">
+        <p class="font-semibold leading-relaxed" style="color:#D9A38C;font-size:.92rem;">
           Noho ny fahatsapako an'io faille sy limite ilay méthode mahazatra io no nahatonga ahy nikaroka. Ka rehefa nanao
           andrana maro samihafa dia teo no nahitana ity méthode antsoina hoe <br> CHRONONUTRITION ity.
         </p>
@@ -658,9 +658,9 @@
   </section>
 
   <!-- ══════════════════════════════ SOLUTION ══════════════════════════════ -->
-  <section class="py-20" style="background:#f8faf8;">
+  <section class="py-20" style="background:#FAF6F9;">
     <div class="max-w-3xl mx-auto px-6 sm:px-12">
-      <span class="text-[11px] font-bold tracking-[.2em] uppercase" style="color:#2E5E2F;">💡 Ilay valiny</span>
+      <span class="text-[11px] font-bold tracking-[.2em] uppercase" style="color:#6D2C5F;">💡 Ilay valiny</span>
       <h2 class="font-bold leading-snug mt-3 mb-6 text-gray-900"
         style="font-family:'Sora',sans-serif;font-size:clamp(1.6rem,3.5vw,2.2rem);">
         Tsy ilay sakafo hohaninao no olana
@@ -683,23 +683,23 @@
         </div>
         <div class="switch-box">
           <span class="switch-key">QUAND</span>
-          <p class="text-sm" style="color:#2E5E2F;">Rahoviana no hihinana<br>— chronobiologie</p>
+          <p class="text-sm" style="color:#6D2C5F;">Rahoviana no hihinana<br>— chronobiologie</p>
         </div>
       </div>
 
       <div class="mt-8 rounded-2xl px-6 py-5 font-semibold leading-relaxed"
-        style="background:rgba(46,94,47,.07);border:1.5px solid rgba(46,94,47,.14);color:#1a3a1b;font-size:.92rem;">
+        style="background:rgba(109,44,95,.07);border:1.5px solid rgba(109,44,95,.14);color:#45183B;font-size:.92rem;">
         Tsy ilay sakafo hohaninao no olana fa ilay <span class="underline decoration-2"
-          style="text-decoration-color:#C8A96E;">fotoana hihinananao azy</span>.<br>
+          style="text-decoration-color:#D9A38C;">fotoana hihinananao azy</span>.<br>
         Izay ilay <strong>CHRONONUTRITION</strong>
       </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════ BENEFITS ══════════════════════════════ -->
-  <section class="py-20 border-y" style="border-color:#e8f5e9;background:white;">
+  <section class="py-20 border-y" style="border-color:#F2E3EC;background:white;">
     <div class="max-w-3xl mx-auto px-6 sm:px-12">
-      <span class="text-[11px] font-bold tracking-[.2em] uppercase" style="color:#2E5E2F;">✦ Ny azonao</span>
+      <span class="text-[11px] font-bold tracking-[.2em] uppercase" style="color:#6D2C5F;">✦ Ny azonao</span>
       <h2 class="font-bold leading-snug mt-3 mb-10 text-gray-900"
         style="font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2rem);">
         Io formule io no hahafanao:
@@ -707,7 +707,7 @@
       <ul class="space-y-5">
         <li class="flex items-start gap-4">
           <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-            style="background:#2E5E2F;">
+            style="background:#6D2C5F;">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
               <polyline points="20 6 9 17 4 12" />
             </svg>
@@ -717,7 +717,7 @@
         </li>
         <li class="flex items-start gap-4">
           <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-            style="background:#2E5E2F;">
+            style="background:#6D2C5F;">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
               <polyline points="20 6 9 17 4 12" />
             </svg>
@@ -727,7 +727,7 @@
         </li>
         <li class="flex items-start gap-4">
           <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-            style="background:#2E5E2F;">
+            style="background:#6D2C5F;">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
               <polyline points="20 6 9 17 4 12" />
             </svg>
@@ -737,7 +737,7 @@
         </li>
         <li class="flex items-start gap-4">
           <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-            style="background:#2E5E2F;">
+            style="background:#6D2C5F;">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
               <polyline points="20 6 9 17 4 12" />
             </svg>
@@ -747,7 +747,7 @@
         </li>
         <li class="flex items-start gap-4">
           <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5"
-            style="background:#2E5E2F;">
+            style="background:#6D2C5F;">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
               <polyline points="20 6 9 17 4 12" />
             </svg>
@@ -757,7 +757,7 @@
         </li>
       </ul>
       <div class="mt-9 rounded-2xl px-6 py-5"
-        style="background:#f8faf8;border-left:3px solid #2E5E2F;font-size:.88rem;color:#374151;line-height:1.85;">
+        style="background:#FAF6F9;border-left:3px solid #6D2C5F;font-size:.88rem;color:#374151;line-height:1.85;">
         <strong class="text-gray-900">Ity formule ity dia tsy régime.</strong> Tsy misy fanisana calories. Tsy misy
         fandanjana gramme. Tsy mila savon na thé na produit hafa. Tsy misy sport obligatoire.<br>
         Ilay fomba fiasan'ny vatana no arahina, ary manaraka ilay cycle naturel fotsiny.
@@ -766,9 +766,9 @@
   </section>
 
   <!-- ══════════════════════════════ CONTENU ══════════════════════════════ -->
-  <section class="py-20" style="background:linear-gradient(165deg,#0a1a0b 0%,#122015 100%);">
+  <section class="py-20" style="background:linear-gradient(165deg,#190A17 0%,#2B1128 100%);">
     <div class="max-w-3xl mx-auto px-6 sm:px-12">
-      <span class="text-[11px] font-bold tracking-[.2em] uppercase" style="color:#7EC880;">📦 Inona avy no ho
+      <span class="text-[11px] font-bold tracking-[.2em] uppercase" style="color:#DFA6CE;">📦 Inona avy no ho
         azonao</span>
       <h2 class="font-bold leading-snug mt-3 mb-3 text-white"
         style="font-family:'Sora',sans-serif;font-size:clamp(1.6rem,3.5vw,2.2rem);">Formule Brûle Graisse</h2>
@@ -780,11 +780,11 @@
         <!-- Card 1 -->
         <div class="kit-card rounded-2xl overflow-hidden"
           style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">
-          <div style="height:3px;background:linear-gradient(90deg,#2E5E2F,#7EC880);"></div>
+          <div style="height:3px;background:linear-gradient(90deg,#6D2C5F,#DFA6CE);"></div>
           <div class="p-7">
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                style="background:rgba(46,94,47,.3);">🍽️</div>
+                style="background:rgba(109,44,95,.3);">🍽️</div>
               <h3 class="font-bold text-white" style="font-family:'Sora',sans-serif;font-size:1rem;">PDF Assiettes Brûle
                 Graisse</h3>
             </div>
@@ -792,11 +792,11 @@
               Ilay formule exacte ny sakafo tokony hatao eo amin'ny lovia anao isan'andro.
             </p>
             <div class="rounded-xl px-5 py-4"
-              style="background:rgba(46,94,47,.2);border:1px solid rgba(126,200,128,.12);">
+              style="background:rgba(109,44,95,.2);border:1px solid rgba(223,166,206,.12);">
               <p style="color:rgba(255,255,255,.80);font-size:.85rem;line-height:1.7;">Tsy miasa saina intsony ianao hoe
                 inona avy ireo karazany — manaraka ilay formule assiette fotsiny.</p>
               <p class="mt-3 pt-3"
-                style="color:#C8A96E;font-size:.85rem;line-height:1.7;border-top:1px solid rgba(200,169,110,.18);">Lasa
+                style="color:#D9A38C;font-size:.85rem;line-height:1.7;border-top:1px solid rgba(217,163,140,.18);">Lasa
                 libre ny saina. Ny lovia voalamina, ny vatana manala tavy ho azy.</p>
             </div>
           </div>
@@ -805,11 +805,11 @@
         <!-- Card 2 -->
         <div class="kit-card rounded-2xl overflow-hidden"
           style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">
-          <div style="height:3px;background:linear-gradient(90deg,#3D7A3E,#C8A96E);"></div>
+          <div style="height:3px;background:linear-gradient(90deg,#8B3B78,#D9A38C);"></div>
           <div class="p-7">
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                style="background:rgba(46,94,47,.3);">📋</div>
+                style="background:rgba(109,44,95,.3);">📋</div>
               <h3 class="font-bold text-white" style="font-family:'Sora',sans-serif;font-size:1rem;">PDF Liste Aliments
                 Anti-Graisse</h3>
             </div>
@@ -817,11 +817,11 @@
               Rehefa azonao ny formule assiette dia ireto liste ireto indray no apetrakao eo amin'ilay lovia anao.
             </p>
             <div class="rounded-xl px-5 py-4"
-              style="background:rgba(46,94,47,.2);border:1px solid rgba(126,200,128,.12);">
+              style="background:rgba(109,44,95,.2);border:1px solid rgba(223,166,206,.12);">
               <p style="color:rgba(255,255,255,.80);font-size:.85rem;line-height:1.7;">Rehefa hiantsena ianao dia tsy
                 miasa saina intsony satria efa manana an'ity liste anti-graisse ity.</p>
               <p class="mt-3 pt-3"
-                style="color:#C8A96E;font-size:.85rem;line-height:1.7;border-top:1px solid rgba(200,169,110,.18);">
+                style="color:#D9A38C;font-size:.85rem;line-height:1.7;border-top:1px solid rgba(217,163,140,.18);">
                 Sakafo hita eto Madagascar daholo no ao — tsy misy zavatra lafo na sarotra tadiavina.</p>
             </div>
           </div>
@@ -830,11 +830,11 @@
         <!-- Card 3 -->
         <div class="kit-card rounded-2xl overflow-hidden"
           style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">
-          <div style="height:3px;background:linear-gradient(90deg,#C8A96E,#3D7A3E);"></div>
+          <div style="height:3px;background:linear-gradient(90deg,#D9A38C,#8B3B78);"></div>
           <div class="p-7">
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                style="background:rgba(46,94,47,.3);">⏲️</div>
+                style="background:rgba(109,44,95,.3);">⏲️</div>
               <h3 class="font-bold text-white" style="font-family:'Sora',sans-serif;font-size:1rem;">PDF
                 Chrono-Nutrition</h3>
             </div>
@@ -843,11 +843,11 @@
               alimentaire — sy ny ordre tokony hihinananao azy.
             </p>
             <div class="rounded-xl px-5 py-4"
-              style="background:rgba(46,94,47,.2);border:1px solid rgba(126,200,128,.12);">
+              style="background:rgba(109,44,95,.2);border:1px solid rgba(223,166,206,.12);">
               <p style="color:rgba(255,255,255,.80);font-size:.85rem;line-height:1.7;">Ny horloge biologique mihitsy no
                 miasa ho anao. Ianao fotsiny manaraka ny fotoana mety.</p>
               <p class="mt-3 pt-3"
-                style="color:#C8A96E;font-size:.85rem;line-height:1.7;border-top:1px solid rgba(200,169,110,.18);">Io no
+                style="color:#D9A38C;font-size:.85rem;line-height:1.7;border-top:1px solid rgba(217,163,140,.18);">Io no
                 fototra mahatonga ny vokatra maharitra — fa tsy miverina toy ny régime.</p>
             </div>
           </div>
@@ -856,11 +856,11 @@
         <!-- Card 4 -->
         <div class="kit-card rounded-2xl overflow-hidden"
           style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">
-          <div style="height:3px;background:linear-gradient(90deg,#2E5E2F,#C8A96E);"></div>
+          <div style="height:3px;background:linear-gradient(90deg,#6D2C5F,#D9A38C);"></div>
           <div class="p-7">
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                style="background:rgba(46,94,47,.3);">🎥</div>
+                style="background:rgba(109,44,95,.3);">🎥</div>
               <h3 class="font-bold text-white" style="font-family:'Sora',sans-serif;font-size:1rem;">Vidéo Explicative ny
                 fampiharana</h3>
             </div>
@@ -869,11 +869,11 @@
               ilanao azy.
             </p>
             <div class="rounded-xl px-5 py-4"
-              style="background:rgba(46,94,47,.2);border:1px solid rgba(126,200,128,.12);">
+              style="background:rgba(109,44,95,.2);border:1px solid rgba(223,166,206,.12);">
               <p style="color:rgba(255,255,255,.80);font-size:.85rem;line-height:1.7;">Amin'izay ianao tsy miasa saina
                 intsony ary manomboka avy hatrany ny andro voalohany.</p>
               <p class="mt-3 pt-3"
-                style="color:#C8A96E;font-size:.85rem;line-height:1.7;border-top:1px solid rgba(200,169,110,.18);">
+                style="color:#D9A38C;font-size:.85rem;line-height:1.7;border-top:1px solid rgba(217,163,140,.18);">
                 Rehefa mazava ilay méthode dia tsy miverina amin'ilay fomba taloha intsony ianao.</p>
             </div>
           </div>
@@ -881,15 +881,15 @@
 
         <!-- Card 5 — BONUS -->
         <div class="kit-card rounded-2xl overflow-hidden"
-          style="background:rgba(200,169,110,.08);border:1px solid rgba(200,169,110,.35);">
-          <div style="height:3px;background:linear-gradient(90deg,#C8A96E,#e6c98a);"></div>
+          style="background:rgba(217,163,140,.08);border:1px solid rgba(217,163,140,.35);">
+          <div style="height:3px;background:linear-gradient(90deg,#D9A38C,#F0CDBA);"></div>
           <div class="p-7">
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                style="background:rgba(200,169,110,.25);">🎁</div>
+                style="background:rgba(217,163,140,.25);">🎁</div>
               <div>
                 <span
-                  style="display:inline-block;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;font-family:'Sora',sans-serif;background:#C8A96E;color:#0a1a0b;padding:2px 9px;border-radius:999px;margin-bottom:5px;">Bonus</span>
+                  style="display:inline-block;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;font-family:'Sora',sans-serif;background:#D9A38C;color:#190A17;padding:2px 9px;border-radius:999px;margin-bottom:5px;">Bonus</span>
                 <h3 class="font-bold text-white" style="font-family:'Sora',sans-serif;font-size:1rem;">Exemple Assiette
                   Type — 5 recettes</h3>
               </div>
@@ -898,8 +898,8 @@
               5 karazana recette vonona hampiharina avy hatrany, araka ilay formule assiette.
             </p>
             <div class="rounded-xl px-5 py-4"
-              style="background:rgba(10,26,11,.35);border:1px solid rgba(200,169,110,.18);">
-              <p style="color:#C8A96E;font-size:.85rem;line-height:1.7;">Mba tsy hisy fialan-tsiny hoe "tsy hainao ny
+              style="background:rgba(25,10,23,.35);border:1px solid rgba(217,163,140,.18);">
+              <p style="color:#D9A38C;font-size:.85rem;line-height:1.7;">Mba tsy hisy fialan-tsiny hoe "tsy hainao ny
                 hanomboka" — efa misy ohatra mazava ho tahafina.</p>
             </div>
           </div>
@@ -910,20 +910,20 @@
   </section>
 
   <!-- ══════════════════════════════ PROOF ══════════════════════════════ -->
-  <section class="py-20" style="background:#f8faf8;">
+  <section class="py-20" style="background:#FAF6F9;">
     <div class="max-w-3xl mx-auto px-6 sm:px-12">
       <span class="text-[11px] font-bold tracking-[.2em] uppercase text-gray-400">📸 Ny lazain'ny olona</span>
 
       <!-- Featured quote -->
-      <div class="mt-8 rounded-3xl overflow-hidden relative" style="background:#0f1e10;padding:2.5rem 2.5rem 2rem;">
-        <div class="w-8 h-0.5 mb-6" style="background:#C8A96E;"></div>
+      <div class="mt-8 rounded-3xl overflow-hidden relative" style="background:#1D0B1A;padding:2.5rem 2.5rem 2rem;">
+        <div class="w-8 h-0.5 mb-6" style="background:#D9A38C;"></div>
         <blockquote class="font-bold italic leading-snug text-white mb-4"
           style="font-family:'Sora',sans-serif;font-size:clamp(1.15rem,3vw,1.55rem);">
           "Ny tour de taille no mihena. Efa lasa 90."
         </blockquote>
         <p class="mb-4" style="color:rgba(255,255,255,.55);font-size:.9rem;line-height:1.7;">
           Herinandro 1 : <strong style="color:white;">101 cm</strong> &nbsp;→&nbsp; Herinandro 3 : <strong
-            style="color:#C8A96E;">90 cm</strong>
+            style="color:#D9A38C;">90 cm</strong>
         </p>
         <p class="text-xs uppercase tracking-wider" style="color:rgba(255,255,255,.35);">— Ireo olona efa nampiasa
           an'ity formule ity</p>
@@ -954,38 +954,38 @@
 
     <!-- Lightbox -->
     <div id="proof-lightbox" onclick="closeProof(event)"
-      style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(6,14,7,.92);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;">
+      style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(14,5,13,.92);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;">
       <button onclick="closeProof(event)" aria-label="Fermer"
-        style="position:absolute;top:18px;right:20px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(200,169,110,.4);background:rgba(0,0,0,.4);color:#C8A96E;font-size:22px;cursor:pointer;line-height:1;">✕</button>
+        style="position:absolute;top:18px;right:20px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(217,163,140,.4);background:rgba(0,0,0,.4);color:#D9A38C;font-size:22px;cursor:pointer;line-height:1;">✕</button>
       <img id="proof-lightbox-img" src="" alt=""
-        style="max-width:100%;max-height:88vh;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);border:1px solid rgba(200,169,110,.25);">
+        style="max-width:100%;max-height:88vh;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);border:1px solid rgba(217,163,140,.25);">
     </div>
   </section>
 
   <!-- ══════════════════════════════ FOR WHO ══════════════════════════════ -->
   <section class="py-20 border-t border-gray-100" style="background:white;">
     <div class="max-w-3xl mx-auto px-6 sm:px-12">
-      <span class="text-[11px] font-bold tracking-[.2em] uppercase" style="color:#2E5E2F;">👤 Hoan'iza ity formule
+      <span class="text-[11px] font-bold tracking-[.2em] uppercase" style="color:#6D2C5F;">👤 Hoan'iza ity formule
         ity?</span>
       <div class="mt-8 grid sm:grid-cols-2 gap-6">
-        <div class="rounded-2xl p-6" style="background:#f0fdf4;border:1.5px solid rgba(46,94,47,.12);">
+        <div class="rounded-2xl p-6" style="background:#FCF3F8;border:1.5px solid rgba(109,44,95,.12);">
           <h3 class="font-bold text-sm uppercase tracking-wide pb-3 mb-4 border-b"
-            style="color:#2E5E2F;border-color:rgba(46,94,47,.15);">✓ Mety aminao</h3>
+            style="color:#6D2C5F;border-color:rgba(109,44,95,.15);">✓ Mety aminao</h3>
           <ul class="space-y-3.5">
             <li class="flex gap-3 items-start text-sm text-gray-700 leading-relaxed">
-              <span class="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style="background:#2E5E2F;"></span>En surpoids
+              <span class="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style="background:#6D2C5F;"></span>En surpoids
               ianao
             </li>
             <li class="flex gap-3 items-start text-sm text-gray-700 leading-relaxed">
-              <span class="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style="background:#2E5E2F;"></span>Leo ilay
+              <span class="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style="background:#6D2C5F;"></span>Leo ilay
               fanaovana régime sy sport ianao
             </li>
             <li class="flex gap-3 items-start text-sm text-gray-700 leading-relaxed">
-              <span class="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style="background:#2E5E2F;"></span>Mitady
+              <span class="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style="background:#6D2C5F;"></span>Mitady
               approche vaovao ankoatra ny régime, savon, thé
             </li>
             <li class="flex gap-3 items-start text-sm text-gray-700 leading-relaxed">
-              <span class="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style="background:#2E5E2F;"></span>Vonona ny
+              <span class="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style="background:#6D2C5F;"></span>Vonona ny
               hampiatra avy hatrany
             </li>
           </ul>
@@ -1008,7 +1008,7 @@
   </section>
 
   <!-- ══════════════════════════════ FAQ ══════════════════════════════ -->
-  <section class="py-20 border-t border-gray-100" style="background:#f8faf8;">
+  <section class="py-20 border-t border-gray-100" style="background:#FAF6F9;">
     <div class="max-w-3xl mx-auto px-6 sm:px-12">
       <span class="text-[11px] font-bold tracking-[.2em] uppercase text-gray-400">❓ Fanontaniana be panontany</span>
       <div class="mt-8 rounded-2xl overflow-hidden border border-gray-200 divide-y divide-gray-100 shadow-sm"
@@ -1094,49 +1094,49 @@
   </section>
 
   <!-- ══════════════════════════════ SCARCITY ══════════════════════════════ -->
-  <section class="py-20 text-center" style="background:#0a1a0b;">
+  <section class="py-20 text-center" style="background:#190A17;">
     <div class="max-w-lg mx-auto px-6">
-      <div class="w-8 h-0.5 mx-auto mb-7" style="background:#C8A96E;"></div>
+      <div class="w-8 h-0.5 mx-auto mb-7" style="background:#D9A38C;"></div>
       <h2 class="font-bold text-white mb-4" style="font-family:'Sora',sans-serif;font-size:clamp(1.3rem,3vw,1.8rem);">
         Ity formule ity dia tsy formule efa lany kapoka</h2>
       <p class="leading-relaxed mb-5" style="color:rgba(255,255,255,.48);font-size:.9rem;">
         Tsy disponible hoan'ny olona rehetra fa hoan'ireo izay mendrika azy ihany.<br>
         Olom-bitsy ihany no mbola omenay azy — satria tsy laza ilay tadiavina fa ianao manana vatana maivana.
       </p>
-      <p class="font-semibold italic" style="color:#C8A96E;font-size:.95rem;">Raha te ho isan'ireo olom-bitsy ireo ianao
+      <p class="font-semibold italic" style="color:#D9A38C;font-size:.95rem;">Raha te ho isan'ireo olom-bitsy ireo ianao
         dia...</p>
     </div>
   </section>
 
   <!-- ══════════════════════════════ CHECKOUT ══════════════════════════════ -->
-  <section id="checkout" class="py-24" style="background:linear-gradient(to bottom,#f0fdf4,#fff);">
+  <section id="checkout" class="py-24" style="background:linear-gradient(to bottom,#FCF3F8,#fff);">
     <div class="max-w-xl mx-auto px-6 sm:px-10">
 
-      <p class="text-[11px] font-bold tracking-[.2em] uppercase text-center mb-4" style="color:#2E5E2F;">💳
+      <p class="text-[11px] font-bold tracking-[.2em] uppercase text-center mb-4" style="color:#6D2C5F;">💳
         Investissement</p>
       <h2 class="font-bold text-gray-900 leading-tight tracking-tight text-center mb-2"
         style="font-family:'Sora',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);">
-        Raiso Androany <span style="color:#2E5E2F;">ny fanapaha-kevitrao</span>
+        Raiso Androany <span style="color:#6D2C5F;">ny fanapaha-kevitrao</span>
       </h2>
       <p class="text-center text-gray-400 text-sm mb-9">Accès immédiat après confirmation via WhatsApp</p>
 
       <!-- ══════════ URGENCE + COMPTE À REBOURS ══════════ -->
       <div class="rounded-3xl overflow-hidden mb-10"
-        style="background:linear-gradient(160deg,#0a1a0b 0%,#122015 100%);border:1px solid rgba(200,169,110,.35);box-shadow:0 20px 48px rgba(10,26,11,.28);">
-        <div style="height:3px;background:linear-gradient(90deg,#2E5E2F,#C8A96E,#7EC880);"></div>
+        style="background:linear-gradient(160deg,#190A17 0%,#2B1128 100%);border:1px solid rgba(217,163,140,.35);box-shadow:0 20px 48px rgba(25,10,23,.28);">
+        <div style="height:3px;background:linear-gradient(90deg,#6D2C5F,#D9A38C,#DFA6CE);"></div>
         <div class="px-6 sm:px-8 py-8 text-center">
 
           <div class="inline-flex items-center gap-2 mb-5"
-            style="padding:6px 16px;background:rgba(200,169,110,.14);border:1px solid rgba(200,169,110,.45);border-radius:999px;animation:cd-pulse 2.2s ease-in-out infinite;">
+            style="padding:6px 16px;background:rgba(217,163,140,.14);border:1px solid rgba(217,163,140,.45);border-radius:999px;animation:cd-pulse 2.2s ease-in-out infinite;">
             <span style="font-size:13px;">⏳</span>
             <span
-              style="color:#C8A96E;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;font-family:'Sora',sans-serif;">Disponibilité
+              style="color:#D9A38C;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;font-family:'Sora',sans-serif;">Disponibilité
               limitée</span>
           </div>
 
           <h3 class="font-bold leading-snug mb-2"
             style="font-family:'Sora',sans-serif;font-size:clamp(1.25rem,3.5vw,1.65rem);color:white;">
-            Disponible <span style="color:#C8A96E;">jusqu'au 30 août</span> ihany
+            Disponible <span style="color:#D9A38C;">jusqu'au 30 août</span> ihany
           </h3>
           <p class="mb-7" style="color:rgba(255,255,255,.50);font-size:.85rem;line-height:1.65;">
             Rehefa mikatona ny fotoana dia miverina 197 000 Ar indray ny vidiny
@@ -1162,7 +1162,7 @@
           </div>
 
           <div id="cd-expired"
-            style="display:none;margin-top:18px;color:#C8A96E;font-size:.95rem;font-weight:600;font-family:'Sora',sans-serif;">
+            style="display:none;margin-top:18px;color:#D9A38C;font-size:.95rem;font-weight:600;font-family:'Sora',sans-serif;">
             ⛔ Mikatona ny fotoana — mifandraisa aminay raha mbola misy toerana.
           </div>
 
@@ -1172,40 +1172,40 @@
 
       <!-- Recap card -->
       <div class="rounded-3xl overflow-hidden border border-gray-200 shadow-xl mb-10" style="background:white;">
-        <div class="px-7 py-5" style="background:linear-gradient(135deg,#2E5E2F,#1a3a1b);">
+        <div class="px-7 py-5" style="background:linear-gradient(135deg,#6D2C5F,#45183B);">
           <p class="text-white font-bold text-sm tracking-wide">📦 Ireo ho azonao</p>
         </div>
         <div class="divide-y divide-gray-50">
           <div class="flex items-start gap-4 px-7 py-4">
-            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#2E5E2F;">✓</span>
+            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#6D2C5F;">✓</span>
             <div>
               <p class="text-sm font-semibold text-gray-800">🍽️ PDF Assiettes Brûle Graisse</p>
               <p class="text-xs text-gray-400 mt-0.5">Ilay formule exacte ny lovia isan'andro</p>
             </div>
           </div>
           <div class="flex items-start gap-4 px-7 py-4">
-            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#2E5E2F;">✓</span>
+            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#6D2C5F;">✓</span>
             <div>
               <p class="text-sm font-semibold text-gray-800">📋 PDF Liste Aliments Anti-Graisse</p>
               <p class="text-xs text-gray-400 mt-0.5">Tsy miasa saina intsony rehefa hiantsena</p>
             </div>
           </div>
           <div class="flex items-start gap-4 px-7 py-4">
-            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#2E5E2F;">✓</span>
+            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#6D2C5F;">✓</span>
             <div>
               <p class="text-sm font-semibold text-gray-800">⏲️ PDF Chrono-Nutrition</p>
               <p class="text-xs text-gray-400 mt-0.5">Fenêtre alimentaire sy ordre tokony hihinanana</p>
             </div>
           </div>
           <div class="flex items-start gap-4 px-7 py-4">
-            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#2E5E2F;">✓</span>
+            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#6D2C5F;">✓</span>
             <div>
               <p class="text-sm font-semibold text-gray-800">🎥 Vidéo Explicative</p>
               <p class="text-xs text-gray-400 mt-0.5">Expliqué étape par étape — accès immédiat</p>
             </div>
           </div>
           <div class="flex items-start gap-4 px-7 py-4" style="background:#fffbeb;">
-            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#C8A96E;">🎁</span>
+            <span class="text-lg mt-0.5 flex-shrink-0" style="color:#D9A38C;">🎁</span>
             <div>
               <p class="text-sm font-semibold text-gray-800">Bonus — Exemple Assiette Type</p>
               <p class="text-xs text-gray-400 mt-0.5">5 karazana recette vonona</p>
@@ -1276,7 +1276,7 @@
                     Prénom</label>
                   <input id="prenom" type="text" placeholder="Ex : Harizo"
                     style="width:100%;padding:12px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;color:#0f172a;background:#f8fafc;outline:none;font-family:'Inter',sans-serif;box-sizing:border-box;"
-                    onfocus="this.style.borderColor='#2E5E2F';this.style.background='white';"
+                    onfocus="this.style.borderColor='#6D2C5F';this.style.background='white';"
                     onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
                 </div>
                 <div>
@@ -1285,7 +1285,7 @@
                     Nom</label>
                   <input id="nom" type="text" placeholder="Ex : Rakoto"
                     style="width:100%;padding:12px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;color:#0f172a;background:#f8fafc;outline:none;font-family:'Inter',sans-serif;box-sizing:border-box;"
-                    onfocus="this.style.borderColor='#2E5E2F';this.style.background='white';"
+                    onfocus="this.style.borderColor='#6D2C5F';this.style.background='white';"
                     onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
                 </div>
               </div>
@@ -1295,7 +1295,7 @@
                   Numéro WhatsApp</label>
                 <input id="whatsapp" type="tel" placeholder="034 XX XXX XX"
                   style="width:100%;padding:12px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;color:#0f172a;background:#f8fafc;outline:none;font-family:'Inter',sans-serif;box-sizing:border-box;"
-                  onfocus="this.style.borderColor='#2E5E2F';this.style.background='white';"
+                  onfocus="this.style.borderColor='#6D2C5F';this.style.background='white';"
                   onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
               </div>
               <div>
@@ -1318,7 +1318,7 @@
                 </div>
               </div>
               <button onclick="openWhatsApp()"
-                style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px;background:linear-gradient(135deg,#2E5E2F,#1a3a1b);color:white;font-family:'Sora',sans-serif;font-size:16px;font-weight:800;border:none;border-radius:14px;cursor:pointer;box-shadow:0 8px 28px rgba(46,94,47,0.45);transition:transform .15s;"
+                style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px;background:linear-gradient(135deg,#6D2C5F,#45183B);color:white;font-family:'Sora',sans-serif;font-size:16px;font-weight:800;border:none;border-radius:14px;cursor:pointer;box-shadow:0 8px 28px rgba(109,44,95,0.45);transition:transform .15s;"
                 onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
                 <svg style="width:20px;height:20px;flex-shrink:0;" viewBox="0 0 24 24" fill="currentColor">
                   <path
@@ -1406,7 +1406,7 @@
   const agitateSection = document.getElementById('agitate');
   if (agitateSection) {
     gsap.to(agitateSection, {
-      backgroundColor: '#0d1505',
+      backgroundColor: '#15060F',
       ease: 'none',
       scrollTrigger: {
         trigger: agitateSection,
