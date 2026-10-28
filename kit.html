@@ -477,6 +477,31 @@
       width: 100%;
       height: auto;
     }
+
+    /* ── Featured proofs (top of gallery) with result caption ── */
+    .proof-featured {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 900px) { .proof-featured { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
+
+    .proof-featured .proof-shot { margin: 0; }
+
+    .proof-shot figcaption {
+      padding: 12px 14px 14px;
+      background: linear-gradient(160deg, #0a1a0b, #122015);
+      border-top: 2px solid #C8A96E;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #C8A96E;
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -871,6 +896,22 @@
         Ireo hafatra tena voaray avy amin'ny mpampiasa
       </p>
       <p class="text-center text-sm text-gray-400 mb-8">Captures d'écran réelles — Messenger &amp; WhatsApp. Tsindrio raha te hanalehibe.</p>
+
+      <!-- Featured proofs: first in the gallery, with result caption -->
+      <div class="proof-featured">
+        <figure class="proof-shot" onclick="openProof(this)">
+          <img loading="lazy" src="images/preuve_kit_01.jpeg" alt="Témoignage — glycémie de 18,5 à 13,9 mmol/L en 7 jours">
+          <figcaption>Glycémie 18,5 → 13,9 mmol/L ao anatin'ny 7 andro</figcaption>
+        </figure>
+        <figure class="proof-shot" onclick="openProof(this)">
+          <img loading="lazy" src="images/preuve_kit_02.jpeg" alt="Témoignage — glycémie à 6,2 après 1 mois">
+          <figcaption>Glycémie 6,2 aorian'ny 1 mois</figcaption>
+        </figure>
+        <figure class="proof-shot" onclick="openProof(this)">
+          <img loading="lazy" src="images/preuve_kit_03.jpeg" alt="Témoignage — kibo de 93 à 74">
+          <figcaption>Kibo 93 → 74, vatana matanjaka sy falifaly</figcaption>
+        </figure>
+      </div>
 
       <!-- Masonry gallery of real screenshots -->
       <div class="proof-masonry">
