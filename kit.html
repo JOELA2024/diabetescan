@@ -492,15 +492,47 @@
     .proof-featured .proof-shot { margin: 0; }
 
     .proof-shot figcaption {
-      padding: 12px 14px 14px;
+      padding: 16px 14px 15px;
       background: linear-gradient(160deg, #0a1a0b, #122015);
-      border-top: 2px solid #C8A96E;
+      border-bottom: 3px solid #C8A96E;
       font-family: 'Sora', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.45;
-      color: #C8A96E;
       text-align: center;
+    }
+
+    .proof-shot .cap-label {
+      display: inline-block;
+      margin-bottom: 9px;
+      padding: 3px 11px;
+      border-radius: 999px;
+      background: rgba(126, 200, 128, .16);
+      border: 1px solid rgba(126, 200, 128, .45);
+      color: #7EC880;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .proof-shot .cap-main {
+      display: block;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .proof-shot .cap-main b {
+      color: #C8A96E;
+      font-weight: 800;
+    }
+
+    .proof-shot .cap-sub {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, .72);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
     }
   </style>
 </head>
@@ -900,16 +932,28 @@
       <!-- Featured proofs: first in the gallery, with result caption -->
       <div class="proof-featured">
         <figure class="proof-shot" onclick="openProof(this)">
+          <figcaption>
+            <span class="cap-label">✓ Vokatra</span>
+            <span class="cap-main">Glycémie <b>18,5 → 13,9</b> mmol/L</span>
+            <span class="cap-sub">ao anatin'ny 7 andro</span>
+          </figcaption>
           <img loading="lazy" src="images/preuve_kit_01.jpeg" alt="Témoignage — glycémie de 18,5 à 13,9 mmol/L en 7 jours">
-          <figcaption>Glycémie 18,5 → 13,9 mmol/L ao anatin'ny 7 andro</figcaption>
         </figure>
         <figure class="proof-shot" onclick="openProof(this)">
+          <figcaption>
+            <span class="cap-label">✓ Vokatra</span>
+            <span class="cap-main">Glycémie <b>6,2</b></span>
+            <span class="cap-sub">aorian'ny 1 mois</span>
+          </figcaption>
           <img loading="lazy" src="images/preuve_kit_02.jpeg" alt="Témoignage — glycémie à 6,2 après 1 mois">
-          <figcaption>Glycémie 6,2 aorian'ny 1 mois</figcaption>
         </figure>
         <figure class="proof-shot" onclick="openProof(this)">
+          <figcaption>
+            <span class="cap-label">✓ Vokatra</span>
+            <span class="cap-main">Kibo <b>93 → 74</b></span>
+            <span class="cap-sub">vatana matanjaka sy falifaly</span>
+          </figcaption>
           <img loading="lazy" src="images/preuve_kit_03.jpeg" alt="Témoignage — kibo de 93 à 74">
-          <figcaption>Kibo 93 → 74, vatana matanjaka sy falifaly</figcaption>
         </figure>
       </div>
 
