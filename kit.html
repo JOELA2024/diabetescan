@@ -480,59 +480,59 @@
 
     /* ── Featured proofs (top of gallery) with result caption ── */
     .proof-featured {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      align-items: start;
+      column-count: 2;
+      column-gap: 14px;
       margin-bottom: 14px;
     }
 
-    @media (max-width: 900px) { .proof-featured { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
+    @media (max-width: 640px) { .proof-featured { column-count: 1; column-gap: 0; } }
 
     .proof-featured .proof-shot { margin: 0; }
 
-    .proof-shot figcaption {
-      padding: 16px 14px 15px;
-      background: linear-gradient(160deg, #0a1a0b, #122015);
-      border-bottom: 3px solid #C8A96E;
-      font-family: 'Sora', sans-serif;
-      text-align: center;
+    /* Each featured proof = a result card (same style as the featured quote) + (separate) screenshot card */
+    .proof-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      break-inside: avoid;
+      margin-bottom: 14px;
     }
 
-    .proof-shot .cap-label {
-      display: inline-block;
-      margin-bottom: 9px;
-      padding: 3px 11px;
-      border-radius: 999px;
-      background: rgba(126, 200, 128, .16);
-      border: 1px solid rgba(126, 200, 128, .45);
-      color: #7EC880;
-      font-size: 10.5px;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+    .result-card {
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 2rem 1.75rem 1.75rem;
+      border-radius: 1.5rem;
+      background: #0f1e10;
+      text-align: left;
     }
 
-    .proof-shot .cap-main {
-      display: block;
+    .result-card .rc-line {
+      width: 2rem;
+      height: 2px;
+      margin-bottom: 1.4rem;
+      background: #C8A96E;
+    }
+
+    .result-card .rc-text {
+      margin: 0 0 1rem;
       color: #fff;
-      font-size: 17px;
-      font-weight: 800;
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+      font-weight: 700;
+      font-style: italic;
       line-height: 1.3;
     }
 
-    .proof-shot .cap-main b {
-      color: #C8A96E;
-      font-weight: 800;
-    }
-
-    .proof-shot .cap-sub {
-      display: block;
-      margin-top: 5px;
-      color: rgba(255, 255, 255, .72);
-      font-size: 13px;
-      font-weight: 600;
-      line-height: 1.4;
+    .result-card .rc-label {
+      margin: auto 0 0;
+      color: rgba(255, 255, 255, .35);
+      font-family: 'Inter', sans-serif;
+      font-size: .75rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
     }
   </style>
 </head>
@@ -541,7 +541,7 @@
 
   <!-- ══════════════════════════════ STICKY URGENCY BAR ══════════════════════════════ -->
   <div id="urgency-bar">
-    <span class="ub-label">⏳ Disponible <b>jusqu'au 1er novembre</b></span>
+    <span class="ub-label">⏳ Disponible <b>jusqu'au 8 novembre</b></span>
     <div class="ub-timer" id="ub-timer">
       <span class="ub-unit"><span id="ub-days">00</span></span><span class="ub-sep">:</span>
       <span class="ub-unit"><span id="ub-hours">00</span></span><span class="ub-sep">:</span>
@@ -931,30 +931,42 @@
 
       <!-- Featured proofs: first in the gallery, with result caption -->
       <div class="proof-featured">
-        <figure class="proof-shot" onclick="openProof(this)">
-          <figcaption>
-            <span class="cap-label">✓ Vokatra</span>
-            <span class="cap-main">Glycémie <b>18,5 → 13,9</b> mmol/L</span>
-            <span class="cap-sub">ao anatin'ny 7 andro</span>
-          </figcaption>
-          <img loading="lazy" src="images/preuve_kit_01.jpeg" alt="Témoignage — glycémie de 18,5 à 13,9 mmol/L en 7 jours">
-        </figure>
-        <figure class="proof-shot" onclick="openProof(this)">
-          <figcaption>
-            <span class="cap-label">✓ Vokatra</span>
-            <span class="cap-main">Glycémie <b>6,2</b></span>
-            <span class="cap-sub">aorian'ny 1 mois</span>
-          </figcaption>
-          <img loading="lazy" src="images/preuve_kit_02.jpeg" alt="Témoignage — glycémie à 6,2 après 1 mois">
-        </figure>
-        <figure class="proof-shot" onclick="openProof(this)">
-          <figcaption>
-            <span class="cap-label">✓ Vokatra</span>
-            <span class="cap-main">Kibo <b>93 → 74</b></span>
-            <span class="cap-sub">vatana matanjaka sy falifaly</span>
-          </figcaption>
-          <img loading="lazy" src="images/preuve_kit_03.jpeg" alt="Témoignage — kibo de 93 à 74">
-        </figure>
+        <!-- Proof 4 (top) -->
+        <div class="proof-item">
+          <div class="result-card">
+            <div class="rc-line"></div>
+            <p class="rc-text">Glycémie 300 → 135 mg/dL</p>
+            <p class="rc-label">— à jeun, aorian'ny kit</p>
+          </div>
+          <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/preuve_kit_04.jpeg" alt="Témoignage — glycémie de 300 à 135 mg/dL à jeun"></figure>
+        </div>
+        <!-- Proof 1 -->
+        <div class="proof-item">
+          <div class="result-card">
+            <div class="rc-line"></div>
+            <p class="rc-text">Glycémie 18,5 → 13,9 mmol/L</p>
+            <p class="rc-label">— ao anatin'ny 7 andro</p>
+          </div>
+          <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/preuve_kit_01.jpeg" alt="Témoignage — glycémie de 18,5 à 13,9 mmol/L en 7 jours"></figure>
+        </div>
+        <!-- Proof 2 -->
+        <div class="proof-item">
+          <div class="result-card">
+            <div class="rc-line"></div>
+            <p class="rc-text">Glycémie 6,2</p>
+            <p class="rc-label">— aorian'ny 1 mois</p>
+          </div>
+          <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/preuve_kit_02.jpeg" alt="Témoignage — glycémie à 6,2 après 1 mois"></figure>
+        </div>
+        <!-- Proof 3 -->
+        <div class="proof-item">
+          <div class="result-card">
+            <div class="rc-line"></div>
+            <p class="rc-text">Kibo 93 → 74</p>
+            <p class="rc-label">— vatana matanjaka sy falifaly</p>
+          </div>
+          <figure class="proof-shot" onclick="openProof(this)"><img loading="lazy" src="images/preuve_kit_03.jpeg" alt="Témoignage — kibo de 93 à 74"></figure>
+        </div>
       </div>
 
       <!-- Masonry gallery of real screenshots -->
@@ -1162,7 +1174,7 @@
 
           <h3 class="font-bold leading-snug mb-2"
             style="font-family:'Sora',sans-serif;font-size:clamp(1.25rem,3.5vw,1.65rem);color:white;">
-            Disponible <span style="color:#C8A96E;">jusqu'au 1er novembre</span> ihany
+            Disponible <span style="color:#C8A96E;">jusqu'au 8 novembre</span> ihany
           </h3>
           <p class="mb-7" style="color:rgba(255,255,255,.50);font-size:.85rem;line-height:1.65;">
             Rehefa mikatona ny fotoana dia miverina 150 000 Ar indray ny vidiny
@@ -1441,9 +1453,9 @@
     );
   });
 
-  // ── Countdown timer : disponible jusqu'au 1er novembre 2026, 23h59 (Madagascar UTC+3) ──
+  // ── Countdown timer : disponible jusqu'au 8 novembre 2026, 23h53 (Madagascar UTC+3) ──
   (function () {
-    var deadline = new Date("2026-11-01T23:59:59+03:00").getTime();
+    var deadline = new Date("2026-11-08T23:53:00+03:00").getTime();
     // Bloc checkout
     var d = document.getElementById("cd-days"),
         h = document.getElementById("cd-hours"),
