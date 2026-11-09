@@ -541,7 +541,7 @@
 
   <!-- ══════════════════════════════ STICKY URGENCY BAR ══════════════════════════════ -->
   <div id="urgency-bar">
-    <span class="ub-label">⏳ Disponible <b>jusqu'au 8 novembre</b></span>
+    <span class="ub-label">⏳ Disponible <b>jusqu'au 15 novembre</b></span>
     <div class="ub-timer" id="ub-timer">
       <span class="ub-unit"><span id="ub-days">00</span></span><span class="ub-sep">:</span>
       <span class="ub-unit"><span id="ub-hours">00</span></span><span class="ub-sep">:</span>
@@ -592,11 +592,11 @@
           diabetique nandritra ny taona maro ary ianao.</span>
       </p>
 
-      <a href="#checkout"
+      <a href="#benefits"
         class="inline-flex items-center gap-3 text-white font-bold rounded-2xl px-10 py-4 transition-all duration-200 hover:-translate-y-1"
         style="background:linear-gradient(135deg,#2E5E2F,#3D7A3E);box-shadow:0 10px 36px rgba(46,94,47,.55);font-family:'Sora',sans-serif;font-size:15px;letter-spacing:.06em;"
-        onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'});return false;">
-        JE VEUX MON KIT MAINTENANT &nbsp;→
+        onclick="document.getElementById('benefits').scrollIntoView({behavior:'smooth'});return false;">
+        TE HAMPIATRA ILAY METHODE AHO IZAO &nbsp;→
       </a>
       <p style="color:rgba(255,255,255,.28);font-size:11px;" class="mt-4 tracking-wider">Accès immédiat · Paiement
         sécurisé via WhatsApp</p>
@@ -723,7 +723,7 @@
   </section>
 
   <!-- ══════════════════════════════ BENEFITS ══════════════════════════════ -->
-  <section class="py-20 border-y" style="border-color:#e8f5e9;background:white;">
+  <section id="benefits" class="py-20 border-y" style="scroll-margin-top:50px;border-color:#e8f5e9;background:white;">
     <div class="max-w-3xl mx-auto px-6 sm:px-12">
       <span class="text-[11px] font-bold tracking-[.2em] uppercase" style="color:#2E5E2F;">✦ Ny azonao</span>
       <h2 class="font-bold leading-snug mt-3 mb-10 text-gray-900"
@@ -1174,7 +1174,7 @@
 
           <h3 class="font-bold leading-snug mb-2"
             style="font-family:'Sora',sans-serif;font-size:clamp(1.25rem,3.5vw,1.65rem);color:white;">
-            Disponible <span style="color:#C8A96E;">jusqu'au 8 novembre</span> ihany
+            Disponible <span style="color:#C8A96E;">jusqu'au 15 novembre</span> ihany
           </h3>
           <p class="mb-7" style="color:rgba(255,255,255,.50);font-size:.85rem;line-height:1.65;">
             Rehefa mikatona ny fotoana dia miverina 150 000 Ar indray ny vidiny
@@ -1453,9 +1453,9 @@
     );
   });
 
-  // ── Countdown timer : disponible jusqu'au 8 novembre 2026, 23h53 (Madagascar UTC+3) ──
+  // ── Countdown timer : disponible jusqu'au 15 novembre 2026, 23h59 (Madagascar UTC+3) ──
   (function () {
-    var deadline = new Date("2026-11-08T23:53:00+03:00").getTime();
+    var deadline = new Date("2026-11-15T23:59:59+03:00").getTime();
     // Bloc checkout
     var d = document.getElementById("cd-days"),
         h = document.getElementById("cd-hours"),
